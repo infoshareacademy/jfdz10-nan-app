@@ -2,54 +2,53 @@
   {
     "id": 1,
     "name": "Siberian Dream",
-    "breeds": 
+    "breedIds": 
       [
-        14
+        1,3
       ],
     "contactInfo":
       {
         "street": "Koziorożca 11",
         "postalCode": "13-303",
-        "City": "Ostrołęka",
+        "city": "Ostrołęka",
         "e-mail": "sibdre@gmail.com",
         "phoneNo": 336728190,
         "website": "http://siberiandream.eu"
       },
     "description": "Domowa hodowla majeststycznych kotów syberyjskich. Nasi podopieczni są traktowani jak członkowie rodziny.",
     "img": "https://www.thesprucepets.com/thmb/xoVIupfhTkMGsN2ucvgtAmfDjIM=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-988071784-5be07291c9e77c005133fc74.jpg"
-  }
+  },
   {
     "id": 2,
     "name": "Rosewood Park",
     "breeds": 
       [
-        3,
-        8
+        3,2
       ],
     "contactInfo":
       {
         "street": "Grunwaldzka 113/2/14",
         "postalCode": "10-563",
-        "City": "Nanice",
+        "city": "Nanice",
         "e-mail": "contact@rosewoodpark.com",
         "phoneNo": 104628473,
         "website": "http://rosewoodpark.com"
       },
     "description": "Witajcie w Rosewood Park! Odkąd byłam małą dziewczynką uwielbiałam puszystke koty, a moim marzeniem było posiadanie hodowli. Po ośmiu latach ciężkiej pracy mogę wreszcie powiedzieć, że mi się to udało. Rosewood Park zajmuje się hodowlą dwóch majeststycznych ras kotów - Maine Coon i Ragdoll.",
     "img": "https://i.ytimg.com/vi/cGiWh5hbj20/maxresdefault.jpg"
-  }
+  },
   {
     "id": 3,
     "name": "Dzieci Faraona",
     "breeds": 
       [
-        4
+        1
       ],
     "contactInfo":
       {
         "street": "Niepodległości 752",
         "postalCode": "13-573",
-        "City": "Sopot ",
+        "city": "Sopot ",
         "e-mail": "info@dziecifaraona.pl",
         "phoneNo": 362902746,
         "website": "http://dziecifaraona.pl"
