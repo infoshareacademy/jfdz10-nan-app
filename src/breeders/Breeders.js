@@ -19,12 +19,13 @@ class Breeders extends Component {
   render() {
     return (
       <>
-        <h1>Lista Hodowców</h1>
-        <Grid.Row >
+        <h1 style={{textAlign: "center"}}>Lista Hodowców</h1>
+        <Segment>
+        <Card.Group itemsPerRow={3}>
           {this.state.breeders.map(el => {
             return (
-              <Card>
-                <Image src={el.img} />
+              <Card centered>
+                <Image src={el.img}/>
                 <Card.Content>
                   <Card.Header>{el.name}</Card.Header>
                   <Card.Meta>
@@ -32,11 +33,17 @@ class Breeders extends Component {
                   </Card.Meta>
                   <Card.Description>{el.description}</Card.Description>
                 </Card.Content>
-                <Card.Content extra />
+                <Card.Content extra >
+                  <a>
+                    <Icon name='heart' />
+                    Dodaj do ulubionych
+                  </a>
+                </Card.Content>
               </Card>
             );
           })}
-        </Grid.Row>
+        </Card.Group>
+        </Segment>
       </>
     );
   }

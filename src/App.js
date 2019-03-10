@@ -7,7 +7,7 @@ import Breeders from './breeders/Breeders'
 class App extends Component {
   render() {
     return (
-      <Grid container columns={2} stretched>
+      <Grid>
         <Grid.Column width={3}>
         </Grid.Column>
         <Grid.Column width={13}>
