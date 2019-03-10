@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import "./Cats.css";
 
-
 class Cats extends Component {
   state = {
     breeds: []
@@ -24,19 +23,14 @@ class Cats extends Component {
         <h1 className="title">Breeds of Cats</h1>
         <div className="cat_boxes">
           {this.state.breeds.map(el => {
-            console.log(el.image)
+            console.log(el.image);
             return (
               <div className="cats" key={el.id}>
-          
-                <p
-                  className="cat_img"
-                  style={
-                    { 
-                      backgroundImage: `url(${el.image})`
-                    }
-                  }
-                />
-                <p className="cat_names">{el.breed}</p>
+                <div className="cat_image_container">
+                  <img alt="s" className="cat_img" src={`${el.image}`} />
+                </div>
+
+                <div className="cat_names">{el.breed}</div>
               </div>
             );
           })}

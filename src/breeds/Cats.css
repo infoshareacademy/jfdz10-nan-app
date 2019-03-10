@@ -15,18 +15,19 @@ margin-top: 100px !important;
   display: flex;
   justify-content: space-evenly;
   margin-top: 150px;
-
+ 
 }
-.cat_img {
-  width: 277px;
+
+.cat_image_container {
+  width: auto;
   height: 200px;
-  background-size: 100%;
-  background-repeat: no-repeat;
   margin-bottom: 0 !important;
-
+  background-color: white;
 }
 
-
+.cat_img {
+  height: 100%;
+}
 .cats {
   
   border: 1px solid black;
