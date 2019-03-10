@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import './Cats.css';
+import { Image } from 'semantic-ui-react'
 
 class Cats extends Component {
   state = {
@@ -20,17 +21,21 @@ class Cats extends Component {
      return  (
        <Fragment>
           <h1>Breeds of Cats</h1>
+          <div className="cat_boxes" >
           {
             this.state.breeds.map(el => {
-              return <div key={el.id}>
-              <p>{el.breed}</p>
-              <p>{el.description}</p>
+              return <div className="cats" key={el.id}>
+              <img className="images" alt={el.breed} src={el.image}/>
+              <p className="cat_img" background='${url({el.image})}'></p>
+              <p className="cat_names">{el.breed}</p>
               </div>
             })
           }
+          </div>
       </Fragment>
   )
 }
 }
 
 export default Cats
+
