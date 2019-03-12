@@ -24,8 +24,8 @@ class Breeders extends Component {
         <Card.Group itemsPerRow={3}>
           {this.state.breeders.map(el => {
             return (
-              <Card centered>
-                <Image src={el.img}/>
+              <Card centered >
+                <Image src={el.img} />
                 <Card.Content>
                   <Card.Header>{el.name}</Card.Header>
                   <Card.Meta>
