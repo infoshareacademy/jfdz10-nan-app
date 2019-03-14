@@ -37,5 +37,17 @@
         1,3
       ],
     "price": 140
+  },
+  {
+    "id": 4,
+    "name": "Cat Teaser Toy",
+    "description": "Automatyczna wędka wyposażona w trzy piórka.",
+    "img": "https://ae01.alicdn.com/kf/HTB1mJO.KFXXXXa8XFXXq6xXFXXXA/Produkty-Dla-Zwierz-t-Kot-Goni-Chase-Toy-IQ-P-yta-Zwierzaki-Produkty-Kotek-Zabawki-z.jpg_640x640.jpg",
+    "producer": "Paws Road",
+    "breedId":
+      [
+        1,3
+      ],
+    "price": 140
   }
 ]
