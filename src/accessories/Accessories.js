@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Image, Card } from "semantic-ui-react";
 
+
 class Accessories extends Component {
   state = {
     accessories: []
@@ -21,7 +22,7 @@ class Accessories extends Component {
       <React.Fragment>
         <h1>Accessories</h1>
         <div>
-          <Card.Group itemsPerRow={3} stackable>
+          <Card.Group itemsPerRow={6} stackable>
             {this.state.accessories.map(el => (
               <Card key={el.name}>
                 <Image src={el.img} />

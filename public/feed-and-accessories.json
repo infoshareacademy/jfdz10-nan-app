@@ -9,7 +9,8 @@
       [ 
         1,2,3
       ],
-    "price": 15
+    "price": 15,
+    "category": "food"
   },
     
   {
@@ -23,7 +24,8 @@
         1,
         2
       ],
-    "price": 20
+    "price": 20,
+    "category": "food"
   },
 
   {
@@ -36,7 +38,8 @@
       [
         1,3
       ],
-    "price": 140
+    "price": 140,
+    "category": "toy"
   },
   {
     "id": 4,
@@ -48,6 +51,7 @@
       [
         1,3
       ],
-    "price": 140
+    "price": 140,
+    "category": "toy"
   }
 ]
