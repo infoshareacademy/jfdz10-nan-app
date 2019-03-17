@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import 'semantic-ui-css/semantic.min.css'
-import { Grid, Segment} from 'semantic-ui-react';
+import { Grid } from 'semantic-ui-react';
 import "./App.css";
 import Breeders from './breeders/Breeders'
 
