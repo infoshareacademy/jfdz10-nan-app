@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { NavLink } from "react-router-dom";
-import { navigationLinks } from "./routes.js";
+import { navigationLinks } from "./routes";
 import { Button, Divider, Container, Header, Image } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
 import "./Nav.css";
