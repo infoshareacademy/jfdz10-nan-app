@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from "react";
+import { Card, Icon, Image, Grid, Button, Input, Item } from "semantic-ui-react";
 import "./Cats.css";
+import {Route, Link} from 'react-router-dom';
+import SingleCat from './SingleCat';
 
 class Cats extends Component {
   state = {
@@ -17,24 +20,44 @@ class Cats extends Component {
   }
 
   render() {
-    document.body.style.background = "#ff0  ";
     return (
       <Fragment>
-        <h1 className="title">Breeds of Cats</h1>
-        <div className="cat_boxes">
+        <Input className="input" action='Search' placeholder='Szukaj...' />
+        <h1 className="title">Rasy kotów</h1>
+        <Grid columns={3} >
+        <Grid.Row className="row">
           {this.state.breeds.map(el => {
-            console.log(el.image);
             return (
-              <div className="cats" key={el.id}>
-                <div className="cat_image_container">
-                  <img alt="s" className="cat_img" src={`${el.image}`} />
-                </div>
-
-                <div className="cat_names">{el.breed}</div>
-              </div>
+              <Grid.Column key={el.id}>
+                <Card className="card">
+                  <Image src={el.image} className="img"/>
+                  <Card.Content>             
+                    <Item>
+                      <Item.Content verticalAlign='middle'>
+                        <Item.Header className="header">
+                          <Icon name='favorite' />
+                            
+                          <Link to="/dynamic-route/12">
+                          {el.breed}
+                          </Link>
+               
+                        </Item.Header>
+                      </Item.Content>
+                    </Item>
+                  </Card.Content>
+                  <Button className="button"
+                    color='brown'
+                    content='Like'
+                    icon='heart'
+                    label={{ basic: true, color: 'brown', pointing: 'left', content: '2,048' }}
+                  />
+                </Card>
+                </Grid.Column>
             );
           })}
-        </div>
+        </Grid.Row>
+        </Grid>
+        <Route path="/dynamic-route/:id" component={SingleCat} />
       </Fragment>
     );
   }
