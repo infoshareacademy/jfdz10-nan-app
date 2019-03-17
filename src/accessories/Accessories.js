@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, Image, Card } from "semantic-ui-react";
+import { Button, Image, Card, Segment } from "semantic-ui-react";
 
 
 class Accessories extends Component {
@@ -21,8 +21,8 @@ class Accessories extends Component {
     return (
       <React.Fragment>
         <h1>Accessories</h1>
-        <div>
-          <Card.Group itemsPerRow={6} stackable>
+        <Segment>
+        <Card.Group itemsPerRow={6} stackable>
             {this.state.accessories.map(el => (
               <Card key={el.name}>
                 <Image src={el.img} />
@@ -39,7 +39,8 @@ class Accessories extends Component {
               </Card>
             ))}
           </Card.Group>
-        </div>
+        </Segment>
+          
       </React.Fragment>
     );
   }
