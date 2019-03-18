@@ -1,0 +1,56 @@
+/*body {
+  background-color: #1BD3E8 !important;  
+}
+
+div {
+    text-align: center;
+  }
+*/
+
+.title {
+font-size: 60px;
+margin-top: 30px !important;
+text-align: center;
+}
+
+.row {
+  margin: 0 300px !important;
+}
+
+.card {
+  width: 600px !important;
+}
+
+.header {
+  font-size: 24px !important;
+  text-align: center;
+
+}
+
+a {
+color: black!important;
+}
+
+.img {
+height: 150px;
+}
+
+.button {
+  justify-content: center;
+}
+
+.ui.button {
+  background: #1BD3E8 !important;
+  color: #fff !important;
+}
+
+
+.ui.brown.button, 
+.ui.brown.button:hover {
+  background-color: #B66D49 !important;
+}
+
+.input {
+  margin: 30px 450px 0;
+  width: 400px
+}

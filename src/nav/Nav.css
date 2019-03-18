@@ -1,0 +1,28 @@
+.button:hover {
+  box-shadow: 0 0 0 2px #1BD3E8 !important;
+  color: #1BD3E8 !important;
+  background-color: transparent !important;
+  transition: ease-in-out 0.3s;
+}
+
+.button {
+  box-shadow: 0 0 0 2px #fff !important;
+  color: #fff !important;
+  background-color: transparent !important;
+  font-size: 18px !important;
+}
+
+a.active button{
+  box-shadow: 0 0 0 2px #fff !important;
+  color: #B66D49 !important;
+  background-color: #fff !important;
+}
+
+.ui.container {
+  padding: 1rem;
+  height: 40%;
+}
+
+.small-container {
+  height: 10%;
+}

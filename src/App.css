@@ -30,3 +30,12 @@
     transform: rotate(360deg);
   }
 }
+
+.ui.grid>.column:not(.row){
+  padding: 0;
+  margin: 0;
+}
+
+.ui.grid{
+  margin: 0;
+}
