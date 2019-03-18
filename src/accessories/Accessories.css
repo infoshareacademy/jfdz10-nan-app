@@ -1,3 +1,7 @@
 .accessories__container {
     margin: 0 2rem;
 }
+
+.filtering__categories {
+    margin-bottom: 1rem !important;
+}

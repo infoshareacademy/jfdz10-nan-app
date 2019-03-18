@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Image, Card, Segment, Input } from "semantic-ui-react";
+import FilteringCategories from "./FilteringCategories"
 import "./Accessories.css"
 
 
@@ -25,6 +26,7 @@ class Accessories extends Component {
         <Input className="input" action='Search' placeholder='Szukaj...' />
         <h1>Food and accessories</h1>
         <Segment >
+        <FilteringCategories />
         <Card.Group itemsPerRow={5} stackable>
             {this.state.accessories.map(el => (
               <Card key={el.name}>
