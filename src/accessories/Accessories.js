@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Button, Image, Card, Segment } from "semantic-ui-react";
+import { Button, Image, Card, Segment, Input } from "semantic-ui-react";
+import "./Accessories.css"
 
 
 class Accessories extends Component {
@@ -20,9 +21,11 @@ class Accessories extends Component {
   render() {
     return (
       <React.Fragment>
-        <h1>Accessories</h1>
-        <Segment>
-        <Card.Group itemsPerRow={6} stackable>
+        <div className="accessories__container">
+        <Input className="input" action='Search' placeholder='Szukaj...' />
+        <h1>Food and accessories</h1>
+        <Segment >
+        <Card.Group itemsPerRow={5} stackable>
             {this.state.accessories.map(el => (
               <Card key={el.name}>
                 <Image src={el.img} />
@@ -40,6 +43,7 @@ class Accessories extends Component {
             ))}
           </Card.Group>
         </Segment>
+        </div>
           
       </React.Fragment>
     );

@@ -29,7 +29,7 @@ class Cats extends Component {
           {this.state.breeds.map(el => {
             return (
               <Grid.Column key={el.id}>
-                <Card className="card">
+                <Card className="card-cat">
                   <Image src={el.image} className="img"/>
                   <Card.Content>             
                     <Item>
