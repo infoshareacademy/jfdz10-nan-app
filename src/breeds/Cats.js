@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Card, Icon, Image, Grid, Button, Input, Item } from "semantic-ui-react";
+import { Card, Image, Grid, Button, Input } from "semantic-ui-react";
 import "./Cats.css";
 import {Route, Link} from 'react-router-dom';
 import SingleCat from './SingleCat';
@@ -22,30 +22,19 @@ class Cats extends Component {
   render() {
     return (
       <Fragment>
-        <Input className="input" action='Search' placeholder='Szukaj...' />
-        <h1 className="title">Rasy kotów</h1>
+        <Input className="cat_input" action='Szukaj' placeholder='Szukaj...' />
+        <h1 className="cat_title">Rasy kotów</h1>
         <Grid columns={3} >
-        <Grid.Row className="row">
+        <Grid.Row className="cat_row">
           {this.state.breeds.map(el => {
             return (
               <Grid.Column key={el.id}>
-                <Card className="card">
-                  <Image src={el.image} className="img"/>
+                <Card className="cat_card">
+                  <Image src={el.image} className="cat_img" alt="kot"/>
                   <Card.Content>             
-                    <Item>
-                      <Item.Content verticalAlign='middle'>
-                        <Item.Header className="header">
-                          <Icon name='favorite' />
-                            
-                          <Link to="/dynamic-route/12">
-                          {el.breed}
-                          </Link>
-               
-                        </Item.Header>
-                      </Item.Content>
-                    </Item>
+                    <Link className="cat_name" to={`̣/cats/${el.breed}`}>{el.breed}</Link>
                   </Card.Content>
-                  <Button className="button"
+                  <Button className="cat_button"
                     color='brown'
                     content='Like'
                     icon='heart'
@@ -57,7 +46,7 @@ class Cats extends Component {
           })}
         </Grid.Row>
         </Grid>
-        <Route path="/dynamic-route/:id" component={SingleCat} />
+        <Route path="/cats/:breed" component={SingleCat} />
       </Fragment>
     );
   }

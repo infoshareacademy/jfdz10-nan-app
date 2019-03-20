@@ -14,7 +14,7 @@ class App extends Component {
         <Grid.Column width={3} style={{backgroundColor: "#B66D49"}}>
             <NavList />
         </Grid.Column>
-        <Grid.Column width={13}>
+        <Grid.Column width={13} className="wider_column">
         <Route key="bleh" path="/cats" component={Cats} />
         </Grid.Column>
       </Grid>
