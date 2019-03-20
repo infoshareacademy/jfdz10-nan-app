@@ -5,19 +5,19 @@ import "semantic-ui-css/semantic.min.css";
 import { Grid } from "semantic-ui-react";
 import "./App.css";
 import NavList from "./nav/NavList.js";
-import { BrowserRouter, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 
 //import { navigationLinks } from "../public/routes.js/index.js";
 import Cats from './breeds/Cats'
 import Accessories from './accessories/Accessories'
-import SingleAccessory from './accessories/SingleAccessory'
+
 
 
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+
       <Grid columns="equal" style={{height: "100vh"}}>
         <Grid.Column width={3} style={{backgroundColor: "#B66D49"}}>
             <NavList />
@@ -30,12 +30,6 @@ class App extends Component {
         
       </Grid>
 
-
-      <Route path="/food-and-accessories/:id/" component={SingleAccessory}/>
-      </BrowserRouter>
-      
-      
-      
       
     );
   }
