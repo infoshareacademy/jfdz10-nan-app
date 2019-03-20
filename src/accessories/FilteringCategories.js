@@ -3,7 +3,7 @@ import { Menu } from 'semantic-ui-react'
 import "./Accessories.css"
 
 class FilteringCategories extends Component {
-  state = { activeItem: 'Akcesoria' }
+  state = { activeItem: '' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -13,7 +13,10 @@ class FilteringCategories extends Component {
     return (
       <div>
         <Menu pointing secondary className="filtering__categories">
-          <Menu.Item name='Akcesoria' active={activeItem === 'Akcesoria'} onClick={this.handleItemClick} />
+          <Menu.Item name='Akcesoria' 
+            active={activeItem === 'Akcesoria'} 
+            onClick={this.handleItemClick} 
+          />
           <Menu.Item
             name='Jedzenie'
             active={activeItem === 'Jedzenie'}
