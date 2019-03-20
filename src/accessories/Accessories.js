@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 import { Button, Image, Card, Segment, Input } from "semantic-ui-react";
-import FilteringCategories from "./FilteringCategories"
+import {BrowserRouter, Link, Route} from "react-router-dom";
+
+
+
+import FilteringCategories from "./FilteringCategories";
+import SingleAccessory from "./SingleAccessory.js";
+
 import "./Accessories.css"
 
 
@@ -21,7 +27,8 @@ class Accessories extends Component {
 
   render() {
     return (
-      <React.Fragment>
+      <BrowserRouter>
+      
         <div className="accessories__container">
         <Input className="input" action='Search' placeholder='Szukaj...' />
         <h1>Food and accessories</h1>
@@ -39,15 +46,21 @@ class Accessories extends Component {
                 </Card.Content>
 
                 <Card.Content extra>
-                  <Button size="small" content="Zobacz" />
+                <Link to={`/food-and-accessories/${el.id}`}>
+                <Button size="small" content="Zobacz" />
+                </Link>
                 </Card.Content>
               </Card>
             ))}
           </Card.Group>
         </Segment>
         </div>
-          
-      </React.Fragment>
+
+        
+      
+      
+        <Route path="/food-and-accessories/:id" component={SingleAccessory}/>
+      </BrowserRouter>
     );
   }
 }
