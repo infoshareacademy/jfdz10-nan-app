@@ -8,6 +8,12 @@
   width: 400px
 }
 
+.cat_input .ui.button {
+  background: #1BD3E8 !important;
+  color: #fff !important;
+  box-shadow: 0 0 0 0px #1BD3E8 !important;
+}
+
 .cat_title {
 font-size: 50px;
 margin: 30px 0 !important;
@@ -31,16 +37,13 @@ text-align: center;
   color: black!important;
 }
 
-.cat_input .ui.button {
-  background: #1BD3E8 !important;
-  color: #fff !important;
-}
-
 .cat_card .cat_button, 
 .cat_card .cat_button:hover {
   background-color: #B66D49 !important;
   justify-content: center;
   height: 42px;
+  color: #fff !important;
+  box-shadow: 0 0 0 0px #B66D49 !important;
 }
 
 
