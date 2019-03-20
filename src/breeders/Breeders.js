@@ -1,15 +1,32 @@
 import React, { Component } from "react";
 import {
   Card,
-  Icon,
-  Image,
   Segment,
-  Grid,
-  Search,
-  Divider,
-  Header,
+  Input,
   Button
 } from "semantic-ui-react";
+
+import styled from 'styled-components'
+
+import './Breeders.css'
+
+const StyledHeader = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const StyledCardImage = styled.img`
+  height: 200px !important;
+  max-height: 100%;  
+  max-width: 100%; 
+  width: auto;   
+  top: 0;
+  bottom: 0;
+  left: 0; 
+  right: 0; 
+  margin: auto;
+`;
 
 class Breeders extends Component {
   state = {
@@ -29,53 +46,27 @@ class Breeders extends Component {
   render() {
     return (
       <>
-        <div>
-        <Icon size="large" name="bars"></Icon>
-        <h1 style={{ textAlign: "center" }}>Lista Hodowców
-        </h1>
-        </div>
-        <Segment placeholder>
-          <Grid columns={2} stackable textAlign="center">
-            <Divider vertical>Lub</Divider>
-
-            <Grid.Row verticalAlign="middle">
-              <Grid.Column>
-                <Header icon>
-                  <Icon name="search" />
-                  Znajdz hodowcę
-                </Header>
-
-                <Search placeholder="Szukaj..." />
-              </Grid.Column>
-
-              <Grid.Column>
-                <Header icon>
-                  <Icon name="paw" />
-                  Dodaj nowego hodowcę
-                </Header>
-                <Button primary >Dodaj</Button>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Segment>
-        <Segment>
-          <Card.Group itemsPerRow={3}>
+        <StyledHeader>
+        <h1>Lista Hodowców</h1>
+        <Input className="input" action='Search' placeholder='Szukaj...'/>
+        </StyledHeader>
+        <Segment style={{margin: "0 2rem"}}>
+          <Card.Group itemsPerRow={4}>
             {this.state.breeders.map(el => {
               return (
-                <Card centered>
-                  <Image src={el.img} />
+                <Card centered >
+                  <StyledCardImage src={el.img} />
                   <Card.Content>
                     <Card.Header>{el.name}</Card.Header>
-                    <Card.Meta>
-                      <span className="date">Joined in 2015</span>
-                    </Card.Meta>
                     <Card.Description>{el.description}</Card.Description>
                   </Card.Content>
                   <Card.Content extra>
-                    <p>
-                      <Icon name="heart" />
-                      Dodaj do ulubionych
-                    </p>
+                  <Button className="button"
+                    color='brown'
+                    content='Like'
+                    icon='heart'
+                    label={{ basic: true, color: 'brown', pointing: 'left', content: '2,048' }}
+                  />
                   </Card.Content>
                 </Card>
               );
@@ -87,7 +78,6 @@ class Breeders extends Component {
   }
 }
 
-//TODO przesunac hamburger menu na prawo
 //TODO wyrownac zawartosc w kartach
 //TODO zmmniejszyc wysokosc segmentu z search/add 
 
