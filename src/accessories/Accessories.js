@@ -22,17 +22,17 @@ class Accessories extends Component {
       });
   }
 
-//   getAccessory = (id) => {
-//     return this.state.accessories.find(accessory => {
-//         return accessory.id === Number(id);
-//     });
-// };
+  getAccessory = (id) => {
+    return this.state.accessories.find(accessory => {
+        return accessory.id === Number(id);
+    });
+};
 
-// renderAccessory = (reactRouterProps) => {
-//     const id = reactRouterProps.match.params.id;
+renderAccessory = (reactRouterProps) => {
+    const id = reactRouterProps.match.params.id;
 
-//     return <SingleAccessory accessory={this.getAccessory(id)}/>;
-// };
+    return <SingleAccessory accessory={this.getAccessory(id)}/>;
+};
 
   render() {
     return (
@@ -76,7 +76,7 @@ class Accessories extends Component {
           )}
         />
 
-        <Route path="/food-and-accessories/:id" component={SingleAccessory} />
+        <Route path="/food-and-accessories/:id" render={this.renderAccessory} />
       </BrowserRouter>
     );
   }
