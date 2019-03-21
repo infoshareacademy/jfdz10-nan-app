@@ -24,11 +24,11 @@ class Cats extends Component {
       <Fragment>
         <Input className="cat_input" action='Szukaj' placeholder='Szukaj...' />
         <h1 className="cat_title">Rasy kotów</h1>
-        <Grid columns={3} >
+        <Grid columns={2} >
         <Grid.Row className="cat_row">
           {this.state.breeds.map(el => {
             return (
-              <Grid.Column key={el.id}>
+              <Grid.Column className="cat_column" key={el.id}>
                 <Card className="cat_card">
                   <Image src={el.image} className="cat_img" alt="kot"/>
                   <Card.Content>             

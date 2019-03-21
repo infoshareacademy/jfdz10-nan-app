@@ -4,7 +4,7 @@
 }
 
 .cat_input {
-  margin: 30px 0;
+  margin: 10px 0;
   width: 400px
 }
 
@@ -15,13 +15,19 @@
 }
 
 .cat_title {
-font-size: 50px;
-margin: 30px 0 !important;
+font-size: 40px;
+margin: 10px 0 !important;
 text-align: center;
 }
 
 .cat_row {
   margin: 0 160px !important;
+  justify-content: center !important;
+}
+
+.cat_column {
+  margin: 10px 0 !important;
+  width: 45% !important;
 }
 
 .cat_card {
@@ -29,7 +35,7 @@ text-align: center;
 }
 
 .cat_img {
-  height: 150px;
+  height: 200px;
   }
 
 .cat_name {
