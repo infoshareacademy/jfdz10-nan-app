@@ -39,7 +39,7 @@
     "price": 140
   },
   {
-    "id": 1,
+    "id": 4,
     "name": "Purrfect Bistro Salmon Grain Free",
     "description": "Sucha karma o smaku łososia, pełna witamin i najwyższej jakości składników, bezziarnista. 2 kg. Dla dorosłych kotów.",
     "img": "https://s7d1.scene7.com/is/image/PETCO/2163920-center-1?$ProductDetail-large$",
@@ -52,7 +52,7 @@
   },
     
   {
-    "id": 2,
+    "id": 5,
     "name": "Whiskas Real Chicken",
     "description": "Bogata w proteiny karma z kurczaka, kukurydzy i groszku. Kawałki o twardej skorupce z musem w środku. 2 kg. Dla dorosłych kotów.",
     "img": "https://i5.walmartimages.ca/images/Large/703/295/999999-58496703295.jpg",
@@ -66,7 +66,7 @@
   },
 
   {
-    "id": 3,
+    "id": 6,
     "name": "Cat Teaser Toy",
     "description": "Automatyczna wędka wyposażona w trzy piórka.",
     "img": "https://ae01.alicdn.com/kf/HTB1mJO.KFXXXXa8XFXXq6xXFXXXA/Produkty-Dla-Zwierz-t-Kot-Goni-Chase-Toy-IQ-P-yta-Zwierzaki-Produkty-Kotek-Zabawki-z.jpg_640x640.jpg",
@@ -78,7 +78,7 @@
     "price": 140
   },
   {
-    "id": 1,
+    "id": 7,
     "name": "Purrfect Bistro Salmon Grain Free",
     "description": "Sucha karma o smaku łososia, pełna witamin i najwyższej jakości składników, bezziarnista. 2 kg. Dla dorosłych kotów.",
     "img": "https://s7d1.scene7.com/is/image/PETCO/2163920-center-1?$ProductDetail-large$",
@@ -91,7 +91,7 @@
   },
     
   {
-    "id": 2,
+    "id": 8,
     "name": "Whiskas Real Chicken",
     "description": "Bogata w proteiny karma z kurczaka, kukurydzy i groszku. Kawałki o twardej skorupce z musem w środku. 2 kg. Dla dorosłych kotów.",
     "img": "https://i5.walmartimages.ca/images/Large/703/295/999999-58496703295.jpg",
@@ -105,7 +105,7 @@
   },
 
   {
-    "id": 3,
+    "id": 9,
     "name": "Cat Teaser Toy",
     "description": "Automatyczna wędka wyposażona w trzy piórka.",
     "img": "https://ae01.alicdn.com/kf/HTB1mJO.KFXXXXa8XFXXq6xXFXXXA/Produkty-Dla-Zwierz-t-Kot-Goni-Chase-Toy-IQ-P-yta-Zwierzaki-Produkty-Kotek-Zabawki-z.jpg_640x640.jpg",

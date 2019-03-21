@@ -18,8 +18,8 @@ class FilteringCategories extends Component {
             onClick={this.handleItemClick} 
           />
           <Menu.Item
-            name='Jedzenie'
-            active={activeItem === 'Jedzenie'}
+            name='Karma'
+            active={activeItem === 'Karma'}
             onClick={this.handleItemClick}
           />
           
