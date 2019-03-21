@@ -43,12 +43,10 @@ renderAccessory = (reactRouterProps) => {
           render={() => (
             <Fragment>
               <div className="accessories__container">
-                <Input
-                  className="input"
-                  action="Search"
-                  placeholder="Szukaj..."
-                />
-                <h1>Food and accessories</h1>
+        <div className="accessories__bar">
+        <h1>Karmy i akcesoria</h1>
+        <Input action='Szukaj' placeholder='wpisz czego szukasz...' />
+        </div>
                 <Segment>
                   <FilteringCategories />
                   <Card.Group itemsPerRow={5} stackable>

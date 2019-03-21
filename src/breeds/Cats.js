@@ -22,7 +22,7 @@ class Cats extends Component {
   render() {
     return (
       <Fragment>
-        <Input className="input" action='Search' placeholder='Szukaj...' />
+        <Input className="input_cats" action='Search' placeholder='Szukaj...' />
         <h1 className="title">Rasy kotów</h1>
         <Grid columns={3} >
         <Grid.Row className="row">
