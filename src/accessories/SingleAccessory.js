@@ -5,14 +5,17 @@ import {
   Divider,
   Table,
   Image,
-  Header,
-  Grid
+  Header
 } from "semantic-ui-react";
 
 import "./Accessories.css";
 
 const SingleAccessory = props => {
   const { accessory } = props;
+
+  const productImage = {
+    maxHeight: "320px"
+  };
 
   return (
     <Fragment>
@@ -23,35 +26,34 @@ const SingleAccessory = props => {
         </div>
 
         <Segment>
-          
           <div className="product__characteristic">
-          
-                <Image src={accessory.img} />
-                <div>
-                
-            <h1> {accessory.name} </h1>
-                
-                <Table definition>
-                  <Table.Body>
-                    <Table.Row>
-                      <Table.Cell width={2}>Producent:</Table.Cell>
-                      <Table.Cell>{accessory.producer}</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                      <Table.Cell>Cena</Table.Cell>
-                      <Table.Cell>{accessory.price} zł</Table.Cell>
-                    </Table.Row>
-                  </Table.Body>
-                </Table>
-             </div>
-             </div>
+            <Image
+              style={productImage}
+              className="product__image"
+              src={accessory.img}
+            />
+            <div>
+              <h1> {accessory.name} </h1>
+
+              <Table definition>
+                <Table.Body>
+                  <Table.Row>
+                    <Table.Cell width={2}>Producent</Table.Cell>
+                    <Table.Cell>{accessory.producer}</Table.Cell>
+                  </Table.Row>
+                  <Table.Row>
+                    <Table.Cell>Cena</Table.Cell>
+                    <Table.Cell>{accessory.price} zł</Table.Cell>
+                  </Table.Row>
+                </Table.Body>
+              </Table>
+            </div>
+          </div>
 
           <Divider horizontal>
             <Header as="h2">Opis</Header>
           </Divider>
-          <div>
-            {accessory.description}
-          </div>
+          <div>{accessory.description}</div>
         </Segment>
       </div>
     </Fragment>

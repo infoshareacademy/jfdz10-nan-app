@@ -51,8 +51,8 @@ class Accessories extends Component {
                   <FilteringCategories />
                   <Card.Group itemsPerRow={5} stackable>
                     {this.state.accessories.map(el => (
-                      <Card key={el.name}>
-                        <Image className="product__image" src={el.img} />
+                      <Card key={el.id}>
+                        <Image src={el.img} />
 
                         <Card.Content>
                           <Card.Header>{el.name}</Card.Header>
