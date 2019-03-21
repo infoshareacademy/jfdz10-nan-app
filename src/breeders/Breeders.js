@@ -50,7 +50,7 @@ class Breeders extends Component {
           <Card.Group itemsPerRow={4}>
             {this.state.breeders.map(el => {
               return (
-                <Card centered>
+                <Card centered key={el.id}>
                   <StyledCardImage src={el.img} />
                   <Card.Content>
                     <Card.Header>{el.name}</Card.Header>

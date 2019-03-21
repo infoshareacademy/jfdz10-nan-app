@@ -19,6 +19,7 @@ class App extends Component {
         <Grid.Column width={13}>
         <Route key="bleh" path="/cats" component={Cats} />
         <Route key="bleh2" path="/food-and-accessories" component={Accessories} />
+        <Route key="bleh3" path="/breeders" component={Breeders} />
         </Grid.Column>
       </Grid>
     );
