@@ -1,26 +1,27 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+
+import React, { Component } from "react";
+import "semantic-ui-css/semantic.min.css";
+import { Grid } from "semantic-ui-react";
+import "./App.css";
+import NavList from "./nav/NavList.js";
+import { Route } from "react-router-dom";
+//import { navigationLinks } from "../public/routes.js/index.js";
+import Cats from './breeds/Cats'
+import Accessories from './accessories/Accessories'
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Grid columns="equal" style={{height: "100vh"}}>
+        <Grid.Column width={3} style={{backgroundColor: "#B66D49"}}>
+            <NavList />
+        </Grid.Column>
+        <Grid.Column width={13}>
+        <Route key="bleh" path="/cats" component={Cats} />
+        <Route key="bleh2" path="/food-and-accessories" component={Accessories} />
+        </Grid.Column>
+      </Grid>
     );
   }
 }
