@@ -4,7 +4,7 @@
         "accessoryId": [1],
         "breed": "Abyssinian",
         "breeders": [1,3],
-        "image": "https://en.wikipedia.org/wiki/Abyssinian_cat#/media/File:Gustav_chocolate.jpg",
+        "image": "https://images.unsplash.com/photo-1548094542-9f21bbfac7ac?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
         "description": "The Abyssinian is a breed of domestic short-haired cat with a distinctive 'ticked' tabby coat, in which individual hairs are banded with different colors. The breed is named for Abyssinia (now called Ethiopia), where it is believed to have originated.",
         "metrics": {
             "heigh": 20,
@@ -18,7 +18,7 @@
         "accessoryId": [1,2],
         "breed": "Aegean",
         "breeders": [2],
-        "image": "https://en.wikipedia.org/wiki/Aegean_cat#/media/File:Aegean_cat.jpg",
+        "image": "https://images.unsplash.com/photo-1414638298765-18200405ba2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80",
         "description": "Aegean cats are a naturally occurring landrace of domestic cat originating from the Cycladic Islands of Greece. It is considered a natural cat, developing without human interference. Development of the Aegean cat as a formal breed began in the early 1990s by breeders in the fledgling Greek cat fancy, but the variety has yet to be recognized by any major fancier and breeder organization. It is considered to be the only native Greek variety of cat.",
         "metrics": {
             "heigh": 40,
@@ -32,7 +32,7 @@
         "accessoryId": [1,3],
         "breed": "American Curl",
         "breeders": [1,2],
-        "image": "https://en.wikipedia.org/wiki/American_Curl#/media/File:American_curl_2.jpg",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/American_curl_2.jpg/1024px-American_curl_2.jpg",
         "description": "The American Curl is a breed of cat characterized by its unusual ears, which curl back from the face toward the center of the back of the skull. An American Curl's ears should be handled carefully because rough handling may damage the cartilage in the ear. The breed originated in Lakewood, California, as the result of a spontaneous mutation.",
         "metrics": {
             "heigh": 30,
