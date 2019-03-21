@@ -22,17 +22,17 @@ class Accessories extends Component {
       });
   }
 
-  getAccessory = (id) => {
+  getAccessory = id => {
     return this.state.accessories.find(accessory => {
-        return accessory.id === Number(id);
+      return accessory.id === Number(id);
     });
-};
+  };
 
-renderAccessory = (reactRouterProps) => {
+  renderAccessory = reactRouterProps => {
     const id = reactRouterProps.match.params.id;
 
-    return <SingleAccessory accessory={this.getAccessory(id)}/>;
-};
+    return <SingleAccessory accessory={this.getAccessory(id)} />;
+  };
 
   render() {
     return (
@@ -43,16 +43,16 @@ renderAccessory = (reactRouterProps) => {
           render={() => (
             <Fragment>
               <div className="accessories__container">
-        <div className="accessories__bar">
-        <h1>Karmy i akcesoria</h1>
-        <Input action='Szukaj' placeholder='wpisz czego szukasz...' />
-        </div>
+                <div className="accessories__bar">
+                  <h1>Karmy i akcesoria</h1>
+                  <Input action="Szukaj" placeholder="wpisz czego szukasz..." />
+                </div>
                 <Segment>
                   <FilteringCategories />
                   <Card.Group itemsPerRow={5} stackable>
                     {this.state.accessories.map(el => (
                       <Card key={el.name}>
-                        <Image src={el.img} />
+                        <Image className="product__image" src={el.img} />
 
                         <Card.Content>
                           <Card.Header>{el.name}</Card.Header>
