@@ -6,6 +6,8 @@ import NavList from "./nav/NavList.js";
 import { Route } from "react-router-dom";
 //import { navigationLinks } from "../public/routes.js/index.js";
 import Cats from './breeds/Cats'
+import Accessories from './accessories/Accessories'
+import Breeders from './breeders/Breeders'
 
 class App extends Component {
   render() {
@@ -16,10 +18,11 @@ class App extends Component {
         </Grid.Column>
         <Grid.Column width={13} className="wider_column">
         <Route key="bleh" path="/cats" component={Cats} />
+        <Route key="bleh2" path="/food-and-accessories" component={Accessories} />
+        <Route key="bleh3" path="/breeders" component={Breeders} />
         </Grid.Column>
       </Grid>
     );
   }
 }
-
 export default App;
