@@ -1,8 +1,16 @@
 import React, { Component, Fragment } from "react";
 import { Card, Image, Grid, Button, Input } from "semantic-ui-react";
+import styled from "styled-components";
 import "./Cats.css";
 import {Route, Link} from 'react-router-dom';
 import SingleCat from './SingleCat';
+
+const StyledHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 1rem 2rem 0;
+`;
 
 class Cats extends Component {
   state = {
@@ -22,8 +30,10 @@ class Cats extends Component {
   render() {
     return (
       <Fragment>
-        <Input className="cat_input" action='Szukaj' placeholder='Szukaj...' />
+        <StyledHeader>
         <h1 className="cat_title">Rasy kotów</h1>
+        <Input className="cat_input" action='Szukaj' placeholder='Szukaj...' />
+        </StyledHeader>
         <Grid columns={2} >
         <Grid.Row className="cat_row">
           {this.state.breeds.map(el => {

@@ -12,16 +12,17 @@
   background: #1BD3E8 !important;
   color: #fff !important;
   box-shadow: 0 0 0 0px #1BD3E8 !important;
+  margin-left: 7rem;
 }
 
 .cat_title {
-font-size: 40px;
-margin: 10px 0 !important;
-text-align: center;
+align-self: flex-end;
+font-size: 36px;
+margin-right: 7rem;
 }
 
 .cat_row {
-  margin: 0 160px !important;
+  margin: 0 100px !important;
   justify-content: center !important;
 }
 
@@ -31,20 +32,21 @@ text-align: center;
 }
 
 .cat_card {
-  width: 600px !important;
+  width: 800px !important;
 }
 
 .cat_img {
-  height: 200px;
+  height: 250px;
   }
 
 .cat_name {
   font-size: 24px !important;
+  font-weight: 600;
   color: black!important;
 }
 
-.cat_card .cat_button, 
-.cat_card .cat_button:hover {
+.ui.brown.button.cat_button, 
+.ui.brown.button.cat_button:hover {
   background-color: #B66D49 !important;
   justify-content: center;
   height: 42px;
@@ -52,5 +54,7 @@ text-align: center;
   box-shadow: 0 0 0 0px #B66D49 !important;
 }
 
-
+.ui.labeled.button.cat_button {
+margin-bottom: 15px !important;
+}
 
