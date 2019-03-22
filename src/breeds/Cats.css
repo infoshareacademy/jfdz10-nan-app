@@ -44,6 +44,7 @@
 
 .ui.labeled.button.cat_button {
   margin-bottom: 15px !important;
+  justify-content: center;
 }
 
 .ui.brown.button.cat_button, 
