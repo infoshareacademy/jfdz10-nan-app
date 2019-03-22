@@ -2,14 +2,11 @@ import React, { Component } from "react";
 import { Card, Segment, Input, Button } from "semantic-ui-react";
 import styled from "styled-components";
 
-import "./Breeders.css";
-
 const StyledHeader = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
-  margin: 1rem 2rem 0;
+  margin: 2rem 2rem 1rem;
 `;
 
 const StyledCardImage = styled.img`
@@ -44,10 +41,10 @@ class Breeders extends Component {
       <>
         <StyledHeader>
           <h1>Lista Hodowców</h1>
-          <Input className="input" action="Szukaj" placeholder="Szukaj..." />
+          <Input action="Szukaj" placeholder="Szukaj..." />
         </StyledHeader>
         <Segment style={{ margin: "0 2rem" }}>
-          <Card.Group itemsPerRow={4}>
+          <Card.Group itemsPerRow={4} >
             {this.state.breeders.map(el => {
               return (
                 <Card centered key={el.id}>
