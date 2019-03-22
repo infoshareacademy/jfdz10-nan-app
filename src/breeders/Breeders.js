@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Card, Segment, Input, Button } from "semantic-ui-react";
 import styled from "styled-components";
+import "./Breeders.css";
 
 const StyledHeader = styled.div`
   display: flex;
