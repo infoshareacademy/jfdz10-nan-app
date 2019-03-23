@@ -74,7 +74,7 @@ class Accessories extends Component {
           )}
         />
 
-        <Route path="/food-and-accessories/:id" render={this.renderAccessory} />
+        <Route path="/food-and-accessories/:id" component={SingleAccessory} />
       </BrowserRouter>
     );
   }
