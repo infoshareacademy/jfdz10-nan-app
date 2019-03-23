@@ -41,7 +41,7 @@ class Cats extends Component {
                 <Card centered className="cat_card" key={el.id}>
                   <Image src={el.image} className="cat_img" alt="kot"/>
                   <Card.Content>             
-                    <Link className="cat_name" to={`̣/cats/${el.breed}`}>{el.breed}</Link>
+                    <Link className="cat_name" to={`̣cats/${el.breed}`} key={el.breed}>{el.breed}</Link>
                   </Card.Content>
                   <Button className="cat_button"
                     color='brown'
@@ -54,7 +54,7 @@ class Cats extends Component {
           })}
            </Card.Group>
         </Segment>
-        <Route path="/cats/:breed" component={SingleCat} />
+        <Route path="cats/:name" breeds={this.state.breeds} component={SingleCat} />
       </Fragment>
     );
   }

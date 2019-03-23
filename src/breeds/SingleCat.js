@@ -1,12 +1,14 @@
 import React from 'react'
+import { withRouter } from 'react-router';
 
 const SingleCat = (props) => {
+
   return (
     <>
-    <h1>cat</h1>
+    <h1>{props.match.params.id}</h1>
   
     </>
   )
 }
 
-export default SingleCat
+export default withRouter(SingleCat)
