@@ -8,6 +8,7 @@ import { Route } from "react-router-dom";
 import Cats from './breeds/Cats'
 import Accessories from './accessories/Accessories'
 import Breeders from './breeders/Breeders'
+import SingleCat from './breeds/SingleCat'
 
 class App extends Component {
   render() {
@@ -17,9 +18,10 @@ class App extends Component {
             <NavList />
         </Grid.Column>
         <Grid.Column width={13} className="wider_column">
-        <Route key="bleh" path="/cats" component={Cats} />
+        <Route exact path="/cats" key="bleh" component={Cats} />
         <Route key="bleh2" path="/food-and-accessories" component={Accessories} />
         <Route key="bleh3" path="/breeders" component={Breeders} />
+        <Route path="/cats/:id" component={SingleCat} />
         </Grid.Column>
       </Grid>
     );

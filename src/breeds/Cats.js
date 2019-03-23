@@ -2,8 +2,8 @@ import React, { Component, Fragment } from "react";
 import { Card, Image, Button, Input, Segment } from "semantic-ui-react";
 import styled from "styled-components";
 import "./Cats.css";
-import {Route, Link} from 'react-router-dom';
-import SingleCat from './SingleCat';
+import {Link} from 'react-router-dom';
+
 
 const StyledHeader = styled.div`
   display: flex;
@@ -41,7 +41,7 @@ class Cats extends Component {
                 <Card centered className="cat_card" key={el.id}>
                   <Image src={el.image} className="cat_img" alt="kot"/>
                   <Card.Content>             
-                    <Link className="cat_name" to={`̣cats/${el.breed}`} key={el.breed}>{el.breed}</Link>
+                    <Link className="cat_name" to={`/cats/${el.id}`}>{el.breed}</Link>
                   </Card.Content>
                   <Button className="cat_button"
                     color='brown'
@@ -54,7 +54,7 @@ class Cats extends Component {
           })}
            </Card.Group>
         </Segment>
-        <Route path="cats/:name" breeds={this.state.breeds} component={SingleCat} />
+        
       </Fragment>
     );
   }
