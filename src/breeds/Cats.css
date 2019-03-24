@@ -30,6 +30,8 @@
 
 .cat_card {
   width: 350px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .cat_img {
