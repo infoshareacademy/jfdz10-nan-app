@@ -15,6 +15,14 @@
 }
 
 .dashboard-grid-content {
-  max-width: 300px !important;
+  max-width: 200px !important;
   margin: 10px !important;
+}
+
+.dashboard-header {
+  font-size: 20px !important;
+    font-weight: 600;
+    color: white!important;
+    text-align: center !important;
+    background-color: #B66D49;
 }

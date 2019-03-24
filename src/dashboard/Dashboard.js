@@ -28,9 +28,9 @@ class Dashboard extends Component {
               <Card.Content>
                 <Item>
                   <Item.Content verticalAlign="middle">
-                    <Item.Header className="header">
-                      <Link to="/profile">Profil</Link>
-                    </Item.Header>
+                    <Link to="/profile">
+                      <Item.Header className="dashboard-header">Profil</Item.Header>
+                    </Link>
                   </Item.Content>
                 </Item>
               </Card.Content>
@@ -40,9 +40,9 @@ class Dashboard extends Component {
               <Card.Content>
                 <Item>
                   <Item.Content verticalAlign="middle">
-                    <Item.Header className="header">
-                      <Link to="/cats">Koty</Link>
-                    </Item.Header>
+                    <Link to="/cats">
+                      <Item.Header className="dashboard-header">Koty</Item.Header>
+                    </Link>
                   </Item.Content>
                 </Item>
               </Card.Content>
@@ -52,9 +52,9 @@ class Dashboard extends Component {
               <Card.Content>
                 <Item>
                   <Item.Content verticalAlign="middle">
-                    <Item.Header className="header">
-                      <Link to="/breeders">Hodowcy</Link>
-                    </Item.Header>
+                    <Link to="/breeders">
+                      <Item.Header className="dashboard-header">Hodowcy</Item.Header>
+                    </Link>
                   </Item.Content>
                 </Item>
               </Card.Content>
@@ -64,9 +64,11 @@ class Dashboard extends Component {
               <Card.Content>
                 <Item>
                   <Item.Content verticalAlign="middle">
-                    <Item.Header className="header">
-                      <Link to="/profile">Karma i Akcesoria</Link>
-                    </Item.Header>
+                    <Link to="/food-and-accessories">
+                      <Item.Header className="dashboard-header">
+                        Karma i Akcesoria
+                      </Item.Header>
+                    </Link>
                   </Item.Content>
                 </Item>
               </Card.Content>
