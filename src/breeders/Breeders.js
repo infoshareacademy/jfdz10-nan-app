@@ -11,7 +11,7 @@ const StyledHeader = styled.div`
 `;
 
 const StyledCardImage = styled.img`
-  height: 17vw;
+  height: 15vw;
   max-height: 100%;
   max-width: 100%;
   width: auto;
