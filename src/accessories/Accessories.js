@@ -3,6 +3,7 @@ import { Button, Image, Card, Segment, Input } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 import FilteringCategories from "./FilteringCategories";
+import AccessorySearch from "./AccessorySearch";
 
 import "./Accessories.css";
 
@@ -27,7 +28,7 @@ class Accessories extends Component {
         <div className="accessories__container">
           <div className="accessories__bar">
             <h1>Karmy i akcesoria</h1>
-            <Input action="Szukaj" className="cat_input" placeholder="wpisz czego szukasz..." />
+            <AccessorySearch />
           </div>
           <Segment>
             <FilteringCategories />
