@@ -1,7 +1,9 @@
-import React, { Component, Fragment, Segment } from "react";
-import { Card, Image, Item, Container } from "semantic-ui-react";
+import React, { Component, Fragment } from "react";
+import { Card, Image, Item } from "semantic-ui-react";
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
+import GraphOne from '../graph/GraphOne'
+import GraphTwo from '../graph/GraphTwo'
 
 
 class Dashboard extends Component {
@@ -74,6 +76,12 @@ class Dashboard extends Component {
                 </Item>
               </Card.Content>
             </Card>
+            <div>
+              <Item.Header className="dashboard-graph-header">Popularność Ras</Item.Header><GraphOne />
+            </div>
+            <div>
+              <Item.Header className="dashboard-graph-header">Popularność Strony</Item.Header><GraphTwo />
+            </div>
           </div>
         </div>
       </Fragment>

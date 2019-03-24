@@ -1,24 +1,34 @@
-import React, { Component, Fragment, Segment } from "react";
-import { Card, Image, Item, Container } from "semantic-ui-react";
-import "./Dashboard.css";
-import { Link } from "react-router-dom";
+import React, { Component} from "react";
+import {
+  BarChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Bar
+} from "recharts";
 
+class GraphOne extends Component {
 
-class Dashboard extends Component {
-
+  state = {
+    graphOneData: [
+      { name: "Rosyjski Niebieski", value: 5},
+      { name: "Sfinks", value: 2},
+      { name: "Pixie-Bob", value: 13}
+    ]
+  }
+  
   render() {
     return (
-      <BarChart width={730} height={250} data={data}>
-  <CartesianGrid strokeDasharray="3 3" />
-  <XAxis dataKey="name" />
-  <YAxis />
-  <Tooltip />
-  <Legend />
-  <Bar dataKey="pv" fill="#8884d8" />
-  <Bar dataKey="uv" fill="#82ca9d" />
-</BarChart>
+      <BarChart width={400} height={250} data={this.state.graphOneData}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="name" />
+        <YAxis />
+        <Tooltip />
+        <Bar dataKey="value" fill="#1BD3E8" />
+      </BarChart>
     );
   }
 }
 
-export default Dashboard;
+export default GraphOne;
