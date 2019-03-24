@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from "react";
-import { Card, Image, Button, Input, Segment, Item } from "semantic-ui-react";
+import { Card, Image, Button, Input, Segment } from "semantic-ui-react";
 import styled from "styled-components";
 import "./Cats.css";
-import { Route, Link } from "react-router-dom";
-import SingleCat from "./SingleCat";
+import {Link } from "react-router-dom";
+
 
 const StyledHeader = styled.div`
   display: flex;
@@ -43,17 +43,9 @@ class Cats extends Component {
             {this.state.breeds.map(el => {
               return (
                 <Card centered className="cat_card" key={el.id}>
-<<<<<<< HEAD
                   <Image src={el.image} className="cat_img" alt="kot"/>
-                  <Card.Content>             
+                  <Card.Content className="cat_content">             
                     <Link className="cat_name" to={`cats/${el.id}`}>{el.breed}</Link>
-=======
-                  <Image src={el.image} className="cat_img" alt="kot" />
-                  <Card.Content>
-                    <Link className="cat_name" to={`̣/cats/${el.breed}`}>
-                      <Item.Header className="header">{el.breed}</Item.Header>
-                    </Link>
->>>>>>> develop
                   </Card.Content>
                   <Button
                     className="cat_button"
