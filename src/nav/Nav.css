@@ -1,11 +1,11 @@
-.button:hover {
+.navigation.button:hover {
   box-shadow: 0 0 0 2px #1BD3E8 !important;
   color: #1BD3E8 !important;
   background-color: transparent !important;
   transition: ease-in-out 0.3s;
 }
 
-.button {
+.navigation.button {
   box-shadow: 0 0 0 2px #fff !important;
   color: #fff !important;
   background-color: transparent !important;
@@ -18,11 +18,27 @@ a.active button{
   background-color: #fff !important;
 }
 
-.ui.container {
-  padding: 1rem;
-  height: 40%;
-}
-
 .small-container {
   height: 10%;
+}
+
+.navigation-user-image {
+  background-color: gray !important;
+  width: 150px !important;
+  height: 150px !important;
+  align-self: center !important;
+}
+
+.blue-background {
+  background-color: #1BD3E8 !important;
+}
+
+.white-text {
+  color: #FFFFFF !important;
+}
+
+.flex-center {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-around !important;
 }
