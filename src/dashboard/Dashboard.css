@@ -1,0 +1,39 @@
+.dashboard-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100vh;
+}
+
+.dashboard-card-box {
+  margin: auto !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  max-width: 1080px !important;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.dashboard-grid-content {
+  max-width: 200px !important;
+  margin: 10px !important;
+  background-color: #B66D49 !important;
+}
+
+.dashboard-header {
+  font-size: 20px !important;
+    font-weight: 600;
+    color: white!important;
+    text-align: center !important;
+}
+
+.dashboard-graph-header {
+  font-size: 20px !important;
+    font-weight: 600;
+    color: black! important;
+    text-align: center !important;
+}
+
+.image-background {  
+  background-color: #FFFFFF !important;
+}

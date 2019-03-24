@@ -38,7 +38,7 @@ class SingleAccessory extends Component {
         <div className="accessories__container">
           <div className="accessories__bar">
             <h1>Karmy i akcesoria</h1>
-            <Input action="Szukaj" placeholder="wpisz czego szukasz..." />
+            <Input action="Szukaj" className="cat_input" placeholder="wpisz czego szukasz..." />
           </div>
 
           <Segment>
@@ -69,7 +69,7 @@ class SingleAccessory extends Component {
             <Divider horizontal>
               <Header as="h2">Opis</Header>
             </Divider>
-            <div>{item.description}</div>
+            <div style={{textAlign: "center"}}>{item.description}</div>
           </Segment>
         </div>
       </Fragment>
