@@ -82,3 +82,12 @@
   justify-content: flex-start;
 }
 
+.max__width {
+  max-width: 1080px !important;
+  margin: auto !important;
+  margin-top: 4vh !important;
+}
+
+.cat__description {
+  text-align: justify !important;
+}

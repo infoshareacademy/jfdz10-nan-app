@@ -44,7 +44,7 @@ render() {
           <h1 className="breeds__bar__title">Rasy kotów</h1>
         </div>
 
-        <Segment>
+        <Segment className="max__width">
           <div className="cat__characteristic">
             <Image
               style={productImage}
@@ -79,7 +79,7 @@ render() {
           <Divider horizontal>
             <Header as="h2">Opis</Header>
           </Divider>
-          <div>{cat.description}</div>
+          <div className="cat__description">{cat.description}</div>
         </Segment>
       </div>
     </Fragment>
