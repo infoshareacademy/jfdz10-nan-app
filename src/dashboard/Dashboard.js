@@ -3,6 +3,7 @@ import { Card, Image, Item, Container } from "semantic-ui-react";
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
 
+
 class Dashboard extends Component {
   state = {
     elements: []
@@ -24,7 +25,7 @@ class Dashboard extends Component {
         <div className="dashboard-container">
           <div className="dashboard-card-box">
             <Card id="profile" className="dashboard-grid-content">
-              <Image src="http://www.nan.jfdz10.is-academy.pl/icons/love.svg" />
+              <Image src="http://www.nan.jfdz10.is-academy.pl/icons/love.svg" className="image-background" />
               <Card.Content>
                 <Item>
                   <Item.Content verticalAlign="middle">
@@ -36,7 +37,7 @@ class Dashboard extends Component {
               </Card.Content>
             </Card>
             <Card id="cats" className="dashboard-grid-content">
-              <Image src="http://www.nan.jfdz10.is-academy.pl/icons/magnifying-glass.svg" />
+              <Image src="http://www.nan.jfdz10.is-academy.pl/icons/magnifying-glass.svg" className="image-background" />
               <Card.Content>
                 <Item>
                   <Item.Content verticalAlign="middle">
@@ -48,7 +49,7 @@ class Dashboard extends Component {
               </Card.Content>
             </Card>
             <Card id="breeders" className="dashboard-grid-content">
-              <Image src="http://www.nan.jfdz10.is-academy.pl/icons/volunteer.svg" />
+              <Image src="http://www.nan.jfdz10.is-academy.pl/icons/volunteer.svg" className="image-background" />
               <Card.Content>
                 <Item>
                   <Item.Content verticalAlign="middle">
@@ -60,7 +61,7 @@ class Dashboard extends Component {
               </Card.Content>
             </Card>
             <Card id="food-and-accessories" className="dashboard-grid-content">
-              <Image src="http://www.nan.jfdz10.is-academy.pl/icons/pet-food.svg" />
+              <Image src="http://www.nan.jfdz10.is-academy.pl/icons/pet-food.svg" className="image-background" />
               <Card.Content>
                 <Item>
                   <Item.Content verticalAlign="middle">
