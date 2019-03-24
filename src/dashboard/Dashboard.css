@@ -27,6 +27,13 @@
     text-align: center !important;
 }
 
+.dashboard-graph-header {
+  font-size: 20px !important;
+    font-weight: 600;
+    color: black! important;
+    text-align: center !important;
+}
+
 .image-background {  
   background-color: #FFFFFF !important;
 }
