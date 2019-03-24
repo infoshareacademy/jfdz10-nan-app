@@ -76,10 +76,10 @@ class Dashboard extends Component {
                 </Item>
               </Card.Content>
             </Card>
-            <div>
+            <div className="graph">
               <Item.Header className="dashboard-graph-header">Popularność Ras</Item.Header><GraphOne />
             </div>
-            <div>
+            <div className="graph">
               <Item.Header className="dashboard-graph-header">Popularność Strony</Item.Header><GraphTwo />
             </div>
           </div>

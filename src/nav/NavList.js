@@ -21,7 +21,7 @@ class Nav extends Component {
 
   render() {
     return (
-      <div style={{ backgroundColor: "#B66D49", width: "18.75vw", height: "100vh" }}>
+      <div style={{ backgroundColor: "#B66D49", width: "18.75vw", height: "100vh", position: "fixed" }}>
         <div
           className="small-container flex-center blue-background padding-fifteen"
         >

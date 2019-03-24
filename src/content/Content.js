@@ -11,7 +11,7 @@ class Content extends Component {
   render() {
     return (
 
-        <div style={{height: "100vh", width: "82.25vw", overflow: "scroll"}}>
+        <div style={{height: "100vh", width: "82.25vw", position: "relative", left: "18.75vw" }}>
         <Route key="bleh" path="/cats" component={Cats} />
         <Route key="bleh2" exact path="/food-and-accessories" component={Accessories} />
         <Route key="bleh3" path="/breeders" component={Breeders} />
