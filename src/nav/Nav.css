@@ -8,11 +8,11 @@
 .navigation.button {
   box-shadow: 0 0 0 2px #fff !important;
   color: #fff !important;
-  background-color: transparent !important;
+  background-color: #B66D49 !important;
   font-size: 18px !important;
 }
 
-a.active button{
+a.active .navigation.button{
   box-shadow: 0 0 0 2px #fff !important;
   color: #B66D49 !important;
   background-color: #fff !important;
@@ -41,4 +41,12 @@ a.active button{
   display: flex !important;
   flex-direction: column !important;
   justify-content: space-around !important;
+}
+
+.button-box {
+  height: 100%;
+}
+
+.padding-fifteen {
+  padding: 15px !important;
 }

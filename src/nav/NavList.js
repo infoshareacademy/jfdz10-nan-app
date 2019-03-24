@@ -23,8 +23,7 @@ class Nav extends Component {
     return (
       <div style={{ backgroundColor: "#B66D49", width: "18.75vw", height: "100vh" }}>
         <div
-          className="small-container flex-center blue-background"
-          style={{ padding: "15px" }}
+          className="small-container flex-center blue-background padding-fifteen"
         >
           <img
             src={require("./cat4you-logo-white.png")}
@@ -49,7 +48,7 @@ class Nav extends Component {
         </Header>
         <Divider inverted />
         <Container style={{ height: "45%" }}>
-          <Button.Group vertical className="flex-center">
+          <Button.Group vertical className="flex-center button-box padding-fifteen">
             {this.state.elements.map(link => (
               <NavLink to={`/${link.id}`} key={`/${link.id}`}>
                 <Button className="navigation">
@@ -61,7 +60,7 @@ class Nav extends Component {
         </Container>
         <Divider inverted />
         <div className="small-container flex-center white-text">
-          <p>Property of Cat4You</p>
+          <p style={{alignSelf: "center"}}>Property of Cat4You</p>
         </div>
       </div>
     );

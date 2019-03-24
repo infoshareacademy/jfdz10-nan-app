@@ -42,7 +42,7 @@ class Breeders extends Component {
       <>
         <StyledHeader>
           <h1>Lista Hodowców</h1>
-          <Input action="Szukaj" placeholder="Szukaj..." />
+          <Input action="Szukaj" className="cat_input" placeholder="Szukaj..." />
         </StyledHeader>
         <Segment style={{ margin: "0 2rem" }}>
           <Card.Group itemsPerRow={4} >

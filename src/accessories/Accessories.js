@@ -27,7 +27,7 @@ class Accessories extends Component {
         <div className="accessories__container">
           <div className="accessories__bar">
             <h1>Karmy i akcesoria</h1>
-            <Input action="Szukaj" placeholder="wpisz czego szukasz..." />
+            <Input action="Szukaj" className="cat_input" placeholder="wpisz czego szukasz..." />
           </div>
           <Segment>
             <FilteringCategories />
@@ -44,7 +44,7 @@ class Accessories extends Component {
 
                   <Card.Content extra>
                     <Link to={`/food-and-accessories/${el.id}`}>
-                      <Button size="small" content="Zobacz" />
+                      <Button size="small" className="blue-button" content="Zobacz" />
                     </Link>
                   </Card.Content>
                 </Card>
