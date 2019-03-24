@@ -10,13 +10,13 @@ class Nav extends Component {
     return (
       <Fragment>
         <div className="small-container">
-          <img src="" />
         </div>
         <Container>
           <Image
-            src="http://icons.iconarchive.com/icons/custom-icon-design/flatastic-6/512/Square-icon.png"
+            src="https://www.bleedingcool.com/wp-content/uploads/2015/12/nicolas_cage.jpg"
             size="small"
             circular
+            
           />
           <Header as="h2" icon textAlign="center">
             <Header.Content style={{ color: "#1BD3E8" }}>
