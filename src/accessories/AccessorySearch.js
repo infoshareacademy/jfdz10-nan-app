@@ -7,7 +7,10 @@ class AccessorySearch extends React.Component {
     };
 
     onInputChange = e => {
-        this.setState({ text: e.target.value});
+        this.setState(
+                { text: e.target.value},
+                () => this.props.onFilterChange(this.state)
+            )  
     };
 
     render() {
