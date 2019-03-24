@@ -25,7 +25,7 @@ class App extends Component {
             <NavList />
         </Grid.Column>
         <Grid.Column width={13} className="wider_column">
-        <Route key="bleh" path="/cats" component={Cats} />
+        <Route key="bleh" exact path="/cats" component={Cats} />
         <Route key="bleh2" exact path="/food-and-accessories" component={Accessories} />
         <Route key="bleh3" path="/breeders" component={Breeders} />
         <Route path={"/food-and-accessories/:id"} component={SingleAccessory} />

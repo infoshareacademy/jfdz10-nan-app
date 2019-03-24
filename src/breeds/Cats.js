@@ -41,7 +41,7 @@ class Cats extends Component {
                 <Card centered className="cat_card" key={el.id}>
                   <Image src={el.image} className="cat_img" alt="kot"/>
                   <Card.Content>             
-                    <Link className="cat_name" to={`/cats/${el.id}`}>{el.breed}</Link>
+                    <Link className="cat_name" to={`cats/${el.id}`}>{el.breed}</Link>
                   </Card.Content>
                   <Button className="cat_button"
                     color='brown'

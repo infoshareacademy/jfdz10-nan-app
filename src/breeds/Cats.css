@@ -58,5 +58,23 @@
   box-shadow: 0 0 0 0px #B66D49 !important;
 }
 
+.breeds__container {
+  margin: 0 2rem;
+}
 
+.breeds__bar {
+  text-align: center;
+  margin-top: 2%;
+  font-size: 36px;
+}
+
+.breeds__bar__title {
+  font-size: 36px;
+}
+
+.cat__characteristic {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
 
