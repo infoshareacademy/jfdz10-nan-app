@@ -17,8 +17,6 @@ class SingleAccessory extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    console.log(id);
-    console.log(this.props.match.params);
 
     fetch(`/feed-and-accessories.json`)
       .then(response => response.json())
