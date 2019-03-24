@@ -1,0 +1,11 @@
+
+  .ui.button {
+    background: #1bd3e8 !important;
+    color: #fff !important;
+  }
+  
+  .ui.brown.button,
+  .ui.brown.button:hover {
+    background-color: #b66d49 !important;
+  }
+ 

@@ -1,8 +1,16 @@
 import React, { Component, Fragment } from "react";
-import { Card, Icon, Image, Grid, Button, Input, Item } from "semantic-ui-react";
+import { Card, Image, Button, Input, Segment } from "semantic-ui-react";
+import styled from "styled-components";
 import "./Cats.css";
 import {Route, Link} from 'react-router-dom';
 import SingleCat from './SingleCat';
+
+const StyledHeader = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 1rem 2rem 0;
+`;
 
 class Cats extends Component {
   state = {
@@ -22,42 +30,31 @@ class Cats extends Component {
   render() {
     return (
       <Fragment>
-        <Input className="input_cats" action='Search' placeholder='Szukaj...' />
-        <h1 className="title">Rasy kotów</h1>
-        <Grid columns={3} >
-        <Grid.Row className="row">
+        <StyledHeader>
+          <h1 className="cat_title">Rasy kotów</h1>
+          <Input className="cat_input" action='Szukaj' placeholder='Szukaj...' />
+        </StyledHeader>
+        <Segment className="cat_segment">
+          <Card.Group className="cat_card_group" itemsPerRow={2}>
           {this.state.breeds.map(el => {
             return (
-              <Grid.Column key={el.id}>
-                <Card className="card-cat">
-                  <Image src={el.image} className="img"/>
+                <Card centered className="cat_card" key={el.id}>
+                  <Image src={el.image} className="cat_img" alt="kot"/>
                   <Card.Content>             
-                    <Item>
-                      <Item.Content verticalAlign='middle'>
-                        <Item.Header className="header">
-                          <Icon name='favorite' />
-                            
-                          <Link to="/dynamic-route/12">
-                          {el.breed}
-                          </Link>
-               
-                        </Item.Header>
-                      </Item.Content>
-                    </Item>
+                    <Link className="cat_name" to={`̣/cats/${el.breed}`}>{el.breed}</Link>
                   </Card.Content>
-                  <Button className="button"
+                  <Button className="cat_button"
                     color='brown'
                     content='Like'
                     icon='heart'
                     label={{ basic: true, color: 'brown', pointing: 'left', content: '2,048' }}
                   />
                 </Card>
-                </Grid.Column>
             );
           })}
-        </Grid.Row>
-        </Grid>
-        <Route path="/dynamic-route/:id" component={SingleCat} />
+           </Card.Group>
+        </Segment>
+        <Route path="/cats/:breed" component={SingleCat} />
       </Fragment>
     );
   }

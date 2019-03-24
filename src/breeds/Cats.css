@@ -1,56 +1,62 @@
-/*body {
-  background-color: #1BD3E8 !important;  
-}
 
-div {
-    text-align: center;
-  }
-*/
-
-.title {
-font-size: 60px;
-margin-top: 30px !important;
-text-align: center;
-}
-
-.row {
-  margin: 0 300px !important;
-}
-
-.card-cat {
-  width: 600px !important;
-}
-
-.header {
-  font-size: 24px !important;
+.wider_column {
   text-align: center;
-
 }
 
-a {
-color: black!important;
+.cat_title {
+  align-self: flex-end;
+  font-size: 36px;
 }
 
-.img {
-height: 150px;
+.cat_input {
+  margin: 10px 0;
+  width: 400px
 }
 
-.button {
+.cat_input .ui.button {
+  background: #1BD3E8 !important;
+  color: #fff !important;
+  box-shadow: 0 0 0 0px #1BD3E8 !important;
+}
+
+.cat_segment {
+  margin: 1rem 4rem 1rem !important;
+}
+
+.cat_card_group {
+  margin: 0 2rem !important;
+  justify-content: space-around !important;
+}
+
+.cat_card {
+  width: 350px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.cat_img {
+  height: 250px;
+}
+
+.cat_name {
+  font-size: 24px !important;
+  font-weight: 600;
+  color: black!important;
+}
+
+.ui.labeled.button.cat_button {
+  margin-bottom: 15px !important;
   justify-content: center;
 }
 
-.ui.button {
-  background: #1BD3E8 !important;
-  color: #fff !important;
-}
-
-
-.ui.brown.button, 
-.ui.brown.button:hover {
+.ui.brown.button.cat_button, 
+.ui.brown.button.cat_button:hover {
   background-color: #B66D49 !important;
+  justify-content: center;
+  height: 42px;
+  color: #fff !important;
+  box-shadow: 0 0 0 0px #B66D49 !important;
 }
 
-.input_cats {
-  margin: 30px 450px 0;
-  width: 400px
-}
+
+

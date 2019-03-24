@@ -1,5 +1,4 @@
-import React from 'react';
-import {withRouter} from 'react-router';
+import React from 'react'
 
 const SingleCat = (props) => {
   return (
@@ -10,4 +9,4 @@ const SingleCat = (props) => {
   )
 }
 
-export default withRouter(SingleCat);
+export default SingleCat
