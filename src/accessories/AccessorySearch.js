@@ -17,7 +17,7 @@ class AccessorySearch extends React.Component {
         return (
             <Fragment>
                 <Input 
-                    action="Szukaj" 
+                    icon="search"
                     className="cat_input" 
                     placeholder="wpisz czego szukasz..."  
                     type="text" value={this.state.value} 

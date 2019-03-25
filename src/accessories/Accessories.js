@@ -25,6 +25,17 @@ class Accessories extends Component {
       });
   }
 
+  getAccessoriesNames() {
+    return this.state.accessories
+      .filter(el =>  {
+            const AccessoryNameLowerCased = el.name.toLowerCase();
+            const textFilterLowerCased = this.state.filter.text.toLowerCase();
+
+            return AccessoryNameLowerCased.includes(textFilterLowerCased);
+        }
+    )
+}
+
   render() {
     return (
       <Fragment>
@@ -36,8 +47,7 @@ class Accessories extends Component {
           <Segment>
             <FilteringCategories />
             <Card.Group itemsPerRow={5} stackable>
-              {this.state.accessories
-                .filter(el => el.name.includes(this.state.filter.text))
+              {this.getAccessoriesNames()
                 .map(el => (
                   <Card key={el.id}>
                     <Image src={el.img} />
