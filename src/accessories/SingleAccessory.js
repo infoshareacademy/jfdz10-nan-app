@@ -38,7 +38,6 @@ class SingleAccessory extends Component {
         <div className="accessories__container">
           <div className="accessories__bar">
             <h1>Karmy i akcesoria</h1>
-            <Input action="Szukaj" className="cat_input" placeholder="wpisz czego szukasz..." />
           </div>
 
           <Segment>
