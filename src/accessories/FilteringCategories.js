@@ -1,36 +1,34 @@
 import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Dropdown } from 'semantic-ui-react'
 import "./Accessories.css"
 
 class FilteringCategories extends Component {
-  state = { activeItem: 'Wszystkie' }
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  
 
   render() {
-    const { activeItem } = this.state
+    // console.log(this.props)
+    // const filterCategories = this.props.categories.reduce((acc, category) => ({ 
+    //       key: category,
+    //       text: category,
+    //       value: category,
+    //     }), {}
+    // );
+    const filterCategories = this.props.categories.map(category => ({
+      key: category,
+      text: category,
+      value: category,
+    }))
+    console.log(filterCategories)
 
+
+  
+      
     return (
       <div>
-        <Menu pointing secondary className="filtering__categories">
-          <Menu.Item name='Wszystkie' 
-            active={activeItem === 'Wszystkie'} 
-            onClick={this.handleItemClick} 
-          />
-          <Menu.Item
-            name='Karma'
-            active={activeItem === 'Karma'}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item name='Akcesoria' 
-            active={activeItem === 'Akcesoria'} 
-            onClick={this.handleItemClick} 
-          />
-          
-        </Menu>
+        <Dropdown clearable options={filterCategories} selection placeholder='Filtruj'/>
       </div>
     )
   }
 }
 
-export default FilteringCategories
+export default FilteringCategories;

@@ -1,6 +1,5 @@
 import React, { Fragment, Component } from "react";
 import {
-  Input,
   Segment,
   Divider,
   Table,

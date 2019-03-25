@@ -10,6 +10,7 @@ import "./Accessories.css";
 class Accessories extends Component {
   state = {
     accessories: [],
+    categories: [],
     filter: {
       text: ''
     }
@@ -19,11 +20,19 @@ class Accessories extends Component {
     fetch("/feed-and-accessories.json")
       .then(response => response.json())
       .then(data => {
-        this.setState({
-          accessories: data
+
+        const categories = data.map((accessory) => {
+          return accessory.category;
         });
+
+        this.setState({
+          accessories: data,
+          categories: [...new Set(categories)]
+        })
       });
   }
+
+  
 
   getAccessoriesNames() {
     return this.state.accessories
@@ -45,7 +54,7 @@ class Accessories extends Component {
             <AccessorySearch onFilterChange={filter => this.setState({filter})}/>
           </div>
           <Segment>
-            <FilteringCategories />
+            <FilteringCategories categories={this.state.categories}/>
             <Card.Group itemsPerRow={5} stackable>
               {this.getAccessoriesNames()
                 .map(el => (
