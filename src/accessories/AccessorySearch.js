@@ -20,7 +20,8 @@ class AccessorySearch extends React.Component {
                     icon="search"
                     className="cat_input" 
                     placeholder="wpisz czego szukasz..."  
-                    type="text" value={this.state.value} 
+                    type="text" 
+                    value={this.state.value} 
                     onChange={this.onInputChange} />
             </Fragment>
         )

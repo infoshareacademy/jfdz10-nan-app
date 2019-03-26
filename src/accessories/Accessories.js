@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from "react";
-import { Button, Image, Card, Segment } from "semantic-ui-react";
+import { Button, Image, Card, Segment, Divider } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-import FilteringCategories from "./FilteringCategories";
 import AccessorySearch from "./AccessorySearch";
 
 import "./Accessories.css";
@@ -12,7 +11,8 @@ class Accessories extends Component {
     accessories: [],
     categories: [],
     filter: {
-      text: ''
+      text: '',
+      category: '',
     }
   };
 
@@ -39,11 +39,13 @@ class Accessories extends Component {
       .filter(el =>  {
             const AccessoryNameLowerCased = el.name.toLowerCase();
             const textFilterLowerCased = this.state.filter.text.toLowerCase();
-
+            
             return AccessoryNameLowerCased.includes(textFilterLowerCased);
         }
     )
 }
+
+
 
   render() {
     return (
@@ -54,7 +56,6 @@ class Accessories extends Component {
             <AccessorySearch onFilterChange={filter => this.setState({filter})}/>
           </div>
           <Segment>
-            <FilteringCategories categories={this.state.categories}/>
             <Card.Group itemsPerRow={5} stackable>
               {this.getAccessoriesNames()
                 .map(el => (

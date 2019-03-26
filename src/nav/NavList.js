@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 import { Button, Divider, Container, Header, Image } from "semantic-ui-react";
 import "semantic-ui-css/semantic.min.css";
@@ -26,6 +26,7 @@ class Nav extends Component {
           className="small-container flex-center blue-background padding-fifteen"
         >
           <img
+            alt={'logo'}
             src={require("./cat4you-logo-white.png")}
             style={{ width: "100%" }}
           />

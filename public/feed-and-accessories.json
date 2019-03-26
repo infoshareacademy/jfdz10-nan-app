@@ -10,7 +10,7 @@
         1,2,3
       ],
     "price": 15,
-    "category": "food"
+    "category": "Karmy"
   },
     
   {
@@ -25,7 +25,7 @@
         2
       ],
     "price": 20,
-    "category": "food"
+    "category": "Karmy"
   },
 
   {
@@ -39,7 +39,7 @@
         1,3
       ],
     "price": 140,
-    "category": "toy"
+    "category": "Zabawki"
   },
   {
     "id": 4,
@@ -52,7 +52,7 @@
         1,2,3
       ],
     "price": 15,
-    "category": "food"
+    "category": "Karmy"
   },
     
   {
@@ -67,7 +67,7 @@
         2
       ],
     "price": 20,
-    "category": "food"
+    "category": "Karmy"
   },
 
   {
@@ -81,7 +81,7 @@
         1,3
       ],
     "price": 140,
-    "category": "toy"
+    "category": "Zabawki"
   },
   {
     "id": 7,
@@ -94,7 +94,7 @@
         1,2,3
       ],
     "price": 15,
-    "category": "food"
+    "category": "Karmy"
   },
     
   {
@@ -109,7 +109,7 @@
         2
       ],
     "price": 20,
-    "category": "food"
+    "category": "Karmy"
   },
 
   {
@@ -123,6 +123,6 @@
         1,3
       ],
     "price": 140,
-    "category": "accessory"
+    "category": "Akcesoria"
   }
 ]
