@@ -40,8 +40,10 @@ class Accessories extends Component {
       .filter(el =>  {
             const AccessoryNameLowerCased = el.name.toLowerCase();
             const textFilterLowerCased = this.state.filter.text.toLowerCase();
+            const accessoryCategory = el.category;
+            const categoryFilter = this.state.filter.category
             
-            return AccessoryNameLowerCased.includes(textFilterLowerCased);
+            return AccessoryNameLowerCased.includes(textFilterLowerCased) && accessoryCategory.includes(categoryFilter);
         }
     )
 }
