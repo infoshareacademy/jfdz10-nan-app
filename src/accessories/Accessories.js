@@ -3,6 +3,7 @@ import { Button, Image, Card, Segment, Divider } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 import AccessorySearch from "./AccessorySearch";
+import AccessoriesFilters from "./AccessoriesFilters";
 
 import "./Accessories.css";
 
@@ -56,6 +57,8 @@ class Accessories extends Component {
             <AccessorySearch onFilterChange={filter => this.setState({filter})}/>
           </div>
           <Segment>
+            <AccessoriesFilters onFilterChange={filter => this.setState({filter})} categories={this.state.categories}/>
+            <Divider />
             <Card.Group itemsPerRow={5} stackable>
               {this.getAccessoriesNames()
                 .map(el => (
