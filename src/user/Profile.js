@@ -14,12 +14,12 @@ class Profile extends Component {
   state = {
     user: {
       id: 1,
-      username: "johndoe",
+      login: "johndoe",
       password: "IloveCats",
       eMail: "johndoe@hotmail.com",
       name: "John",
       lastName: "Doe",
-      image: "http://www.nan.jfdz10.is-academy.pl/icons/volunteer.svg",
+      img: "http://www.nan.jfdz10.is-academy.pl/icons/volunteer.svg",
       favoriteCats: [2, 5, 6],
       favoriteBreeders: [1, 3],
       favoriteAccessories: [1, 2]
@@ -27,38 +27,38 @@ class Profile extends Component {
   };
 
   render() {
-    const { item } = this.state;
-    const productImage = {
+    const { user } = this.state;
+    const userImage = {
       maxHeight: "320px"
     };
 
     return (
       <Fragment>
-        <div className="accessories__container">
-          <div className="accessories__bar">
-            <h1>Karmy i akcesoria</h1>
-            <Input action="Szukaj" className="cat_input" placeholder="wpisz czego szukasz..." />
+        <div className="profile__container">
+          <div className="profile__bar">
+            <h1>Witaj, {user.name}!</h1>
           </div>
 
           <Segment>
-            <div className="product__characteristic">
+            <div className="user__characteristic">
               <Image
-                style={productImage}
-                className="product__image"
-                src={item.img}
+                style={userImage}
+                src={user.img}
               />
               <div>
-                <h1> {item.name} </h1>
-
                 <Table definition>
                   <Table.Body>
                     <Table.Row>
-                      <Table.Cell width={2}>Producent</Table.Cell>
-                      <Table.Cell>{item.producer}</Table.Cell>
+                      <Table.Cell width={2}>Imię</Table.Cell>
+                      <Table.Cell>{`${user.name} ${user.lastName}`}</Table.Cell>
                     </Table.Row>
                     <Table.Row>
-                      <Table.Cell>Cena</Table.Cell>
-                      <Table.Cell>{item.price} zł</Table.Cell>
+                      <Table.Cell>Login</Table.Cell>
+                      <Table.Cell>{user.login}</Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                      <Table.Cell>E-mail</Table.Cell>
+                      <Table.Cell>{user.eMail}</Table.Cell>
                     </Table.Row>
                   </Table.Body>
                 </Table>
@@ -66,9 +66,8 @@ class Profile extends Component {
             </div>
 
             <Divider horizontal>
-              <Header as="h2">Opis</Header>
+              <Header as="h2">Ulubione</Header>
             </Divider>
-            <div style={{textAlign: "center"}}>{item.description}</div>
           </Segment>
         </div>
       </Fragment>

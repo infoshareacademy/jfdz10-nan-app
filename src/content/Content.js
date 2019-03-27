@@ -17,7 +17,7 @@ class Content extends Component {
         <Route exact path="/food-and-accessories" component={Accessories} />
         <Route exact path="/breeders" component={Breeders} />
         <Route path={"/food-and-accessories/:id"} component={SingleAccessory} />
-        <Route exact path={"/dashboard"} component={Dashboard} />
+        <Route exact path={"/"} component={Dashboard} />
         <Route exact path={"/profile"} component={Profile} />
         </div>
 
