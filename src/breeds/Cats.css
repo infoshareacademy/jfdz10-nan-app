@@ -31,6 +31,7 @@
 
 .cat_img {
   height: 250px;
+  width: fit-content;
 }
 
 .cat_content {
