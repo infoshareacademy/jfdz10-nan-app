@@ -1,16 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { Card, Image, Button, Input, Segment } from "semantic-ui-react";
-import styled from "styled-components";
 import "./Cats.css";
 import {Link } from "react-router-dom";
-
-
-const StyledHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin: 1rem 2rem 0;
-`;
+import StyledHeader from '../sharedcomponents/StyledHeader'
 
 class Cats extends Component {
   state = {

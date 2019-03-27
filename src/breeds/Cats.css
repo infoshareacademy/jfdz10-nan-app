@@ -3,11 +3,6 @@
   text-align: center;
 }
 
-.cat_title {
-  align-self: flex-end;
-  font-size: 36px;
-}
-
 .cat_input {
   margin: 10px 0;
   width: 400px
