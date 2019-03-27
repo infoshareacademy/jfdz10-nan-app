@@ -1,26 +1,8 @@
 import React, { Component } from "react";
 import { Card, Segment, Input, Button } from "semantic-ui-react";
-import styled from "styled-components";
-import "./Breeders.css";
+import StyledHeader from '../sharedcomponents/StyledHeader'
+import StyledCardImage from '../sharedcomponents/StyledCardImage'
 
-const StyledHeader = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 2rem 2rem 1rem;
-`;
-
-const StyledCardImage = styled.img`
-  height: 17vw;
-  max-height: 100%;
-  max-width: 100%;
-  width: auto;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: auto;
-`;
 
 class Breeders extends Component {
   state = {
