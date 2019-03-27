@@ -43,8 +43,10 @@ class Cats extends Component {
             {this.state.breeds.map(el => {
               return (
                 <Card centered className="cat_card" key={el.id}>
-                  <Image src={el.image} className="cat_img" alt="kot"/>
-                  <Card.Content className="cat_content">             
+                  <Link to={`cats/${el.id}`}>
+                    <Image src={el.image} className="cat_img" alt="kot"/>
+                  </Link> 
+                  <Card.Content className="cat_content">        
                     <Link className="cat_name" to={`cats/${el.id}`}>{el.breed}</Link>
                   </Card.Content>
                   <Button
