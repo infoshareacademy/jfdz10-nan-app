@@ -1,6 +1,5 @@
 import React, { Fragment, Component } from "react";
 import {
-  Input,
   Segment,
   Divider,
   Table,
@@ -35,12 +34,8 @@ class SingleAccessory extends Component {
 
     return (
       <Fragment>
-        <div className="accessories__container">
-          <div className="accessories__bar">
-            <h1>Karmy i akcesoria</h1>
-            <Input action="Szukaj" className="cat_input" placeholder="wpisz czego szukasz..." />
-          </div>
-
+        <div style={{ margin: "0 2rem" }}>
+          <h1 style={{ margin: "2rem 2rem 1rem" }}>Karmy i akcesoria</h1>
           <Segment>
             <div className="product__characteristic">
               <Image
