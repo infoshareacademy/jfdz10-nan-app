@@ -39,12 +39,12 @@ render() {
 
   return (
     <Fragment>
-      <div className="breeds__container">
+      <div style={{ margin: "0 2rem" }} className="max__width">
         <div className="breeds__bar">
-          <h1 className="breeds__bar__title">Rasy kotów</h1>
+          <h1>Rasy kotów</h1>
         </div>
 
-        <Segment className="max__width">
+        <Segment >
           <div className="cat__characteristic">
             <Image
               style={productImage}

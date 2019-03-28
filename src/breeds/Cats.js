@@ -22,16 +22,16 @@ class Cats extends Component {
   render() {
     return (
       <Fragment>
-        <div style={{ margin: "0 2rem" }}>
+        <div style={{ margin: "0 2rem" }} className="max__width">
           <StyledHeader>
-            <h1 className="cat_title">Rasy kotów</h1>
+            <h1>Rasy kotów</h1>
             <Input
               className="cat_input"
               action="Szukaj"
               placeholder="Szukaj..."
             />
           </StyledHeader>
-          <Segment>
+          <Segment >
             <Card.Group className="cat_card_group" itemsPerRow={2}>
               {this.state.breeds.map(el => {
                 return (

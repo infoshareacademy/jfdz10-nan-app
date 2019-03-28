@@ -46,18 +46,9 @@
   justify-content: center;
 }
 
-.breeds__container {
-  margin: 0 2rem;
-}
-
 .breeds__bar {
-  text-align: center;
-  margin-top: 2%;
-  font-size: 36px;
-}
-
-.breeds__bar__title {
-  font-size: 36px;
+  margin: 2rem 2rem 1rem;
+  height: 60px;
 }
 
 .cat__characteristic {
@@ -68,8 +59,6 @@
 
 .max__width {
   max-width: 1080px !important;
-  margin: auto !important;
-  margin-top: 4vh !important;
 }
 
 .cat__description {
