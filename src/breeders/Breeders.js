@@ -22,11 +22,12 @@ class Breeders extends Component {
   render() {
     return (
       <>
+      <div style={{ margin: "0 2rem" }}>
         <StyledHeader>
           <h1>Lista Hodowców</h1>
           <Input action="Szukaj" className="cat_input" placeholder="Szukaj..." />
         </StyledHeader>
-        <Segment style={{ margin: "0 2rem" }}>
+        <Segment>
           <Card.Group itemsPerRow={4} >
             {this.state.breeders.map(el => {
               return (
@@ -55,6 +56,7 @@ class Breeders extends Component {
             })}
           </Card.Group>
         </Segment>
+      </div>
       </>
     );
   }

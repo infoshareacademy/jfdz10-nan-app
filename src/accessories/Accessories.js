@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Button, Image, Card, Segment, Input } from "semantic-ui-react";
 import { Link } from "react-router-dom";
+import StyledHeader from '../sharedcomponents/StyledHeader'
 
 import FilteringCategories from "./FilteringCategories";
 
@@ -24,11 +25,11 @@ class Accessories extends Component {
   render() {
     return (
       <Fragment>
-        <div className="accessories__container">
-          <div className="accessories__bar">
+        <div style={{ margin: "0 2rem" }}>
+          <StyledHeader>
             <h1>Karmy i akcesoria</h1>
             <Input action="Szukaj" className="cat_input" placeholder="wpisz czego szukasz..." />
-          </div>
+          </StyledHeader>
           <Segment>
             <FilteringCategories />
             <Card.Group itemsPerRow={5} stackable>
