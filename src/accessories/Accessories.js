@@ -1,24 +1,43 @@
 import React, { Component, Fragment } from "react";
-import { Button, Image, Card, Segment, Input } from "semantic-ui-react";
+import { Button, Image, Card, Segment, Divider } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-import FilteringCategories from "./FilteringCategories";
+import AccessorySearch from "./AccessorySearch";
 
 import "./Accessories.css";
 
 class Accessories extends Component {
   state = {
-    accessories: []
+    accessories: [],
+    categories: [],
+    filter: {
+      text: "",
+      category: ""
+    }
   };
 
   componentDidMount() {
     fetch("/feed-and-accessories.json")
       .then(response => response.json())
       .then(data => {
+        const categories = data.map(accessory => {
+          return accessory.category;
+        });
+
         this.setState({
-          accessories: data
+          accessories: data,
+          categories: [...new Set(categories)]
         });
       });
+  }
+
+  getAccessoriesNames() {
+    return this.state.accessories.filter(el => {
+      const AccessoryNameLowerCased = el.name.toLowerCase();
+      const textFilterLowerCased = this.state.filter.text.toLowerCase();
+
+      return AccessoryNameLowerCased.includes(textFilterLowerCased);
+    });
   }
 
   render() {
@@ -27,12 +46,13 @@ class Accessories extends Component {
         <div className="accessories__container">
           <div className="accessories__bar">
             <h1>Karmy i akcesoria</h1>
-            <Input action="Szukaj" className="cat_input" placeholder="wpisz czego szukasz..." />
+            <AccessorySearch
+              onFilterChange={filter => this.setState({ filter })}
+            />
           </div>
           <Segment>
-            <FilteringCategories />
             <Card.Group itemsPerRow={5} stackable>
-              {this.state.accessories.map(el => (
+              {this.getAccessoriesNames().map(el => (
                 <Card key={el.id}>
                   <Image src={el.img} />
 
@@ -44,7 +64,11 @@ class Accessories extends Component {
 
                   <Card.Content extra>
                     <Link to={`/food-and-accessories/${el.id}`}>
-                      <Button size="small" className="blue-button" content="Zobacz" />
+                      <Button
+                        size="small"
+                        className="blue-button"
+                        content="Zobacz"
+                      />
                     </Link>
                   </Card.Content>
                 </Card>
