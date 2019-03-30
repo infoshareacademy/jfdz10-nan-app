@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import { Button, Image, Card, Segment, Divider } from "semantic-ui-react";
+import { Button, Image, Card, Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import StyledHeader from '../sharedcomponents/StyledHeader'
 

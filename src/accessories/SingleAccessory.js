@@ -34,8 +34,10 @@ class SingleAccessory extends Component {
 
     return (
       <Fragment>
-        <div style={{ margin: "0 2rem" }}>
-          <h1 style={{ margin: "2rem 2rem 1rem" }}>Karmy i akcesoria</h1>
+        <div style={{ margin: "0 2rem" }} className="max__width">
+          <div className="breeds__bar">
+            <h1>Karmy i akcesoria</h1>
+          </div>
           <Segment>
             <div className="product__characteristic">
               <Image

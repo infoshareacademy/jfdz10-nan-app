@@ -1,4 +1,13 @@
 
+.max__width {
+    max-width: 1080px !important;
+  }
+
+.breeds__bar {
+    margin: 2rem 2rem 1rem;
+    height: 60px;
+  }
+
 .filtering__categories {
     margin-bottom: 1rem !important;
 }
