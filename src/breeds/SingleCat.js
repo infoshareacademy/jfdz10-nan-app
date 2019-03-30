@@ -8,6 +8,7 @@ import {
 } from "semantic-ui-react";
 
 import "./Cats.css";
+import StyledContent from "../sharedcomponents/StyledContent";
 
 class SingleCat extends Component {
   state = {
@@ -39,7 +40,7 @@ render() {
 
   return (
     <Fragment>
-      <div style={{ margin: "0 2rem" }} className="max__width">
+      <StyledContent>
         <div className="breeds__bar">
           <h1>Rasy kotów</h1>
         </div>
@@ -81,7 +82,7 @@ render() {
           </Divider>
           <div className="cat__description">{cat.description}</div>
         </Segment>
-      </div>
+      </StyledContent>
     </Fragment>
   );
 }

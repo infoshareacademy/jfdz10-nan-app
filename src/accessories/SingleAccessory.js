@@ -8,6 +8,7 @@ import {
 } from "semantic-ui-react";
 
 import "./Accessories.css";
+import StyledContent from "../sharedcomponents/StyledContent";
 
 class SingleAccessory extends Component {
   state = {
@@ -34,7 +35,7 @@ class SingleAccessory extends Component {
 
     return (
       <Fragment>
-        <div style={{ margin: "0 2rem" }} className="max__width">
+        <StyledContent>
           <div className="breeds__bar">
             <h1>Karmy i akcesoria</h1>
           </div>
@@ -68,7 +69,7 @@ class SingleAccessory extends Component {
             </Divider>
             <div style={{textAlign: "center"}}>{item.description}</div>
           </Segment>
-        </div>
+        </StyledContent>
       </Fragment>
     );
   }

@@ -3,6 +3,7 @@ import { Card, Image, Button, Input, Segment } from "semantic-ui-react";
 import "./Cats.css";
 import {Link } from "react-router-dom";
 import StyledHeader from '../sharedcomponents/StyledHeader'
+import StyledContent from "../sharedcomponents/StyledContent";
 
 class Cats extends Component {
   state = {
@@ -22,7 +23,7 @@ class Cats extends Component {
   render() {
     return (
       <Fragment>
-        <div style={{ margin: "0 2rem" }} className="max__width">
+        <StyledContent>
           <StyledHeader>
             <h1>Rasy kotów</h1>
             <Input
@@ -59,7 +60,7 @@ class Cats extends Component {
               })}
             </Card.Group>
           </Segment>
-        </div>
+        </StyledContent>
       </Fragment>
     );
   }

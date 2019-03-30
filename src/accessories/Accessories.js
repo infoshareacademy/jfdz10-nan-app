@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Button, Image, Card, Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import StyledHeader from '../sharedcomponents/StyledHeader'
-
+import StyledContent from "../sharedcomponents/StyledContent";
 import AccessorySearch from "./AccessorySearch";
 
 import "./Accessories.css";
@@ -44,7 +44,7 @@ class Accessories extends Component {
   render() {
     return (
       <Fragment>
-        <div style={{ margin: "0 2rem" }}>
+        <StyledContent>
           <StyledHeader>
             <h1>Karmy i akcesoria</h1>
             <AccessorySearch
@@ -76,7 +76,7 @@ class Accessories extends Component {
               ))}
             </Card.Group>
           </Segment>
-        </div>
+        </StyledContent>
       </Fragment>
     );
   }

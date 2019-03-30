@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Card, Segment, Input, Button } from "semantic-ui-react";
 import StyledHeader from '../sharedcomponents/StyledHeader'
 import StyledCardImage from '../sharedcomponents/StyledCardImage'
-
+import StyledContent from "../sharedcomponents/StyledContent";
 
 class Breeders extends Component {
   state = {
@@ -22,7 +22,7 @@ class Breeders extends Component {
   render() {
     return (
       <>
-      <div style={{ margin: "0 2rem" }}>
+      <StyledContent>
         <StyledHeader>
           <h1>Lista Hodowców</h1>
           <Input action="Szukaj" className="cat_input" placeholder="Szukaj..." />
@@ -56,7 +56,7 @@ class Breeders extends Component {
             })}
           </Card.Group>
         </Segment>
-      </div>
+      </StyledContent>
       </>
     );
   }
