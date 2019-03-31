@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { Card, Image, Button, Input, Segment } from "semantic-ui-react";
 import "./Cats.css";
 import {Link } from "react-router-dom";
-import StyledHeader from '../sharedcomponents/StyledHeader'
+import {StyledHeader} from '../sharedcomponents/StyledHeader'
 import StyledContent from "../sharedcomponents/StyledContent";
 
 class Cats extends Component {
@@ -25,7 +25,7 @@ class Cats extends Component {
       <Fragment>
         <StyledContent>
           <StyledHeader>
-            <h1>Rasy kotów</h1>
+            <h1 style={{paddingTop: '16px'}}>Rasy kotów</h1>
             <Input
               className="cat_input"
               action="Szukaj"

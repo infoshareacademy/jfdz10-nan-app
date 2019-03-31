@@ -9,6 +9,7 @@ import {
 
 import "./Cats.css";
 import StyledContent from "../sharedcomponents/StyledContent";
+import {StyledSingleTitle} from "../sharedcomponents/StyledHeader"
 
 class SingleCat extends Component {
   state = {
@@ -41,9 +42,9 @@ render() {
   return (
     <Fragment>
       <StyledContent>
-        <div className="breeds__bar">
+        <StyledSingleTitle>
           <h1>Rasy kotów</h1>
-        </div>
+        </StyledSingleTitle>
 
         <Segment >
           <div className="cat__characteristic">

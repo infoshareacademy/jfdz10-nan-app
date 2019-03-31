@@ -8,4 +8,10 @@ const StyledHeader = styled.div`
   height: 60px;
 `;
 
-export default StyledHeader;
+const StyledSingleTitle = styled.div`
+  margin: 2rem 2rem 1rem;
+  height: 60px;
+  padding-top: 16px;
+`;
+
+export {StyledHeader, StyledSingleTitle}

@@ -9,6 +9,7 @@ import {
 
 import "./Accessories.css";
 import StyledContent from "../sharedcomponents/StyledContent";
+import {StyledSingleTitle} from "../sharedcomponents/StyledHeader"
 
 class SingleAccessory extends Component {
   state = {
@@ -36,9 +37,9 @@ class SingleAccessory extends Component {
     return (
       <Fragment>
         <StyledContent>
-          <div className="breeds__bar">
+          <StyledSingleTitle>
             <h1>Karmy i akcesoria</h1>
-          </div>
+          </StyledSingleTitle>
           <Segment>
             <div className="product__characteristic">
               <Image

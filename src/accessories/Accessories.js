@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Button, Image, Card, Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import StyledHeader from '../sharedcomponents/StyledHeader'
+import {StyledHeader} from '../sharedcomponents/StyledHeader'
 import StyledContent from "../sharedcomponents/StyledContent";
 import AccessorySearch from "./AccessorySearch";
 
@@ -46,7 +46,7 @@ class Accessories extends Component {
       <Fragment>
         <StyledContent>
           <StyledHeader>
-            <h1>Karmy i akcesoria</h1>
+            <h1 style={{paddingTop: '16px'}}>Karmy i akcesoria</h1>
             <AccessorySearch
               onFilterChange={filter => this.setState({ filter })}
             />
