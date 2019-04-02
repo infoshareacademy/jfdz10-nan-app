@@ -12,8 +12,8 @@ class Accessories extends Component {
     accessories: [],
     categories: [],
     filter: {
-      text: '',
-      category: '',
+      text: "",
+      category: ""
     }
   };
 
@@ -21,34 +21,30 @@ class Accessories extends Component {
     fetch("/feed-and-accessories.json")
       .then(response => response.json())
       .then(data => {
-
-        const categories = data.map((accessory) => {
+        const categories = data.map(accessory => {
           return accessory.category;
         });
 
         this.setState({
           accessories: data,
           categories: [...new Set(categories)]
-        })
+        });
       });
   }
 
-  
-
   getAccessoriesNames() {
-    return this.state.accessories
-      .filter(el =>  {
-            const AccessoryNameLowerCased = el.name.toLowerCase();
-            const textFilterLowerCased = this.state.filter.text.toLowerCase();
-            const accessoryCategory = el.category;
-            const categoryFilter = this.state.filter.category
-            
-            return AccessoryNameLowerCased.includes(textFilterLowerCased) && accessoryCategory.includes(categoryFilter);
-        }
-    )
-}
+    return this.state.accessories.filter(el => {
+      const AccessoryNameLowerCased = el.name.toLowerCase();
+      const textFilterLowerCased = this.state.filter.text.toLowerCase();
+      const accessoryCategory = el.category;
+      const categoryFilter = this.state.filter.category;
 
-
+      return (
+        AccessoryNameLowerCased.includes(textFilterLowerCased) &&
+        accessoryCategory.includes(categoryFilter)
+      );
+    });
+  }
 
   render() {
     return (
@@ -56,31 +52,39 @@ class Accessories extends Component {
         <div className="accessories__container">
           <div className="accessories__bar">
             <h1>Karmy i akcesoria</h1>
-            <AccessorySearch onFilterChange={filter => this.setState({filter})}/>
+            <AccessorySearch
+              onFilterChange={filter => this.setState({ filter })}
+            />
           </div>
           <Segment>
-            <AccessoriesFilters onFilterChange={filter => this.setState({filter})} categories={this.state.categories}/>
+            <AccessoriesFilters
+              onFilterChange={filter => this.setState({ filter })}
+              categories={this.state.categories}
+            />
+
             <Divider />
             <Card.Group itemsPerRow={5} stackable>
-              {this.getAccessoriesNames()
-                .map(el => (
-                  <Card key={el.id}>
-                    <Image src={el.img} />
+              {this.getAccessoriesNames().map(el => (
+                <Card key={el.id}>
+                  <Image src={el.img} />
 
-                    <Card.Content>
-                      <Card.Header>{el.name}</Card.Header>
-                      <Card.Meta>{el.producer}</Card.Meta>
-                      <Card.Description>{el.description}</Card.Description>
-                    </Card.Content>
+                  <Card.Content>
+                    <Card.Header>{el.name}</Card.Header>
+                    <Card.Meta>{el.producer}</Card.Meta>
+                    <Card.Description>{el.description}</Card.Description>
+                  </Card.Content>
 
-                    <Card.Content extra>
-                      <Link to={`/food-and-accessories/${el.id}`}>
-                        <Button size="small" className="blue-button" content="Zobacz" />
-                      </Link>
-                    </Card.Content>
-                  </Card>
-                ))
-              }
+                  <Card.Content extra>
+                    <Link to={`/food-and-accessories/${el.id}`}>
+                      <Button
+                        size="small"
+                        className="blue-button"
+                        content="Zobacz"
+                      />
+                    </Link>
+                  </Card.Content>
+                </Card>
+              ))}
             </Card.Group>
           </Segment>
         </div>

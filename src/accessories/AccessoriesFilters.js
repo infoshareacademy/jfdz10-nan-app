@@ -15,7 +15,7 @@ class AccessoriesFilters extends Component {
     );
   };
 
-  onCategorySelect = (event, {value}) => {
+  onCategorySelect = (event, { value }) => {
     this.setState({ category: value }, () =>
       this.props.onFilterChange(this.state)
     );
@@ -29,20 +29,16 @@ class AccessoriesFilters extends Component {
     }));
   }
 
-  
-
   render() {
-    // const { category } = this.state;
-    console.log(this.getCategoryFilter());
     return (
-      
       <Fragment>
-          <Dropdown
-            onChange={this.onCategorySelect}
-            options={this.getCategoryFilter()}
-            selection
-            placeholder="wybierz kategorię..."
-          />
+        <Dropdown
+          onChange={this.onCategorySelect}
+          options={this.getCategoryFilter()}
+          clearable
+          selection
+          placeholder="wybierz kategorię..."
+        />
         {/* <select onChange={this.onCategorySelect}>
           <option value="">wybierz kategorię</option>
           {this.props.categories.map(category => (
