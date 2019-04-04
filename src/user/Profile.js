@@ -1,13 +1,14 @@
 import React, { Fragment, Component } from "react";
 import {
-  Input,
+  Label,
+  Icon,
   Segment,
   Divider,
   Table,
   Image,
   Header
 } from "semantic-ui-react";
-
+import Favorites from './Favorites.js'
 import "./Profile.css";
 
 class Profile extends Component {
@@ -49,7 +50,7 @@ class Profile extends Component {
                 <Table definition>
                   <Table.Body>
                     <Table.Row>
-                      <Table.Cell width={2}>Imię</Table.Cell>
+                      <Table.Cell width={10}>Imię</Table.Cell>
                       <Table.Cell>{`${user.name} ${user.lastName}`}</Table.Cell>
                     </Table.Row>
                     <Table.Row>
@@ -68,6 +69,9 @@ class Profile extends Component {
             <Divider horizontal>
               <Header as="h2">Ulubione</Header>
             </Divider>
+            <Favorites name="Koty" parameter={user.favoriteCats} />
+            <Favorites name="Hodowle" parameter={user.favoriteBreeders} />
+            <Favorites name="Akcesoria" parameter={user.favoriteAccessories} />
           </Segment>
         </div>
       </Fragment>
