@@ -1,7 +1,5 @@
 import React, { Fragment, Component } from "react";
 import {
-  Label,
-  Icon,
   Segment,
   Divider,
   Table,
@@ -24,8 +22,27 @@ class Profile extends Component {
       favoriteCats: [2, 5, 6],
       favoriteBreeders: [1, 3],
       favoriteAccessories: [1, 2]
-    }
+    },
+    cats: [],
+    breeders: [],
+    accessories: []
   };
+
+  componentDidMount() {
+    fetch('/breeds.json')
+      .then(r => r.json())
+      .then(data => this.setState({cats: data}))
+    fetch('/breeders.json')
+      .then(r => r.json())
+      .then(data => this.setState({breeders: data}))
+    fetch('/feed-and-accessories.json')
+      .then(r => r.json())
+      .then(data => this.setState({accessories: data}))
+  }
+
+  handleDelete = (elementId, keyFav) => {
+    this.setState({user: {...this.state.user, [keyFav]: this.state.user[keyFav].filter( id => id !== elementId)}})
+ }
 
   render() {
     const { user } = this.state;
@@ -39,7 +56,6 @@ class Profile extends Component {
           <div className="profile__bar">
             <h1>Witaj, {user.name}!</h1>
           </div>
-
           <Segment>
             <div className="user__characteristic">
               <Image
@@ -69,9 +85,9 @@ class Profile extends Component {
             <Divider horizontal>
               <Header as="h2">Ulubione</Header>
             </Divider>
-            <Favorites name="Koty" parameter={user.favoriteCats} />
-            <Favorites name="Hodowle" parameter={user.favoriteBreeders} />
-            <Favorites name="Akcesoria" parameter={user.favoriteAccessories} />
+            <Favorites name="Koty" favKey="favoriteCats" parameter={user.favoriteCats} labels={this.state.cats} onDelete={this.handleDelete}/>
+            <Favorites name="Hodowle" favKey="favoriteBreeders" parameter={user.favoriteBreeders} labels={this.state.breeders} onDelete={this.handleDelete}/>
+            <Favorites name="Akcesoria" favKey="favoriteAccessories" parameter={user.favoriteAccessories} labels={this.state.accessories} onDelete={this.handleDelete}/>
           </Segment>
         </div>
       </Fragment>

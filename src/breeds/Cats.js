@@ -39,7 +39,7 @@ class Cats extends Component {
                     <Image src={el.image} className="cat_img" alt="kot"/>
                   </Link> 
                   <Card.Content className="cat_content">        
-                    <Link className="cat_name" to={`cats/${el.id}`}>{el.breed}</Link>
+                    <Link className="cat_name" to={`cats/${el.id}`}>{el.name}</Link>
                   </Card.Content>
                   <Button
                     className="cat_button"

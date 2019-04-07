@@ -52,7 +52,7 @@ render() {
               src={cat.image}
             />
             <div>
-              <h1> {cat.breed} </h1>
+              <h1> {cat.name} </h1>
               <Table definition>
                 <Table.Body>
                   <Table.Row>
