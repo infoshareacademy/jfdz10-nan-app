@@ -79,7 +79,6 @@ class Accessories extends Component {
           </div>
           <Segment>
             <AccessoriesFilters
-              onInputChange={(filter) => this.filterAccessoriesInInput(filter)}
               onCategoryChange={(filter) => this.filterAccessoriesByCategory(filter)}
               categories={this.state.categories}
               value={this.state.filter.text}

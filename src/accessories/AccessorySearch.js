@@ -3,7 +3,7 @@ import { Input } from "semantic-ui-react";
 
 class AccessorySearch extends React.Component {
   onInputChange = e => {
-    this.props.onInputChange({ text: e.target.value })
+    this.props.onInputChange(e.target.value)
   };
 
     render() {
