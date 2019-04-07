@@ -46,6 +46,26 @@ class Accessories extends Component {
     });
   }
 
+  filterAccessoriesInInput(filter) {
+    this.setState({
+      ...this.state,
+      filter: {
+        text: filter,
+        category: this.state.filter.category
+      }
+    })
+  }
+
+  filterAccessoriesByCategory(filter) {
+    this.setState({
+      ...this.state,
+      filter: {
+        ...filter,
+        text: this.state.filter.text
+      }
+    })
+  }
+
   render() {
     return (
       <Fragment>
@@ -53,13 +73,16 @@ class Accessories extends Component {
           <div className="accessories__bar">
             <h1>Karmy i akcesoria</h1>
             <AccessorySearch
-              onFilterChange={filter => this.setState({ filter })}
+              onInputChange={(filter) => this.filterAccessoriesInInput(filter)}
+              value={this.state.filter.text}
             />
           </div>
           <Segment>
             <AccessoriesFilters
-              onFilterChange={filter => this.setState({ filter })}
+              onInputChange={(filter) => this.filterAccessoriesInInput(filter)}
+              onCategoryChange={(filter) => this.filterAccessoriesByCategory(filter)}
               categories={this.state.categories}
+              value={this.state.filter.text}
             />
 
             <Divider />

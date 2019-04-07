@@ -4,21 +4,12 @@ import { Input, Dropdown, Button } from "semantic-ui-react";
 import "./Accessories.css";
 
 class AccessoriesFilters extends Component {
-  state = {
-    text: "",
-    category: ""
-  };
-
   onInputChange = e => {
-    this.setState({ text: e.target.value }, () =>
-      this.props.onFilterChange(this.state)
-    );
+    this.props.onInputChange(e.target.value)
   };
 
   onCategorySelect = (event, { value }) => {
-    this.setState({ category: value }, () =>
-      this.props.onFilterChange(this.state)
-    );
+    this.props.onCategoryChange({ category: value })
   };
 
   getCategoryFilter() {
@@ -51,7 +42,7 @@ class AccessoriesFilters extends Component {
           className="cat_input"
           placeholder="wpisz czego szukasz..."
           type="text"
-          value={this.state.value} 
+          value={this.props.value}
           onChange={this.onInputChange}
         />
       </Fragment>
