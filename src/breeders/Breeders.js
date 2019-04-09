@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Card, Segment, Input, Button } from "semantic-ui-react";
-import StyledHeader from '../sharedcomponents/StyledHeader'
+import {StyledHeader} from '../sharedcomponents/StyledHeader'
 import StyledCardImage from '../sharedcomponents/StyledCardImage'
-
+import StyledContent from "../sharedcomponents/StyledContent";
 
 class Breeders extends Component {
   state = {
@@ -22,11 +22,12 @@ class Breeders extends Component {
   render() {
     return (
       <>
+      <StyledContent>
         <StyledHeader>
-          <h1>Lista Hodowców</h1>
+          <h1 style={{paddingTop: '16px'}}>Lista Hodowców</h1>
           <Input action="Szukaj" className="cat_input" placeholder="Szukaj..." />
         </StyledHeader>
-        <Segment style={{ margin: "0 2rem" }}>
+        <Segment>
           <Card.Group itemsPerRow={4} >
             {this.state.breeders.map(el => {
               return (
@@ -55,6 +56,7 @@ class Breeders extends Component {
             })}
           </Card.Group>
         </Segment>
+      </StyledContent>
       </>
     );
   }

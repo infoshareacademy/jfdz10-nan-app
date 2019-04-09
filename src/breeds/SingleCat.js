@@ -8,6 +8,8 @@ import {
 } from "semantic-ui-react";
 
 import "./Cats.css";
+import StyledContent from "../sharedcomponents/StyledContent";
+import {StyledSingleTitle} from "../sharedcomponents/StyledHeader"
 
 class SingleCat extends Component {
   state = {
@@ -39,12 +41,12 @@ render() {
 
   return (
     <Fragment>
-      <div className="breeds__container">
-        <div className="breeds__bar">
-          <h1 className="breeds__bar__title">Rasy kotów</h1>
-        </div>
+      <StyledContent>
+        <StyledSingleTitle>
+          <h1>Rasy kotów</h1>
+        </StyledSingleTitle>
 
-        <Segment className="max__width">
+        <Segment >
           <div className="cat__characteristic">
             <Image
               style={productImage}
@@ -81,7 +83,7 @@ render() {
           </Divider>
           <div className="cat__description">{cat.description}</div>
         </Segment>
-      </div>
+      </StyledContent>
     </Fragment>
   );
 }
