@@ -37,10 +37,14 @@ class Breeders extends Component {
                       <StyledCardImage src={el.img} />
                   </Link>
                   <Card.Content>
-                    <Card.Header>{el.name}</Card.Header>
+                    <Card.Header>
+                      <Link style={{color: 'black'}} to={`breeders/${el.id}`}>
+                      {el.name}
+                      </Link>
+                    </Card.Header>
                     <Card.Description>
                       {el.description}
-                      <Link to={`breeders/${el.id}`}>
+                      <Link style={{fontWeight: 'bold'}}to={`breeders/${el.id}`}>
                         Więcej...
                       </Link>
                     </Card.Description>
