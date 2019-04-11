@@ -3,6 +3,7 @@ import { Card, Segment, Input, Button } from "semantic-ui-react";
 import {StyledHeader} from '../sharedcomponents/StyledHeader'
 import StyledCardImage from '../sharedcomponents/StyledCardImage'
 import StyledContent from "../sharedcomponents/StyledContent";
+import {Link } from "react-router-dom";
 
 class Breeders extends Component {
   state = {
@@ -32,10 +33,17 @@ class Breeders extends Component {
             {this.state.breeders.map(el => {
               return (
                 <Card centered key={el.id}>
-                  <StyledCardImage src={el.img} />
+                  <Link to={`breeders/${el.id}`}>
+                      <StyledCardImage src={el.img} />
+                  </Link>
                   <Card.Content>
                     <Card.Header>{el.name}</Card.Header>
-                    <Card.Description>{el.description}</Card.Description>
+                    <Card.Description>
+                      {el.description}
+                      <Link to={`breeders/${el.id}`}>
+                        Więcej...
+                      </Link>
+                    </Card.Description>
                   </Card.Content>
                   <Card.Content extra textAlign="center">
                     <Button
