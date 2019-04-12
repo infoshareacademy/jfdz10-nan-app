@@ -6,7 +6,6 @@ import "./Accessories.css";
 
 
 class AccessoriesFilters extends Component {
-  
 
   onCategorySelect = (event, { value }) => {
     this.props.onCategoryChange({ category: value })
