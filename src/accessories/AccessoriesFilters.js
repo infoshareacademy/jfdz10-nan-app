@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from "react";
-import { Input, Dropdown, Button } from "semantic-ui-react";
+import { Dropdown, Button } from "semantic-ui-react";
 
 import "./Accessories.css";
+
+
 
 class AccessoriesFilters extends Component {
   
@@ -18,6 +20,13 @@ class AccessoriesFilters extends Component {
     }));
   }
 
+  createOnSortClick = (dir) => {
+        this.props.onSortDirection({
+            dir: dir === 'ASC' ? 'DESC' : 'ASC'
+        })
+
+};
+
   render() {
     return (
       <Fragment>
@@ -28,14 +37,9 @@ class AccessoriesFilters extends Component {
           selection
           placeholder="wybierz kategorię..."
         />
-        {/* <select onChange={this.onCategorySelect}>
-          <option value="">wybierz kategorię</option>
-          {this.props.categories.map(category => (
-            <option value={category}>{category}</option>
-          ))}
-        </select> */}
-        <Button content='Sortuj...' icon='up arrow' labelPosition='right' />
-       
+        <span className='sort__trigger'>
+        <Button onClick={this.createOnSortClick} basic content='Sortuj...' icon='down arrow' labelPosition='right' />
+        </span>
       </Fragment>
     );
   }
