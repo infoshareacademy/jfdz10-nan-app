@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from "react";
 import { Input } from "semantic-ui-react";
 
 class AccessorySearch extends React.Component {

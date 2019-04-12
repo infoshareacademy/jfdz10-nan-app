@@ -3,11 +3,6 @@
   text-align: center;
 }
 
-.cat_title {
-  align-self: flex-end;
-  font-size: 36px;
-}
-
 .cat_input {
   margin: 10px 0;
   width: 400px
@@ -17,10 +12,6 @@
   background: #1BD3E8 !important;
   color: #fff !important;
   box-shadow: 0 0 0 0px #1BD3E8 !important;
-}
-
-.cat_segment {
-  margin: 1rem 4rem 1rem !important;
 }
 
 .cat_card_group {
@@ -36,6 +27,11 @@
 
 .cat_img {
   height: 250px;
+  width: fit-content;
+}
+
+.cat_content {
+  text-align: center !important;
 }
 
 .cat_name {
@@ -50,14 +46,12 @@
   justify-content: center;
 }
 
-.ui.brown.button.cat_button, 
-.ui.brown.button.cat_button:hover {
-  background-color: #B66D49 !important;
-  justify-content: center;
-  height: 42px;
-  color: #fff !important;
-  box-shadow: 0 0 0 0px #B66D49 !important;
+.cat__characteristic {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-
-
+.cat__description {
+  text-align: justify !important;
+}
