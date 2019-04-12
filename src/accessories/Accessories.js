@@ -15,8 +15,10 @@ class Accessories extends Component {
       text: "",
       category: ""
     },
-    dir: "DESC"
+    dir: "ASC"
   };
+
+  
 
   componentDidMount() {
     fetch("/feed-and-accessories.json")
@@ -47,7 +49,7 @@ class Accessories extends Component {
       } else if (fieldA === fieldB) {
           return 0;
       } else {
-          return this.state.dir === 'DESC' ? -1 : 1;
+          return this.state.dir === 'ASC' ? -1 : 1;
       }
   })  
       .filter(el => {
@@ -84,7 +86,9 @@ class Accessories extends Component {
   }
 
   onDirChange = (dir) => {
-    this.setState({dir});
+    this.setState({
+       dir });
+    console.log(this.state.dir)
 };
 
   render() {

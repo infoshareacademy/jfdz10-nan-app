@@ -21,13 +21,15 @@ class AccessoriesFilters extends Component {
   }
 
   createOnSortClick = (dir) => {
-        this.props.onSortDirection({
-            dir: dir === 'ASC' ? 'DESC' : 'ASC'
-        })
-
+        dir = this.props.dir === 'ASC' ? 'DESC' : 'ASC'
+        this.props.onSortDirection(dir)
+        console.log(dir)
 };
 
+
   render() {
+    const arrow = this.props.dir === 'ASC' ? 'down arrow' : 'up arrow'
+
     return (
       <Fragment>
         <Dropdown
@@ -38,7 +40,7 @@ class AccessoriesFilters extends Component {
           placeholder="wybierz kategorię..."
         />
         <span className='sort__trigger'>
-        <Button onClick={this.createOnSortClick} basic content='Sortuj...' icon='down arrow' labelPosition='right' />
+        <Button onClick={this.createOnSortClick} basic content='Sortuj po nazwie' icon={arrow} labelPosition='right' />
         </span>
       </Fragment>
     );
