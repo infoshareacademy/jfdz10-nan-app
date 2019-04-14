@@ -1,22 +1,22 @@
 [
   {
-    "id": "dashboard",
-    "label": "Strona Główna"
-  },
-  {
     "id": "profile",
-    "label": "Profil"
+    "label": "Profil",
+    "img": "http://www.nan.jfdz10.is-academy.pl/icons/love.svg"
   },
   {
     "id": "cats",
-    "label": "Koty"
+    "label": "Koty",
+    "img": "http://www.nan.jfdz10.is-academy.pl/icons/magnifying-glass.svg"
   },
   {
     "id": "breeders",
-    "label": "Hodowcy"
+    "label": "Hodowcy",
+    "img": "http://www.nan.jfdz10.is-academy.pl/icons/volunteer.svg"
   },
   {
     "id": "food-and-accessories",
-    "label": "Karmy i Akcesoria"
+    "label": "Karmy i Akcesoria",
+    "img": "http://www.nan.jfdz10.is-academy.pl/icons/pet-food.svg"
   }
 ]
