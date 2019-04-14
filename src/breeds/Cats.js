@@ -20,6 +20,16 @@ class Cats extends Component {
       });
   }
 
+  addLike = (breed) => {
+    fetch(`https://jfdz10nan-app.firebaseio.com/breeds/${breed.id}.json`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        likeCount: breed.likeCount + 1
+      })
+    })
+  }
+
+
   render() {
     return (
       <Fragment>
@@ -52,8 +62,9 @@ class Cats extends Component {
                         basic: true,
                         color: "brown",
                         pointing: "left",
-                        content: "2,048"
+                        content: el.likeCount ? el.likeCount : 0
                       }}
+                      onClick={() => this.addLike(el)}
                     />
                   </Card>
                 );
