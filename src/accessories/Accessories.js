@@ -11,12 +11,13 @@ import "./Accessories.css";
 class Accessories extends Component {
   state = {
     accessories: [],
+    unsortedAccessories: [],
     categories: [],
     filter: {
       text: "",
       category: ""
     },
-    dir: "ASC"
+    dir: null
   };
 
   
@@ -31,25 +32,32 @@ class Accessories extends Component {
 
         this.setState({
           accessories: data,
+          unsortedAccessories: data,
           categories: [...new Set(categories)]
         });
       });
   }
+  sortAccessories = (items, unsortedItems, dir) => {
+    if (!dir) {
+      return unsortedItems
+    } else {
+      return [...items].sort((elA, elB) => {
+        const fieldA = elA.name;
+        const fieldB = elB.name;
+      
+        if (fieldA > fieldB) {
+            return dir === 'ASC' ? 1 : -1;
+        } else if (fieldA === fieldB) {
+            return 0;
+        } else {
+            return dir === 'ASC' ? -1 : 1;
+        }
+      })  
+    }
+  }
+  getAccessoriesNames(items) {
 
-  getAccessoriesNames() {
-    return this.state.accessories
-    .sort((elA, elB) => {
-      const fieldA = elA.name;
-      const fieldB = elB.name;
-
-      if (fieldA > fieldB) {
-          return this.state.dir === 'ASC' ? 1 : -1;
-      } else if (fieldA === fieldB) {
-          return 0;
-      } else {
-          return this.state.dir === 'ASC' ? -1 : 1;
-      }
-  })  
+    return items
       .filter(el => {
         const AccessoryNameLowerCased = el.name.toLowerCase();
         const textFilterLowerCased = this.state.filter.text.toLowerCase();
@@ -85,11 +93,21 @@ class Accessories extends Component {
 
   onDirChange = (dir) => {
     this.setState({
-       dir });
-    console.log(this.state.dir)
+       dir 
+      });
 };
 
+  // sortTrigger = () => {
+  //   this.setState({
+  //     shouldSort: true
+  //   })
+  // }
+
   render() {
+    console.log(this.state.unsortedAccessories, this.state.test)
+    const sortedAccesories = this.sortAccessories(this.state.accessories, this.state.unsortedAccessories, this.state.dir)
+
+    const filteredAccessories = this.getAccessoriesNames(sortedAccesories) 
     return (
       <Fragment>
         <StyledContent>
@@ -111,7 +129,7 @@ class Accessories extends Component {
 
             <Divider />
             <Card.Group itemsPerRow={5} stackable>
-              {this.getAccessoriesNames().map(el => (
+              {filteredAccessories.map(el => (
                 <Card key={el.id}>
                   <Image src={el.img} />
 

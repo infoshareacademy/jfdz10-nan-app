@@ -18,7 +18,6 @@ class AccessorySearch extends React.Component {
                     onChange={this.onInputChange} />
             </Fragment>
         )
-
     }
 }
 

@@ -4,7 +4,9 @@ import {
   Divider,
   Table,
   Image,
-  Header
+  Header,
+  Button,
+  Icon
 } from "semantic-ui-react";
 
 import "./Accessories.css";
@@ -62,6 +64,9 @@ class SingleAccessory extends Component {
                     </Table.Row>
                   </Table.Body>
                 </Table>
+                <Button icon labelPosition="left">
+                  <Icon name='shopping cart' />
+                </Button>
               </div>
             </div>
 
