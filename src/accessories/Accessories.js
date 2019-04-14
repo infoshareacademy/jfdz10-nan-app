@@ -22,7 +22,7 @@ class Accessories extends Component {
   
 
   componentDidMount() {
-    fetch("/feed-and-accessories.json")
+    fetch("https://jfdz10nan-app.firebaseio.com/feed-and-accessories.json")
       .then(response => response.json())
       .then(data => {
         const categories = data.map(accessory => {
