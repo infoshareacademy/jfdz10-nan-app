@@ -6,12 +6,13 @@ import {
   Image,
   Header,
   Button,
-  Icon
+  Icon,
+  Input
 } from "semantic-ui-react";
 
 import "./Accessories.css";
 import StyledContent from "../sharedcomponents/StyledContent";
-import {StyledSingleTitle} from "../sharedcomponents/StyledHeader"
+import { StyledSingleTitle } from "../sharedcomponents/StyledHeader";
 
 class SingleAccessory extends Component {
   state = {
@@ -64,16 +65,24 @@ class SingleAccessory extends Component {
                     </Table.Row>
                   </Table.Body>
                 </Table>
-                <Button icon labelPosition="left">
-                  <Icon name='shopping cart' />
+                <Button positive animated="vertical">
+                  <Button.Content hidden>Kup</Button.Content>
+                  <Button.Content visible>
+                    <Icon name="cart" />
+                  </Button.Content>
                 </Button>
+                <Input defaultValue='1'
+                action={<Button.Group>
+                  <Button icon='add' />
+                  <Button icon='minus' />
+                </Button.Group>}/>
               </div>
             </div>
 
             <Divider horizontal>
               <Header as="h2">Opis</Header>
             </Divider>
-            <div style={{textAlign: "center"}}>{item.description}</div>
+            <div style={{ textAlign: "center" }}>{item.description}</div>
           </Segment>
         </StyledContent>
       </Fragment>
