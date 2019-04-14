@@ -10,7 +10,7 @@ class Breeders extends Component {
   };
 
   componentDidMount() {
-    fetch("/breeders.json")
+    fetch("https://jfdz10nan-app.firebaseio.com/breeders.json")
       .then(response => response.json())
       .then(data => {
         this.setState({

@@ -11,7 +11,7 @@ class Cats extends Component {
   };
 
   componentDidMount() {
-    fetch("/breeds.json")
+    fetch("https://jfdz10nan-app.firebaseio.com/breeds.json")
       .then(response => response.json())
       .then(data => {
         this.setState({

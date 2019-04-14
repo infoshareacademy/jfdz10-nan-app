@@ -10,7 +10,7 @@ class Nav extends Component {
   };
 
   componentDidMount() {
-    fetch("/routes.json")
+    fetch("https://jfdz10nan-app.firebaseio.com/routes.json")
       .then(response => response.json())
       .then(data => {
         this.setState({
