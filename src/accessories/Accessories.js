@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from "react";
-import { Button, Image, Card, Segment, Divider } from "semantic-ui-react";
+import { Button, Image, Card, Segment } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-
+import {StyledHeader} from '../sharedcomponents/StyledHeader'
+import StyledContent from "../sharedcomponents/StyledContent";
 import AccessorySearch from "./AccessorySearch";
 
 import "./Accessories.css";
@@ -43,13 +44,13 @@ class Accessories extends Component {
   render() {
     return (
       <Fragment>
-        <div className="accessories__container">
-          <div className="accessories__bar">
-            <h1>Karmy i akcesoria</h1>
+        <StyledContent>
+          <StyledHeader>
+            <h1 style={{paddingTop: '16px'}}>Karmy i akcesoria</h1>
             <AccessorySearch
               onFilterChange={filter => this.setState({ filter })}
             />
-          </div>
+          </StyledHeader>
           <Segment>
             <Card.Group itemsPerRow={5} stackable>
               {this.getAccessoriesNames().map(el => (
@@ -75,7 +76,7 @@ class Accessories extends Component {
               ))}
             </Card.Group>
           </Segment>
-        </div>
+        </StyledContent>
       </Fragment>
     );
   }

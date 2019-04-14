@@ -8,6 +8,8 @@ import {
 } from "semantic-ui-react";
 
 import "./Accessories.css";
+import StyledContent from "../sharedcomponents/StyledContent";
+import {StyledSingleTitle} from "../sharedcomponents/StyledHeader"
 
 class SingleAccessory extends Component {
   state = {
@@ -34,11 +36,10 @@ class SingleAccessory extends Component {
 
     return (
       <Fragment>
-        <div className="accessories__container">
-          <div className="accessories__bar">
+        <StyledContent>
+          <StyledSingleTitle>
             <h1>Karmy i akcesoria</h1>
-          </div>
-
+          </StyledSingleTitle>
           <Segment>
             <div className="product__characteristic">
               <Image
@@ -69,7 +70,7 @@ class SingleAccessory extends Component {
             </Divider>
             <div style={{textAlign: "center"}}>{item.description}</div>
           </Segment>
-        </div>
+        </StyledContent>
       </Fragment>
     );
   }

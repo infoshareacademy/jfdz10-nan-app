@@ -14,10 +14,6 @@
   box-shadow: 0 0 0 0px #1BD3E8 !important;
 }
 
-.cat_segment {
-  margin: 1rem 2rem 1rem !important;
-}
-
 .cat_card_group {
   margin: 0 2rem !important;
   justify-content: space-around !important;
@@ -50,30 +46,10 @@
   justify-content: center;
 }
 
-.breeds__container {
-  margin: 0 2rem;
-}
-
-.breeds__bar {
-  text-align: center;
-  margin-top: 2%;
-  font-size: 36px;
-}
-
-.breeds__bar__title {
-  font-size: 36px;
-}
-
 .cat__characteristic {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-}
-
-.max__width {
-  max-width: 1080px !important;
-  margin: auto !important;
-  margin-top: 4vh !important;
 }
 
 .cat__description {
