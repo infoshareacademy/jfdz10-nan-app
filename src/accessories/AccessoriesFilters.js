@@ -20,7 +20,7 @@ class AccessoriesFilters extends Component {
     dir = this.props.dir === "ASC" ? "DESC" : "ASC";
     this.props.onSortDirection(dir);
   };
-  
+
   resetClick = () => {
     this.props.onSortDirection(null);
   };
@@ -48,9 +48,7 @@ class AccessoriesFilters extends Component {
           <Button
             onClick={this.resetClick}
             basic
-            content="reset"
-            icon={arrow}
-            labelPosition="right"
+            icon="ban"
           />
         </span>
       </Fragment>

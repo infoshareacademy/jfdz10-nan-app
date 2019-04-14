@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Button, Image, Card, Segment, Divider } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import {StyledHeader} from '../sharedcomponents/StyledHeader'
+import { StyledHeader } from "../sharedcomponents/StyledHeader";
 import StyledContent from "../sharedcomponents/StyledContent";
 import AccessorySearch from "./AccessorySearch";
 import AccessoriesFilters from "./AccessoriesFilters";
@@ -20,8 +20,6 @@ class Accessories extends Component {
     dir: null
   };
 
-  
-
   componentDidMount() {
     fetch("/feed-and-accessories.json")
       .then(response => response.json())
@@ -39,35 +37,33 @@ class Accessories extends Component {
   }
   sortAccessories = (items, unsortedItems, dir) => {
     if (!dir) {
-      return unsortedItems
+      return unsortedItems;
     } else {
       return [...items].sort((elA, elB) => {
         const fieldA = elA.name;
         const fieldB = elB.name;
-      
+
         if (fieldA > fieldB) {
-            return dir === 'ASC' ? 1 : -1;
+          return dir === "ASC" ? 1 : -1;
         } else if (fieldA === fieldB) {
-            return 0;
+          return 0;
         } else {
-            return dir === 'ASC' ? -1 : 1;
+          return dir === "ASC" ? -1 : 1;
         }
-      })  
+      });
     }
-  }
+  };
   getAccessoriesNames(items) {
+    return items.filter(el => {
+      const AccessoryNameLowerCased = el.name.toLowerCase();
+      const textFilterLowerCased = this.state.filter.text.toLowerCase();
+      const accessoryCategory = el.category;
+      const categoryFilter = this.state.filter.category;
 
-    return items
-      .filter(el => {
-        const AccessoryNameLowerCased = el.name.toLowerCase();
-        const textFilterLowerCased = this.state.filter.text.toLowerCase();
-        const accessoryCategory = el.category;
-        const categoryFilter = this.state.filter.category;
-
-        return (
-          AccessoryNameLowerCased.includes(textFilterLowerCased) &&
-          accessoryCategory.includes(categoryFilter)
-        );
+      return (
+        AccessoryNameLowerCased.includes(textFilterLowerCased) &&
+        accessoryCategory.includes(categoryFilter)
+      );
     });
   }
 
@@ -78,7 +74,7 @@ class Accessories extends Component {
         text: filter,
         category: this.state.filter.category
       }
-    })
+    });
   }
 
   filterAccessoriesByCategory(filter) {
@@ -88,43 +84,42 @@ class Accessories extends Component {
         ...filter,
         text: this.state.filter.text
       }
-    })
+    });
   }
 
-  onDirChange = (dir) => {
+  onDirChange = dir => {
     this.setState({
-       dir 
-      });
-};
-
-  // sortTrigger = () => {
-  //   this.setState({
-  //     shouldSort: true
-  //   })
-  // }
+      dir
+    });
+  };
 
   render() {
-    console.log(this.state.unsortedAccessories, this.state.test)
-    const sortedAccesories = this.sortAccessories(this.state.accessories, this.state.unsortedAccessories, this.state.dir)
+    const sortedAccesories = this.sortAccessories(
+      this.state.accessories,
+      this.state.unsortedAccessories,
+      this.state.dir
+    );
 
-    const filteredAccessories = this.getAccessoriesNames(sortedAccesories) 
+    const filteredAccessories = this.getAccessoriesNames(sortedAccesories);
     return (
       <Fragment>
         <StyledContent>
           <StyledHeader>
-            <h1 style={{paddingTop: '16px'}}>Karmy i akcesoria</h1>
+            <h1 style={{ paddingTop: "16px" }}>Karmy i akcesoria</h1>
             <AccessorySearch
-             onInputChange={(filter) => this.filterAccessoriesInInput(filter)}
-             value={this.state.filter.text}
+              onInputChange={filter => this.filterAccessoriesInInput(filter)}
+              value={this.state.filter.text}
             />
           </StyledHeader>
           <Segment>
             <AccessoriesFilters
-              onCategoryChange={(filter) => this.filterAccessoriesByCategory(filter)}
+              onCategoryChange={filter =>
+                this.filterAccessoriesByCategory(filter)
+              }
               categories={this.state.categories}
               value={this.state.filter.text}
               onSortDirection={this.onDirChange}
-              dir = {this.state.dir}
+              dir={this.state.dir}
             />
 
             <Divider />
