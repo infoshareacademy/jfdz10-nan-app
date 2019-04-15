@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Card, Segment, Input, Button } from "semantic-ui-react";
+import { Card, Image, Segment, Input, Button } from "semantic-ui-react";
 import {StyledHeader} from '../sharedcomponents/StyledHeader'
 import StyledCardImage from '../sharedcomponents/StyledCardImage'
+import {Link } from "react-router-dom";
 import StyledContent from "../sharedcomponents/StyledContent";
 
 class Breeders extends Component {
@@ -32,7 +33,7 @@ class Breeders extends Component {
             {this.state.breeders.map(el => {
               return (
                 <Card centered key={el.id}>
-                  <StyledCardImage src={el.img} />
+                      <StyledCardImage style={{backgroundImage: `url(${el.img})`, height: "20vh"}}/>
                   <Card.Content>
                     <Card.Header>{el.name}</Card.Header>
                     <Card.Description>{el.description}</Card.Description>
