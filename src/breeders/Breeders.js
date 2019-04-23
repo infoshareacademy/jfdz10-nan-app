@@ -4,6 +4,7 @@ import {StyledHeader} from '../sharedcomponents/StyledHeader'
 import StyledCardImage from '../sharedcomponents/StyledCardImage'
 import StyledContent from "../sharedcomponents/StyledContent";
 import {Link } from "react-router-dom";
+import "../breeders/Breeders.css";
 
 class Breeders extends Component {
   state = {
@@ -26,7 +27,7 @@ class Breeders extends Component {
       <StyledContent>
         <StyledHeader>
           <h1 style={{paddingTop: '16px'}}>Lista Hodowców</h1>
-          <Input action="Szukaj" className="cat_input" placeholder="Szukaj..." />
+          <Input action="Szukaj" className="breeder_input" placeholder="Szukaj..." />
         </StyledHeader>
         <Segment>
           <Card.Group itemsPerRow={4} >
@@ -51,7 +52,7 @@ class Breeders extends Component {
                   </Card.Content>
                   <Card.Content extra textAlign="center">
                     <Button
-                      className="button"
+                      className="breeder__button"
                       color="brown"
                       content="Like"
                       icon="heart"

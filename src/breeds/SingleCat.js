@@ -50,7 +50,6 @@ render() {
           <div className="cat__characteristic">
             <Image
               style={productImage}
-              className="single_cat_image"
               src={cat.image}
             />
             <div>

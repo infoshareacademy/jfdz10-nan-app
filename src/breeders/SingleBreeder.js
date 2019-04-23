@@ -7,7 +7,7 @@ import {
   Header
 } from "semantic-ui-react";
 
-import "../breeds/Cats.css";
+import "../breeders/Breeders.css";
 import StyledContent from "../sharedcomponents/StyledContent";
 import {StyledSingleTitle} from "../sharedcomponents/StyledHeader"
 
@@ -47,10 +47,9 @@ render() {
         </StyledSingleTitle>
 
         <Segment >
-          <div className="cat__characteristic">
+          <div className="breeder__characteristic">
             <Image
               style={productImage}
-              className="single_cat_image"
               src={breeder.img}
             />
             <div>
@@ -81,13 +80,12 @@ render() {
           <Divider horizontal>
             <Header as="h2">Opis</Header>
           </Divider>
-          <div className="cat__description">{breeder.description}</div>
+          <div className="breeder__description">{breeder.description}</div>
         </Segment>
       </StyledContent>
     </Fragment>
   );
 }
 }
-
 
 export default SingleBreeder
