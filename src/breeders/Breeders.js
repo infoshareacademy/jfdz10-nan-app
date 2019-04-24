@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Segment, Input, Button } from "semantic-ui-react";
+import { Card, Segment, Input, Button, Divider, Icon } from "semantic-ui-react";
 import {StyledHeader} from '../sharedcomponents/StyledHeader'
 import StyledCardImage from '../sharedcomponents/StyledCardImage'
 import StyledContent from "../sharedcomponents/StyledContent";
@@ -28,6 +28,11 @@ class Breeders extends Component {
           <Input action="Szukaj" className="cat_input" placeholder="Szukaj..." />
         </StyledHeader>
         <Segment>
+          <Button icon labelPosition='right'>
+          Dodaj hodowcę
+          <Icon name='plus'/>
+          </Button>
+          <Divider />
           <Card.Group itemsPerRow={4} >
             {this.state.breeders.map(el => {
               return (
