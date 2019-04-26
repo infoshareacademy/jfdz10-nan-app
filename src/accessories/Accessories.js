@@ -86,7 +86,6 @@ class Accessories extends Component {
   onDirChange = (dir) => {
     this.setState({
        dir });
-    console.log(this.state.dir)
 };
 
   render() {

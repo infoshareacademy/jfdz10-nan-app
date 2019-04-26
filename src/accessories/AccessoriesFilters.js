@@ -22,7 +22,7 @@ class AccessoriesFilters extends Component {
   createOnSortClick = (dir) => {
         dir = this.props.dir === 'ASC' ? 'DESC' : 'ASC'
         this.props.onSortDirection(dir)
-        console.log(dir)
+
 };
 
 
