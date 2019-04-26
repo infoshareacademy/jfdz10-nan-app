@@ -1,0 +1,63 @@
+.breeders__btn--add-breeder {
+  background: #1bd3e8 !important;
+  color: #fff !important;
+  box-shadow: 0 0 0 0px #1bd3e8 !important;
+}
+
+.breeders-form {
+  display: flex !important;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.breeders-form__top--fields {
+  justify-content: space-between;
+}
+
+.breeders-form__main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.breeders-form__main--adress-details {
+  display: inline-block !important;
+  margin-right: 5vw !important;
+}
+
+.breeders-form__main--contact-details {
+  display: inline-block !important;
+}
+
+.breeders-form__main__image {
+  display: flex;
+  align-items: flex-end;
+}
+
+.breeders-form__main__btn--upload {
+  background: #1bd3e8 !important;
+  color: #fff !important;
+  box-shadow: 0 0 0 0px #1bd3e8 !important;
+  margin: 0 0.25em 1.1em 1em !important;
+}
+
+.breeders-form__bot {
+  display: flex;
+  justify-content: space-between;
+}
+
+.breeders-form__bot__img {
+  height: 207px;
+  width: 207px;
+  background-image: url("./volunteer.svg");
+  background-size: cover;
+  align-self: center;
+  margin: 0 auto;
+}
+
+.breeders-form__btn--submit {
+  background: #1bd3e8 !important;
+  color: #fff !important;
+  box-shadow: 0 0 0 0px #1bd3e8 !important;
+  align-self: flex-start;
+}
