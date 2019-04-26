@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from "react";
-import { Button, Image, Card, Segment } from "semantic-ui-react";
+import { Button, Image, Card, Segment, Divider } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import {StyledHeader} from '../sharedcomponents/StyledHeader'
 import StyledContent from "../sharedcomponents/StyledContent";
 import AccessorySearch from "./AccessorySearch";
+import AccessoriesFilters from "./AccessoriesFilters";
 
 import "./Accessories.css";
 
@@ -14,8 +15,11 @@ class Accessories extends Component {
     filter: {
       text: "",
       category: ""
-    }
+    },
+    dir: "ASC"
   };
+
+  
 
   componentDidMount() {
     fetch("/feed-and-accessories.json")
@@ -33,13 +37,56 @@ class Accessories extends Component {
   }
 
   getAccessoriesNames() {
-    return this.state.accessories.filter(el => {
-      const AccessoryNameLowerCased = el.name.toLowerCase();
-      const textFilterLowerCased = this.state.filter.text.toLowerCase();
+    return this.state.accessories
+    .sort((elA, elB) => {
+      const fieldA = elA.name;
+      const fieldB = elB.name;
 
-      return AccessoryNameLowerCased.includes(textFilterLowerCased);
+      if (fieldA > fieldB) {
+          return this.state.dir === 'ASC' ? 1 : -1;
+      } else if (fieldA === fieldB) {
+          return 0;
+      } else {
+          return this.state.dir === 'ASC' ? -1 : 1;
+      }
+  })  
+      .filter(el => {
+        const AccessoryNameLowerCased = el.name.toLowerCase();
+        const textFilterLowerCased = this.state.filter.text.toLowerCase();
+        const accessoryCategory = el.category;
+        const categoryFilter = this.state.filter.category;
+
+        return (
+          AccessoryNameLowerCased.includes(textFilterLowerCased) &&
+          accessoryCategory.includes(categoryFilter)
+        );
     });
   }
+
+  filterAccessoriesInInput(filter) {
+    this.setState({
+      ...this.state,
+      filter: {
+        text: filter,
+        category: this.state.filter.category
+      }
+    })
+  }
+
+  filterAccessoriesByCategory(filter) {
+    this.setState({
+      ...this.state,
+      filter: {
+        ...filter,
+        text: this.state.filter.text
+      }
+    })
+  }
+
+  onDirChange = (dir) => {
+    this.setState({
+       dir });
+};
 
   render() {
     return (
@@ -48,10 +95,20 @@ class Accessories extends Component {
           <StyledHeader>
             <h1 style={{paddingTop: '16px'}}>Karmy i akcesoria</h1>
             <AccessorySearch
-              onFilterChange={filter => this.setState({ filter })}
+             onInputChange={(filter) => this.filterAccessoriesInInput(filter)}
+             value={this.state.filter.text}
             />
           </StyledHeader>
           <Segment>
+            <AccessoriesFilters
+              onCategoryChange={(filter) => this.filterAccessoriesByCategory(filter)}
+              categories={this.state.categories}
+              value={this.state.filter.text}
+              onSortDirection={this.onDirChange}
+              dir = {this.state.dir}
+            />
+
+            <Divider />
             <Card.Group itemsPerRow={5} stackable>
               {this.getAccessoriesNames().map(el => (
                 <Card key={el.id}>
