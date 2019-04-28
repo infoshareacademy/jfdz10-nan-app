@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Button } from "semantic-ui-react";
 
-import "./Cats";
 
 class CatSorter extends Component {
 
