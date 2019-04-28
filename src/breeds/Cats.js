@@ -94,7 +94,8 @@ class Cats extends Component {
               onSortDirection={this.onDirChange}
               dir={this.state.dir}
             />
-            <CatSearch
+            <CatSearch 
+              className="search__bar"
               onInputChange={filter => this.filterCatsInInput(filter)}
               value={this.state.filter.text}
             />

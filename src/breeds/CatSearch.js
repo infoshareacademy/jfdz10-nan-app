@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 import { Input } from "semantic-ui-react";
+import '../sharedcomponents/SearchBar.css';
 
 class CatSearch extends React.Component {
   onInputChange = e => {
@@ -11,7 +12,7 @@ class CatSearch extends React.Component {
             <Fragment>
                 <Input
                     icon="search"
-                    className="cat_input"
+                    className="search__bar"
                     placeholder="wpisz czego szukasz..."
                     type="text"
                     value={this.props.value}
