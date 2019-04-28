@@ -1,12 +1,11 @@
 .dashboard-container {
   display: flex;
   justify-content: space-around;
-  align-items: center;
   height: 100vh;
+  background: url(./cat-grey.png);
 }
 
 .dashboard-card-box {
-  margin: auto !important;
   display: flex !important;
   flex-wrap: wrap !important;
   max-width: 1080px !important;
@@ -29,9 +28,13 @@
 
 .dashboard-graph-header {
   font-size: 20px !important;
-    font-weight: 600;
-    color: black! important;
-    text-align: center !important;
+  font-weight: 600;
+  color: black! important;
+  text-align: center !important;
+}
+
+.graph {
+  background-color: #FFFFFF;
 }
 
 .image-background {  
