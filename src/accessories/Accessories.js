@@ -106,10 +106,7 @@ class Accessories extends Component {
         <StyledContent>
           <StyledHeader>
             <h1 style={{ paddingTop: "16px" }}>Karmy i akcesoria</h1>
-            <AccessorySearch
-              onInputChange={filter => this.filterAccessoriesInInput(filter)}
-              value={this.state.filter.text}
-            />
+            
           </StyledHeader>
           <Segment>
             <AccessoriesFilters
@@ -121,7 +118,10 @@ class Accessories extends Component {
               onSortDirection={this.onDirChange}
               dir={this.state.dir}
             />
-
+            <AccessorySearch
+              onInputChange={filter => this.filterAccessoriesInInput(filter)}
+              value={this.state.filter.text}
+            />
             <Divider />
             <Card.Group itemsPerRow={5} stackable>
               {filteredAccessories.map(el => (
