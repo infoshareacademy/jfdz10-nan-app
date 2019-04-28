@@ -45,11 +45,7 @@ class AccessoriesFilters extends Component {
             icon={arrow}
             labelPosition="right"
           />
-          <Button
-            onClick={this.resetClick}
-            basic
-            icon="ban"
-          />
+          <Button onClick={this.resetClick} basic icon="ban" />
         </span>
       </Fragment>
     );

@@ -106,7 +106,6 @@ class Accessories extends Component {
         <StyledContent>
           <StyledHeader>
             <h1 style={{ paddingTop: "16px" }}>Karmy i akcesoria</h1>
-            
           </StyledHeader>
           <Segment>
             <AccessoriesFilters

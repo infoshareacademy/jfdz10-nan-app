@@ -1,9 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Button } from "semantic-ui-react";
 
-
 class CatSorter extends Component {
-
   createOnSortClick = dir => {
     dir = this.props.dir === "ASC" ? "DESC" : "ASC";
     this.props.onSortDirection(dir);
@@ -18,7 +16,7 @@ class CatSorter extends Component {
 
     return (
       <Fragment>
-        <span className="sort__trigger">
+        <span>
           <Button
             onClick={this.createOnSortClick}
             basic
@@ -26,11 +24,7 @@ class CatSorter extends Component {
             icon={arrow}
             labelPosition="right"
           />
-          <Button
-            onClick={this.resetClick}
-            basic
-            icon="ban"
-          />
+          <Button onClick={this.resetClick} basic icon="ban" />
         </span>
       </Fragment>
     );
