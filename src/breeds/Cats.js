@@ -11,7 +11,7 @@ class Cats extends Component {
   };
 
   componentDidMount() {
-    fetch("/breeds.json")
+    fetch("https://jfdz10nan-app.firebaseio.com/breeds.json")
       .then(response => response.json())
       .then(data => {
         this.setState({
@@ -20,8 +20,8 @@ class Cats extends Component {
       });
   }
 
-  addLike = (breed) => {
-    fetch(`https://jfdz10nan-app.firebaseio.com/breeds/${breed.id}.json`, {
+  addLike = (breed,index) => {
+    fetch(`https://jfdz10nan-app.firebaseio.com/breeds/${index}.json`, {
       method: 'PATCH',
       body: JSON.stringify({
         likeCount: breed.likeCount + 1
@@ -43,7 +43,7 @@ class Cats extends Component {
           </StyledHeader>
           <Segment >
             <Card.Group className="cat_card_group" itemsPerRow={2}>
-              {this.state.breeds.map(el => {
+              {this.state.breeds.map((el,i) => {
                 return (
                   <Card centered className="cat_card" key={el.id}>
                     <Link to={`cats/${el.id}`}>
@@ -63,7 +63,7 @@ class Cats extends Component {
                         pointing: "left",
                         content: el.likeCount ? el.likeCount : 0
                       }}
-                      onClick={() => this.addLike(el)}
+                      onClick={() => this.addLike(el,i)}
                     />
                   </Card>
                 );

@@ -19,7 +19,7 @@ class SingleAccessory extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
 
-    fetch(`/feed-and-accessories.json`)
+    fetch("https://jfdz10nan-app.firebaseio.com/feed-and-accessories.json")
       .then(response => response.json())
       .then(accessories => {
         const item = accessories.find(item => item.id === Number(id));

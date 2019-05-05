@@ -29,13 +29,13 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    fetch('/breeds.json')
+    fetch("https://jfdz10nan-app.firebaseio.com/breeds.json")
       .then(r => r.json())
       .then(data => this.setState({cats: data}))
-    fetch('/breeders.json')
+    fetch("https://jfdz10nan-app.firebaseio.com/breeders.json")
       .then(r => r.json())
       .then(data => this.setState({breeders: data}))
-    fetch('/feed-and-accessories.json')
+    fetch("https://jfdz10nan-app.firebaseio.com/feed-and-accessories.json")
       .then(r => r.json())
       .then(data => this.setState({accessories: data}))
   }
