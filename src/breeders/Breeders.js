@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-import { Card, Image, Segment, Input, Button } from "semantic-ui-react";
+import { Card, Segment, Input, Button } from "semantic-ui-react";
 import {StyledHeader} from '../sharedcomponents/StyledHeader'
 import StyledCardImage from '../sharedcomponents/StyledCardImage'
-import {Link } from "react-router-dom";
 import StyledContent from "../sharedcomponents/StyledContent";
 
 class Breeders extends Component {
