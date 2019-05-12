@@ -4,6 +4,7 @@ import "./Cats.css";
 import {Link } from "react-router-dom";
 import {StyledHeader} from '../sharedcomponents/StyledHeader'
 import StyledContent from "../sharedcomponents/StyledContent";
+import StyledCardImage from '../sharedcomponents/StyledCardImage'
 
 class Cats extends Component {
   state = {
@@ -38,7 +39,7 @@ class Cats extends Component {
                 return (
                   <Card centered className="cat_card" key={el.id}>
                     <Link to={`cats/${el.id}`}>
-                      <Image src={el.image} className="cat_img" alt="kot"/>
+                      <StyledCardImage style={{backgroundImage: `url(${el.image})`, height: "250px"}}/>
                     </Link> 
                     <Card.Content className="cat_content">        
                       <Link className="cat_name" to={`cats/${el.id}`}>{el.name}</Link>
