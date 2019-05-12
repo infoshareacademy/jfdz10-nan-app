@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Card, Segment, Input, Button, Divider } from "semantic-ui-react";
-import { StyledHeader } from "../sharedcomponents/StyledHeader";
-import StyledCardImage from "../sharedcomponents/StyledCardImage";
+import { Card, Segment, Button, Divider } from "semantic-ui-react";
+import {StyledHeader} from '../sharedcomponents/StyledHeader'
+import StyledCardImage from '../sharedcomponents/StyledCardImage'
 import StyledContent from "../sharedcomponents/StyledContent";
 import BreederSearch from "./BreederSearch";
 import BreederFilters from "./BreederFilters";
@@ -78,13 +78,12 @@ class Breeders extends Component {
     );
     const filteredBreeders = this.getBreedersNames(sortedBreeders);
     return (
-      <>
-        <StyledContent>
-          <StyledHeader>
-            <h1 style={{ paddingTop: "16px" }}>Lista Hodowców</h1>
-          </StyledHeader>
-          <Segment>
-            <BreederFilters
+      <StyledContent>
+        <StyledHeader>
+          <h1 style={{paddingTop: '16px'}}>Lista Hodowców</h1>
+        </StyledHeader>
+        <Segment>
+        <BreederFilters
               value={this.state.filter.text}
               onSortDirection={this.onDirChange}
               dir={this.state.dir}
@@ -96,36 +95,35 @@ class Breeders extends Component {
             />
 
             <Divider />
-            <Card.Group itemsPerRow={4}>
-              {filteredBreeders.map(el => {
-                return (
-                  <Card centered key={el.id}>
-                    <StyledCardImage src={el.img} />
-                    <Card.Content>
-                      <Card.Header>{el.name}</Card.Header>
-                      <Card.Description>{el.description}</Card.Description>
-                    </Card.Content>
-                    <Card.Content extra textAlign="center">
-                      <Button
-                        className="button"
-                        color="brown"
-                        content="Like"
-                        icon="heart"
-                        label={{
-                          basic: true,
-                          color: "brown",
-                          pointing: "left",
-                          content: "2,048"
-                        }}
-                      />
-                    </Card.Content>
-                  </Card>
-                );
-              })}
-            </Card.Group>
-          </Segment>
-        </StyledContent>
-      </>
+          <Card.Group itemsPerRow={4} >
+            {filteredBreeders.map(el => {
+              return (
+                <Card centered key={el.id}>
+                      <StyledCardImage style={{backgroundImage: `url(${el.img})`, height: "20vh"}}/>
+                  <Card.Content>
+                    <Card.Header>{el.name}</Card.Header>
+                    <Card.Description>{el.description}</Card.Description>
+                  </Card.Content>
+                  <Card.Content extra textAlign="center">
+                    <Button
+                      className="button"
+                      color="brown"
+                      content="Like"
+                      icon="heart"
+                      label={{
+                        basic: true,
+                        color: "brown",
+                        pointing: "left",
+                        content: "2,048"
+                      }}
+                    />
+                  </Card.Content>
+                </Card>
+              );
+            })}
+          </Card.Group>
+        </Segment>
+      </StyledContent>
     );
   }
 }
