@@ -1,21 +1,7 @@
 import React, { Component, Fragment } from "react";
-import { Dropdown, Button } from "semantic-ui-react";
+import { Button } from "semantic-ui-react";
 
-import "./Accessories.css";
-
-class AccessoriesFilters extends Component {
-  onCategorySelect = (event, { value }) => {
-    this.props.onCategoryChange({ category: value });
-  };
-
-  getCategoryFilter() {
-    return this.props.categories.map((category, i) => ({
-      key: i,
-      text: category,
-      value: category
-    }));
-  }
-
+class CatSorter extends Component {
   createOnSortClick = dir => {
     dir = this.props.dir === "ASC" ? "DESC" : "ASC";
     this.props.onSortDirection(dir);
@@ -30,14 +16,7 @@ class AccessoriesFilters extends Component {
 
     return (
       <Fragment>
-        <Dropdown
-          onChange={this.onCategorySelect}
-          options={this.getCategoryFilter()}
-          clearable
-          selection
-          placeholder="wybierz kategorię..."
-        />
-        <span className="sort__trigger">
+        <span>
           <Button
             onClick={this.createOnSortClick}
             basic
@@ -52,4 +31,4 @@ class AccessoriesFilters extends Component {
   }
 }
 
-export default AccessoriesFilters;
+export default CatSorter;
