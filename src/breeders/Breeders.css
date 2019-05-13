@@ -1,0 +1,26 @@
+
+  .breeder_input {
+    margin: 10px 0;
+    width: 400px
+  }
+  
+  .breeder_input .ui.button {
+    background: #1BD3E8 !important;
+    color: #fff !important;
+    box-shadow: 0 0 0 0px #1BD3E8 !important;
+  }
+  
+  .ui.labeled.button.breeder__button {
+    margin-bottom: 15px !important;
+    justify-content: center;
+  }
+  
+  .breeder__characteristic {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .breeder__description {
+    text-align: justify !important;
+  }
