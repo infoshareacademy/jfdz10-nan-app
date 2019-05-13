@@ -8,6 +8,8 @@ import {
 } from "semantic-ui-react";
 import Favorites from './Favorites.js'
 import "./Profile.css";
+import StyledContent from "../sharedcomponents/StyledContent";
+import {StyledSingleTitle} from "../sharedcomponents/StyledHeader"
 
 class Profile extends Component {
   state = {
@@ -52,10 +54,10 @@ class Profile extends Component {
 
     return (
       <Fragment>
-        <div className="profile__container">
-          <div className="profile__bar">
-            <h1>Witaj, {user.name}!</h1>
-          </div>
+        <StyledContent>
+        <StyledSingleTitle>
+          <h1>Witaj, {user.name}!</h1>
+        </StyledSingleTitle>
           <Segment>
             <div className="user__characteristic">
               <Image
@@ -89,7 +91,7 @@ class Profile extends Component {
             <Favorites name="Hodowle" favKey="favoriteBreeders" parameter={user.favoriteBreeders} labels={this.state.breeders} onDelete={this.handleDelete}/>
             <Favorites name="Akcesoria" favKey="favoriteAccessories" parameter={user.favoriteAccessories} labels={this.state.accessories} onDelete={this.handleDelete}/>
           </Segment>
-        </div>
+        </StyledContent>
       </Fragment>
     );
   }
