@@ -3,6 +3,8 @@ import { Card, Segment, Button, Divider } from "semantic-ui-react";
 import {StyledHeader} from '../sharedcomponents/StyledHeader'
 import StyledCardImage from '../sharedcomponents/StyledCardImage'
 import StyledContent from "../sharedcomponents/StyledContent";
+import {Link } from "react-router-dom";
+import "../breeders/Breeders.css";
 import BreederSearch from "./BreederSearch";
 import BreederFilters from "./BreederFilters";
 
@@ -99,14 +101,25 @@ class Breeders extends Component {
             {filteredBreeders.map(el => {
               return (
                 <Card centered key={el.id}>
-                      <StyledCardImage style={{backgroundImage: `url(${el.img})`, height: "20vh"}}/>
+                  <Link to={`breeders/${el.id}`}>
+                    <StyledCardImage style={{backgroundImage: `url(${el.img})`, height: "20vh"}}/>
+                  </Link>
                   <Card.Content>
-                    <Card.Header>{el.name}</Card.Header>
-                    <Card.Description>{el.description}</Card.Description>
+                    <Card.Header>
+                      <Link style={{color: 'black'}} to={`breeders/${el.id}`}>
+                      {el.name}
+                      </Link>
+                    </Card.Header>
+                    <Card.Description>
+                      {el.description}
+                      <Link style={{fontWeight: 'bold'}}to={`breeders/${el.id}`}>
+                        Więcej...
+                      </Link>
+                    </Card.Description>
                   </Card.Content>
                   <Card.Content extra textAlign="center">
                     <Button
-                      className="button"
+                      className="breeder__button"
                       color="brown"
                       content="Like"
                       icon="heart"
