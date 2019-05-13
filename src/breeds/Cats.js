@@ -7,7 +7,8 @@ import StyledContent from "../sharedcomponents/StyledContent";
 
 class Cats extends Component {
   state = {
-    breeds: []
+    breeds: [],
+    // user: null
   };
 
   componentDidMount() {
@@ -18,6 +19,11 @@ class Cats extends Component {
           breeds: data
         });
       });
+    // firebase.auth().onAuthStateChanged(user => {
+    //     this.setState({
+    //         user
+    //     })
+    // })
   }
 
   addLike = (breed,index) => {
@@ -63,7 +69,10 @@ class Cats extends Component {
                         pointing: "left",
                         content: el.likeCount ? el.likeCount : 0
                       }}
+                      // {this.state.user ?
                       onClick={() => this.addLike(el,i)}
+                    //   : null
+                    // }
                     />
                   </Card>
                 );
