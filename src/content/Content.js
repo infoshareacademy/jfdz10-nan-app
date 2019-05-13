@@ -14,7 +14,7 @@ class Content extends Component {
   render() {
     return (
 
-        <div style={{height: "100vh", width: "82.25vw", position: "relative", left: "18.75vw" }}>
+        <div style={{height: "100vh", width: "82.25vw", position: "relative", left: "18.75vw", padding: "0 2rem" }}>
         <Route exact path="/cats" component={Cats} />
         <Route exact path="/food-and-accessories" component={Accessories} />
         <Route exact path="/breeders" component={Breeders} />

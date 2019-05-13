@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Input } from "semantic-ui-react";
 import "../sharedcomponents/SearchBar.css";
 
-class AccessorySearch extends React.Component {
+class BreederSearch extends React.Component {
   onInputChange = e => {
     this.props.onInputChange(e.target.value);
   };
@@ -23,4 +23,4 @@ class AccessorySearch extends React.Component {
   }
 }
 
-export default AccessorySearch;
+export default BreederSearch;
