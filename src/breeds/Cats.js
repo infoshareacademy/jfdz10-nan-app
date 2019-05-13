@@ -12,15 +12,12 @@ import StyledCardImage from '../sharedcomponents/StyledCardImage'
 class Cats extends Component {
   state = {
     breeds: [],
-<<<<<<< HEAD
     // user: null
-=======
     unsortedCats: [],
     filter: {
       text: ""
     },
     dir: null
->>>>>>> develop
   };
 
   componentDidMount() {
@@ -121,11 +118,7 @@ class Cats extends Component {
 
             <Divider />
             <Card.Group className="cat_card_group" itemsPerRow={2}>
-<<<<<<< HEAD
-              {this.state.breeds.map((el,i) => {
-=======
-              {filteredCats.map(el => {
->>>>>>> develop
+              {filteredCats.map((el,i) => {
                 return (
                   <Card centered className="cat_card" key={el.id}>
                     <Link to={`cats/${el.id}`}>
