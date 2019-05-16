@@ -9,10 +9,12 @@ import {
   Icon,
   Input
 } from "semantic-ui-react";
+import {connect} from 'react-redux'
 
 import "./Accessories.css";
 import StyledContent from "../sharedcomponents/StyledContent";
 import { StyledSingleTitle } from "../sharedcomponents/StyledHeader";
+import {addToCart} from './reducers/cartReducer'
 
 class SingleAccessory extends Component {
   state = {
@@ -65,7 +67,7 @@ class SingleAccessory extends Component {
                     </Table.Row>
                   </Table.Body>
                 </Table>
-                <Button positive animated="vertical">
+                <Button positive animated="vertical" onClick={() => this.props.addToCart(item)}>
                   <Button.Content hidden>Kup</Button.Content>
                   <Button.Content visible>
                     <Icon name="cart" />
@@ -90,4 +92,11 @@ class SingleAccessory extends Component {
   }
 }
 
-export default SingleAccessory;
+const mapStateToProps = () => ({
+})
+
+const mapDispatchToProps = {
+  addToCart
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SingleAccessory);

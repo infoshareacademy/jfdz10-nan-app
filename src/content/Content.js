@@ -7,6 +7,7 @@ import SingleAccessory from '../accessories/SingleAccessory'
 import Breeders from '../breeders/Breeders'
 import Dashboard from '../dashboard/Dashboard'
 import SingleCat from '../breeds/SingleCat'
+import AccessoriesCart from '../accessories/AccessoriesCart'
 
 class Content extends Component {
   render() {
@@ -19,8 +20,8 @@ class Content extends Component {
         <Route path={"/food-and-accessories/:id"} component={SingleAccessory} />
         <Route path={"/cats/:id"} component={SingleCat} />
         <Route path={"/dashboard"} component={Dashboard} />
+        <Route path={"/cart"} component={AccessoriesCart} />
         </div>
-
     );
   }
 }
