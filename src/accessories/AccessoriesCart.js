@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from "react";
 import { connect } from "react-redux";
-import { Segment } from "semantic-ui-react";
+import { Segment, Button, List } from "semantic-ui-react";
 import StyledContent from "../sharedcomponents/StyledContent";
 import { StyledHeader } from "../sharedcomponents/StyledHeader";
 
@@ -16,15 +16,21 @@ class AccessoriesCart extends Component {
       <Fragment>
         <StyledContent>
           <StyledHeader>
-            <h1 style={{ paddingTop: "16px" }}>Sklep jaki jest każdy widzi</h1>
+            <h1 style={{ paddingTop: "16px" }}>Koszyk</h1>
           </StyledHeader>
           <Segment>
-            <ul>
+              <List divided verticalAlign='middle'>
               {this.props.products.map(item => (
-            <li>{item.name} 
-            <button onClick={() => this.props.deleteFromCart(item.url)}>delete</button></li>
-          ))}
-            </ul>
+                  <List.Item>
+                      <List.Content floated='left'>{this.props.products.indexOf(item) + 1}.</List.Content>
+                    <List.Content floated='right'>
+                    <Button onClick={() => this.props.deleteFromCart()}>USUŃ</Button>
+                    </List.Content>
+                    <List.Content>{item.name}</List.Content>
+                    <List.Content floated='right'>{item.price} zł</List.Content>
+                  </List.Item>
+                   ))}
+              </List>
           </Segment>
         </StyledContent>
       </Fragment>
