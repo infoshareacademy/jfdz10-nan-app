@@ -8,6 +8,7 @@ import Breeders from '../breeders/Breeders'
 import Dashboard from '../dashboard/Dashboard'
 import Profile from '../user/Profile'
 import SingleCat from '../breeds/SingleCat'
+import SingleBreeder from '../breeders/SingleBreeder'
 
 class Content extends Component {
   render() {
@@ -20,6 +21,7 @@ class Content extends Component {
         <Route exact path={"/logged"} component={Dashboard} />
         <Route exact path={"/logged/profile"} component={Profile} />
         <Route path={"/logged/cats/:id"} component={SingleCat} />
+        <Route path={"/logged/breeders/:id"} component={SingleBreeder} />
         <Route path={"/logged/food-and-accessories/:id"} component={SingleAccessory} />
         </div>
 

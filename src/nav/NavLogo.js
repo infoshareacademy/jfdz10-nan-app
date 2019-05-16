@@ -8,6 +8,7 @@ class NavLogo extends Component {
           className="small-container flex-center blue-background padding-fifteen"
         >
           <img
+            alt="logo"
             src={require("./cat4you-logo-white.png")}
             style={{ width: "100%" }}
             alt="logo"
