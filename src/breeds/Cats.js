@@ -7,6 +7,8 @@ import StyledContent from "../sharedcomponents/StyledContent";
 import CatSearch from "./CatSearch";
 import CatSorter from "./CatSorter";
 
+import firebase from 'firebase'
+
 import StyledCardImage from '../sharedcomponents/StyledCardImage'
 
 class Cats extends Component {
@@ -17,18 +19,23 @@ class Cats extends Component {
     filter: {
       text: ""
     },
-    dir: null
+    dir: null,
+    icon: "heart"
   };
 
+  getCats = () => {
+    firebase.database().ref('breeds')
+        .once("value")
+        .then(cats => {
+             this.setState({
+               breeds: cats.val(),
+               unsortedCats: cats.val(),
+              })
+         })
+};
+
   componentDidMount() {
-    fetch("https://jfdz10nan-app.firebaseio.com/breeds.json")
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          breeds: data,
-          unsortedCats: data,
-        });
-      });
+    this.getCats()
     // firebase.auth().onAuthStateChanged(user => {
     //     this.setState({
     //         user
@@ -37,12 +44,14 @@ class Cats extends Component {
   }
 
   addLike = (breed,index) => {
-    fetch(`https://jfdz10nan-app.firebaseio.com/breeds/${index}.json`, {
-      method: 'PATCH',
-      body: JSON.stringify({
-        likeCount: breed.likeCount + 1
-      })
-    })
+    const data = {
+      likeCount: breed.likeCount + 1
+    }
+    firebase.database().ref('breeds/' + index).update(data)
+    .then(() => this.setState({
+              icon: null
+       }))
+    .then(() => this.getCats())
   }
 
   sortCats = (items, unsortedItems, dir) => {
@@ -131,7 +140,7 @@ class Cats extends Component {
                       className="cat_button"
                       color="brown"
                       content="Like"
-                      icon="heart"
+                      icon={this.state.icon}
                       label={{
                         basic: true,
                         color: "brown",

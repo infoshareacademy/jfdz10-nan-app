@@ -4,17 +4,18 @@ import "./App.css";
 import NavList from "./nav/NavList.js";
 import Content from "./content/Content";
 
-// import firebase from 'firebase'
+import firebase from 'firebase'
 
-// const config = {
-//   apiKey: "AIzaSyCiwlpRa5tNi4pLlVCPc18XYkYBixDURQc",
-//   authDomain: "magda1-f9cd0.firebaseapp.com",
-//   databaseURL: "https://magda1-f9cd0.firebaseio.com",
-//   projectId: "magda1-f9cd0",
-//   storageBucket: "magda1-f9cd0.appspot.com",
-//   messagingSenderId: "763234686273"
-// };
-// firebase.initializeApp(config);
+const config = {
+  apiKey: "AIzaSyAaYHQD_rpZ6o8hiIEfE1kuDR4VC9E3Ca0",
+  authDomain: "jfdz10nan-app.firebaseapp.com",
+  databaseURL: "https://jfdz10nan-app.firebaseio.com",
+  projectId: "jfdz10nan-app",
+  storageBucket: "jfdz10nan-app.appspot.com",
+  messagingSenderId: "139164423329",
+  appId: "1:139164423329:web:320b7435adbfe363"
+};
+firebase.initializeApp(config);
 
 
 class App extends Component {
