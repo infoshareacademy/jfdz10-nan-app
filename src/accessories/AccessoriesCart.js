@@ -11,13 +11,12 @@ class AccessoriesCart extends Component {
     this.props.fetchCartItems();
   }
 
-  totalCost() {
-    var products = this.props.products;
-    console.log(products);
-    products
-      .map(product => product.price * product.amount)
-      .reduce((acc, product) => acc + product, 0);
-  }
+  // totalCost() {
+  //   var products = this.props.products;
+  //   products
+  //     .map(product => product.price * product.amount)
+  //     .reduce((acc, product) => acc + product, 0);
+  // }
 
   render() {
     return (
@@ -58,7 +57,13 @@ class AccessoriesCart extends Component {
                   <Table.Cell />
                   <Table.Cell />
                   <Table.Cell />
-                  <Table.Cell>Łącznie: {this.totalCost()}</Table.Cell>
+                  <Table.Cell>
+                    Łącznie:
+                    {this.props.products
+                      .map(product => product.price * product.amount)
+                      .reduce((acc, product) => acc + product, 0)}
+                    zł
+                  </Table.Cell>
                   <Table.Cell />
                 </Table.Row>
               </Table.Body>
