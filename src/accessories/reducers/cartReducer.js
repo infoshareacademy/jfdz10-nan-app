@@ -1,4 +1,4 @@
-import localForage from 'localforage'
+import localForage from 'localforage';
 
 const ADD_TO_CART = 'ADD_TO_CART'
 const FETCH_CART_ITEMS = 'FETCH_CART_ITEMS'

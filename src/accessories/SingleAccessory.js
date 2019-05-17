@@ -9,16 +9,18 @@ import {
   Icon,
   Input
 } from "semantic-ui-react";
-import {connect} from 'react-redux'
+import { connect } from "react-redux";
 
 import "./Accessories.css";
 import StyledContent from "../sharedcomponents/StyledContent";
-import { StyledSingleTitle } from "../sharedcomponents/StyledHeader";
-import {addToCart} from './reducers/cartReducer'
+import { StyledHeader } from "../sharedcomponents/StyledHeader";
+import { addToCart } from "./reducers/cartReducer";
+import CartStatus from "./CartStatus";
 
 class SingleAccessory extends Component {
   state = {
-    item: {}
+    item: {},
+    amount: 1
   };
 
   componentDidMount() {
@@ -33,8 +35,22 @@ class SingleAccessory extends Component {
       });
   }
 
+  increaseAmount = () => {
+    var amount = this.state.amount;
+    amount += 1;
+    this.setState({ amount });
+  };
+
+  decreaseAmount = () => {
+    var amount = this.state.amount;
+    if (amount > 1) {
+      amount -= 1;
+    }
+    this.setState({ amount });
+  };
+
   render() {
-    const { item } = this.state;
+    const { item, amount } = this.state;
     const productImage = {
       maxHeight: "320px"
     };
@@ -42,9 +58,10 @@ class SingleAccessory extends Component {
     return (
       <Fragment>
         <StyledContent>
-          <StyledSingleTitle>
+          <StyledHeader>
             <h1>Karmy i akcesoria</h1>
-          </StyledSingleTitle>
+            <CartStatus />
+          </StyledHeader>
           <Segment>
             <div className="product__characteristic">
               <Image
@@ -67,17 +84,31 @@ class SingleAccessory extends Component {
                     </Table.Row>
                   </Table.Body>
                 </Table>
-                <Button positive animated="vertical" onClick={() => this.props.addToCart(item)}>
+                <Button
+                  positive
+                  animated="vertical"
+                  onClick={() => this.props.addToCart({ ...item, amount })}
+                >
                   <Button.Content hidden>Kup</Button.Content>
                   <Button.Content visible>
                     <Icon name="cart" />
                   </Button.Content>
                 </Button>
-                <Input defaultValue='1'
-                action={<Button.Group>
-                  <Button icon='add' />
-                  <Button icon='minus' />
-                </Button.Group>}/>
+                <Input
+                  value={this.state.amount}
+                  action={
+                    <Button.Group>
+                      <Button
+                        onClick={() => this.increaseAmount()}
+                        icon="add"
+                      />
+                      <Button
+                        onClick={() => this.decreaseAmount()}
+                        icon="minus"
+                      />
+                    </Button.Group>
+                  }
+                />
               </div>
             </div>
 
@@ -92,11 +123,13 @@ class SingleAccessory extends Component {
   }
 }
 
-const mapStateToProps = () => ({
-})
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = {
   addToCart
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(SingleAccessory);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SingleAccessory);
