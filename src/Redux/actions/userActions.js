@@ -1,16 +1,15 @@
  import localForage from "localforage";
-import firebase from 'firebase';
 
 export const FETCH_USER = "FETCH_USER";
 export const LOG_USER = "LOG_USER";
 export const CHANGE_DATA = "CHANGE_DATA";
 
-const fetchUser = () => dispatch => {
-  firebase.auth().onAuthStateChanged( user =>
+const fetchUser = (user) => dispatch => {
+  
     dispatch({
       type: FETCH_USER,
       user
-    }))
+    })
 
 };
 

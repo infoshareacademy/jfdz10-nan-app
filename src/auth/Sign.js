@@ -18,7 +18,9 @@ class Sign extends Component {
         .createUserWithEmailAndPassword(this.props.email, this.props.password)
 
         .then(() => {
-          this.props.history.push("/logged");
+          setTimeout(() => {
+            this.props.history.push("/logged");
+          }, 100);
         })
 
         .catch(error => {
@@ -28,11 +30,11 @@ class Sign extends Component {
       firebase
         .auth()
         .signInWithEmailAndPassword(this.props.email, this.props.password)
-        
-        .then(() => 
-         this.props.logUser())
+
         .then(() => {
-          this.props.history.push("/logged");
+          setTimeout(() => {
+            this.props.history.push("/logged");
+          }, 100);
         })
         .catch(error => {
           alert(error.message);

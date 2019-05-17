@@ -5,7 +5,6 @@ import "semantic-ui-css/semantic.min.css";
 import "./Nav.css";
 import NavUserData from './NavUserData.js'
 import NavLogo from './NavLogo.js'
-import SignOutButton from '../auth/SignOut.js'
 
 class Nav extends Component {
   state = {

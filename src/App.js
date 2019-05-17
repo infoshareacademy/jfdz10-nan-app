@@ -24,34 +24,46 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 class App extends Component {
-
+  state = {
+    user: {}
+  }
   componentDidMount() {
-    this.props.fetchUser()
+    const authRef = firebase.auth().onAuthStateChanged(user => {
+      this.setState({
+        user: user
+      })
+      this.props.fetchUser(user)
+    });
+    this.setState({
+      authRef
+    })
+  }
+  componentWillUnmount() {
+    this.state.authRef && this.state.authRef();
   }
 
   render() {
     return (
       <div style={{ height: "100vh", display: "flex" }}>
-            <Switch>
-              <Route path="/logged" component={() => {
-                return this.props.currentUser ? (
-                  <Fragment>
-                    <NavList />
-                    <Content />
-                  </Fragment>
-                ) : (
-                  <Redirect to="/access-denied" />
-                )
-              }}/>
-              <Route exact path="/access-denied" component={AuthContent} />
-              <Route exact path="/" component={Welcome} />
-              <Route exact path="/sign-in" component={Sign} />
-              <Route
-                exact
-                path="/sign-up"
-                component={() => <Sign isSignUp />}
-              />
-            </Switch>
+        <Switch>
+          <Route
+            path="/logged"
+            component={() => {
+              return this.state.user ? (
+                <Fragment>
+                  <NavList />
+                  <Content />
+                </Fragment>
+              ) : (
+                <Redirect to="/access-denied" />
+              );
+            }}
+          />
+          <Route exact path="/access-denied" component={AuthContent} />
+          <Route exact path="/" component={Welcome} />
+          <Route exact path="/sign-in" component={Sign} />
+          <Route exact path="/sign-up" component={() => <Sign isSignUp />} />
+        </Switch>
       </div>
     );
   }
