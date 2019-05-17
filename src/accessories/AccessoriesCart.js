@@ -11,6 +11,14 @@ class AccessoriesCart extends Component {
     this.props.fetchCartItems();
   }
 
+  totalCost() {
+    var products = this.props.products;
+    console.log(products);
+    products
+      .map(product => product.price * product.amount)
+      .reduce((acc, product) => acc + product, 0);
+  }
+
   render() {
     return (
       <Fragment>
@@ -21,7 +29,7 @@ class AccessoriesCart extends Component {
           <Segment>
             <Table>
               <Table.Header>
-                <Table.Row>
+                <Table.Row key={Date.now()}>
                   <Table.HeaderCell>Lp.</Table.HeaderCell>
                   <Table.HeaderCell>Nazwa</Table.HeaderCell>
                   <Table.HeaderCell>Ilość</Table.HeaderCell>
@@ -32,20 +40,27 @@ class AccessoriesCart extends Component {
 
               <Table.Body>
                 {this.props.products.map(item => (
-                  <Table.Row>
+                  <Table.Row key={item.id}>
                     <Table.Cell>
                       {this.props.products.indexOf(item) + 1}.
                     </Table.Cell>
                     <Table.Cell>{item.name}</Table.Cell>
                     <Table.Cell>{item.amount} szt.</Table.Cell>
-                    <Table.Cell>{item.price} zł</Table.Cell>
+                    <Table.Cell>{item.price * item.amount} zł</Table.Cell>
                     <Table.Cell>
-                      <Button onClick={() => this.props.deleteFromCart()}>
+                      <Button onClick={() => this.props.deleteFromCart(item)}>
                         USUŃ
                       </Button>
                     </Table.Cell>
                   </Table.Row>
                 ))}
+                <Table.Row>
+                  <Table.Cell />
+                  <Table.Cell />
+                  <Table.Cell />
+                  <Table.Cell>Łącznie: {this.totalCost()}</Table.Cell>
+                  <Table.Cell />
+                </Table.Row>
               </Table.Body>
             </Table>
           </Segment>
