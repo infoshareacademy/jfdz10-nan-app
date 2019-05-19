@@ -46,7 +46,7 @@ export default function(state = initialState, action) {
     case FETCH_CART_ITEMS: {
         return {
           ...state,
-          products: action.products
+          products: action.products || []
         }
       }
 
