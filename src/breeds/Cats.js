@@ -47,11 +47,23 @@ class Cats extends Component {
     const data = {
       likeCount: breed.likeCount + 1
     }
+
     firebase.database().ref('breeds/' + index).update(data)
     .then(() => this.setState({
               icon: null
        }))
     .then(() => this.getCats())
+
+    .then(() =>
+            firebase
+            .database()
+            .ref('breeds/' + index + 'favUsers')
+            .push(firebase.auth().currentUser.uid)
+
+            // .child(firebase.auth().currentUser.uid)
+            // .set({ id: firebase.auth().currentUser.uid })
+        )
+        
   }
 
   sortCats = (items, unsortedItems, dir) => {
