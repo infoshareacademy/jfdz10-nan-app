@@ -26,7 +26,7 @@ class Dashboard extends Component {
         <div className="dashboard-container">
           <div className="dashboard-card-box">
             {this.state.links.map(link => (
-              <Link to={`/${link.id}`} key={`/${link.id}`}>
+              <Link to={`/logged/${link.id}`} key={`/${link.id}`}>
                 <Card className="dashboard-grid-content">
                   <Image src={link.img} className="image-background" />
                   <Card.Content>
