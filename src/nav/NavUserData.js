@@ -27,7 +27,7 @@ class NavUserData extends Component {
         />
         <Header.Content className="white-text">John Doe</Header.Content>
         <div>
-        <NavLink to='logged/profile'>
+        <NavLink to='/logged/profile'>
                 <Button>
                   PROFIL
                 </Button>

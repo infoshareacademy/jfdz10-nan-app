@@ -16,12 +16,9 @@ class Sign extends Component {
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.props.email, this.props.password)
-
-        .then(() => {
-          setTimeout(() => {
-            this.props.history.push("/logged");
-          }, 100);
-        })
+        .then(() => firebase.auth().currentUser.updateProfile({displayName: this.props.login, photoURL: "https://react.semantic-ui.com/images/wireframe/square-image.png"}))
+        .then(() => firebase.database().ref("users").child(firebase.auth().currentUser.uid).set({id: firebase.auth().currentUser.uid}))
+        .then(() => window.location.href="/logged")
 
         .catch(error => {
           alert(error.message);
@@ -30,14 +27,10 @@ class Sign extends Component {
       firebase
         .auth()
         .signInWithEmailAndPassword(this.props.email, this.props.password)
-
-        .then(() => {
-          setTimeout(() => {
-            this.props.history.push("/logged");
-          }, 100);
-        })
+        .then(() => console.log(firebase.auth().currentUser.displayName))
+        .then(() => window.location.href="/logged")
         .catch(error => {
-          alert(error.message);
+          console.log(error.message);
         });
     }
   };
@@ -49,20 +42,27 @@ class Sign extends Component {
       <main>
         <h1>{title}</h1>
         <form onSubmit={this.handleSubmit}>
-          {/* {this.props.isSignUp? 
+          {this.props.isSignUp? 
           <Fragment>
           <Input
           id="login"
           name="login"
+          type="login"
           placeholder="Login"
-          value={this.state.login}
-          onChange={input => changeData(input.target.value)}
+          value={this.props.login}
+          onChange={input =>
+              this.props.changeData(
+                input.currentTarget.name,
+                input.target.value
+              )
+            }
           required
         />
-        <br /></Fragment> : null} */}
+        <br /></Fragment> : null}
           <Input
             id="email"
             name="email"
+            type="email"
             placeholder="E-Mail"
             value={this.props.email}
             onChange={input =>
@@ -113,6 +113,7 @@ class Sign extends Component {
 
 const mapStateToProps = state => ({
   currentUser: state.users.currentUser,
+  login: state.users.login,
   email: state.users.email,
   password: state.users.password
 });

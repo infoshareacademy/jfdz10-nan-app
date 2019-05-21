@@ -24,19 +24,9 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 class App extends Component {
-  state = {
-    user: {}
-  }
+
   componentDidMount() {
-    const authRef = firebase.auth().onAuthStateChanged(user => {
-      this.setState({
-        user: user
-      })
-      this.props.fetchUser(user)
-    });
-    this.setState({
-      authRef
-    })
+    this.props.fetchUser()
   }
   componentWillUnmount() {
     this.state.authRef && this.state.authRef();
@@ -49,7 +39,7 @@ class App extends Component {
           <Route
             path="/logged"
             component={() => {
-              return this.state.user ? (
+              return this.props.currentUser ? (
                 <Fragment>
                   <NavList />
                   <Content />
