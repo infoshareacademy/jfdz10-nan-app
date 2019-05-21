@@ -16,9 +16,23 @@ class Sign extends Component {
       firebase
         .auth()
         .createUserWithEmailAndPassword(this.props.email, this.props.password)
-        .then(() => firebase.auth().currentUser.updateProfile({displayName: this.props.login, photoURL: "https://react.semantic-ui.com/images/wireframe/square-image.png"}))
-        .then(() => firebase.database().ref("users").child(firebase.auth().currentUser.uid).set({id: firebase.auth().currentUser.uid}))
-        .then(() => window.location.href="/logged")
+        .then(() =>
+          firebase
+            .auth()
+            .currentUser.updateProfile({
+              displayName: this.props.login,
+              photoURL:
+                "https://react.semantic-ui.com/images/wireframe/square-image.png"
+            })
+        )
+        .then(() =>
+          firebase
+            .database()
+            .ref("users")
+            .child(firebase.auth().currentUser.uid)
+            .set({ id: firebase.auth().currentUser.uid })
+        )
+        .then(() => (window.location.href = "/logged"))
 
         .catch(error => {
           alert(error.message);
@@ -28,7 +42,7 @@ class Sign extends Component {
         .auth()
         .signInWithEmailAndPassword(this.props.email, this.props.password)
         .then(() => console.log(firebase.auth().currentUser.displayName))
-        .then(() => window.location.href="/logged")
+        .then(() => (window.location.href = "/logged"))
         .catch(error => {
           console.log(error.message);
         });
@@ -42,23 +56,25 @@ class Sign extends Component {
       <main>
         <h1>{title}</h1>
         <form onSubmit={this.handleSubmit}>
-          {this.props.isSignUp? 
-          <Fragment>
-          <Input
-          id="login"
-          name="login"
-          type="login"
-          placeholder="Login"
-          value={this.props.login}
-          onChange={input =>
-              this.props.changeData(
-                input.currentTarget.name,
-                input.target.value
-              )
-            }
-          required
-        />
-        <br /></Fragment> : null}
+          {this.props.isSignUp ? (
+            <Fragment>
+              <Input
+                id="login"
+                name="login"
+                type="login"
+                placeholder="Login"
+                value={this.props.login}
+                onChange={input =>
+                  this.props.changeData(
+                    input.currentTarget.name,
+                    input.target.value
+                  )
+                }
+                required
+              />
+              <br />
+            </Fragment>
+          ) : null}
           <Input
             id="email"
             name="email"
