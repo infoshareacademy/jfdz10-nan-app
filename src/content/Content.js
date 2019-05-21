@@ -15,14 +15,14 @@ class Content extends Component {
     return (
 
         <div style={{height: "100vh", width: "82.25vw", position: "relative", left: "18.75vw", padding: "0 2rem" }}>
-        <Route exact path="/cats" component={Cats} />
-        <Route exact path="/food-and-accessories" component={Accessories} />
-        <Route exact path="/breeders" component={Breeders} />
-        <Route exact path={"/"} component={Dashboard} />
-        <Route exact path={"/profile"} component={Profile} />
-        <Route path={"/cats/:id"} component={SingleCat} />
-        <Route path={"/breeders/:id"} component={SingleBreeder} />
-        <Route path={"/food-and-accessories/:id"} component={SingleAccessory} />
+        <Route exact path="/logged/cats" component={Cats} />
+        <Route exact path="/logged/food-and-accessories" component={Accessories} />
+        <Route exact path="/logged/breeders" component={Breeders} />
+        <Route exact path={"/logged"} component={Dashboard} />
+        <Route exact path={"/logged/profile"} component={Profile} />
+        <Route path={"/logged/cats/:id"} component={SingleCat} />
+        <Route path={"/logged/breeders/:id"} component={SingleBreeder} />
+        <Route path={"/logged/food-and-accessories/:id"} component={SingleAccessory} />
         </div>
 
     );
