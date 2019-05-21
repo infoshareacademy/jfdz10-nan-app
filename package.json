@@ -4,11 +4,8 @@
   "private": true,
   "dependencies": {
     "firebase": "^6.0.2",
-<<<<<<< HEAD
-=======
     "from": "^0.1.7",
     "localforage": "^1.7.3",
->>>>>>> login
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-redux": "^7.0.3",
