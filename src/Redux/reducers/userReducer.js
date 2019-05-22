@@ -4,7 +4,9 @@ import {
 } from "../actions/userActions";
 
 const initialState = {
+  user: {},
   currentUser: {
+    id: "",
     login: "",
     email: "",
     password: "",
@@ -18,15 +20,12 @@ const initialState = {
   password: ""
 };
 
-export const redirectToLogged = () => {
-  window.location.href = "/logged";
-};
-
 export default function userReducer(state = initialState, action) {
   switch (action.type) {
     case FETCH_USER: {
       return {
         ...state,
+        user: action.user,
         currentUser: {
           login: action.login,
           email: action.email,

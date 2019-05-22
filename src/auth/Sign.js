@@ -7,6 +7,7 @@ import "semantic-ui-css/semantic.min.css";
 import { connect } from "react-redux";
 
 import userActions from "../Redux/actions/userActions";
+import dataActions from "../Redux/actions/dataActions";
 
 class Sign extends Component {
   handleSubmit = event => {
@@ -41,7 +42,7 @@ class Sign extends Component {
       firebase
         .auth()
         .signInWithEmailAndPassword(this.props.email, this.props.password)
-        .then(() => console.log(firebase.auth().currentUser.displayName))
+        .then(() => this.props.fetchData("user", `users/${firebase.auth().currentUser.uid}`))
         .then(() => (window.location.href = "/logged"))
         .catch(error => {
           console.log(error.message);
@@ -134,7 +135,7 @@ const mapStateToProps = state => ({
   password: state.users.password
 });
 
-const mapDispatchToProps = userActions;
+const mapDispatchToProps = {userActions, dataActions};
 
 export default connect(
   mapStateToProps,

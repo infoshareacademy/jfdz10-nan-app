@@ -5,12 +5,16 @@ export const CHANGE_DATA = "CHANGE_DATA";
 
 const fetchUser = () => dispatch => {
   firebase.auth().onAuthStateChanged(user =>
-    {const login = user.displayName
+    {
+      const id = user.uid
+      const login = user.displayName
       const email = user.email
       const password = user.password
       const img = user.photoURL
     dispatch({
       type: FETCH_USER,
+      user,
+      id,
       login,
       email,
       password,

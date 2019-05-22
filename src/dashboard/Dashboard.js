@@ -5,19 +5,13 @@ import { Link } from "react-router-dom";
 import GraphOne from "../graph/GraphOne";
 import GraphTwo from "../graph/GraphTwo";
 
+import dataActions from "../Redux/actions/dataActions";
+import { connect } from "react-redux";
+
 class Dashboard extends Component {
-  state = {
-    links: []
-  };
 
   componentDidMount() {
-    fetch("/routes.json")
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          links: data
-        });
-      });
+    this.props.fetchData("routes", "routes")
   }
 
   render() {
@@ -25,7 +19,7 @@ class Dashboard extends Component {
       <Fragment>
         <div className="dashboard-container">
           <div className="dashboard-card-box">
-            {this.state.links.map(link => (
+            {this.props.routes.map(link => (
               <Link to={`/logged/${link.id}`} key={`/${link.id}`}>
                 <Card className="dashboard-grid-content">
                   <Image src={link.img} className="image-background" />
@@ -60,4 +54,13 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+const mapStateToProps = state => ({
+  routes: state.data.routes
+});
+
+const mapDispatchToProps = dataActions;
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dashboard);

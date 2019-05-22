@@ -9,6 +9,7 @@ import userActions from "../Redux/actions/userActions";
 const SignOutButton = () => {
   const signOut = () => {
     firebase.auth().signOut()
+    .then(() =>this.props.fetchUser())
   };
 
   return (
