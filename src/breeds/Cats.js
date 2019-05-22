@@ -61,6 +61,9 @@ class Cats extends Component {
             .update(
               {id: firebase.auth().currentUser.uid}
               )
+
+            // .ref('breeds/' + index + '/favUsers'+ '/' + (breed.favUsers.length + 1))
+            // .update(firebase.auth().currentUser.uid)
     )
     .then(() =>
             firebase
