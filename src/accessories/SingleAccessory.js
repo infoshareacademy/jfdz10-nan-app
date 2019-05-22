@@ -16,6 +16,7 @@ import StyledContent from "../sharedcomponents/StyledContent";
 import { StyledHeader } from "../sharedcomponents/StyledHeader";
 import { addToCart } from "../Redux/reducers/cartReducer";
 import CartStatus from "./CartStatus";
+import firebase from 'firebase'
 
 class SingleAccessory extends Component {
   state = {
@@ -25,14 +26,19 @@ class SingleAccessory extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
+    const accessoriesRef = firebase.database().ref("feed-and-accessories")
 
-    fetch(`/feed-and-accessories.json`)
-      .then(response => response.json())
-      .then(accessories => {
-        const item = accessories.find(item => item.id === Number(id));
+    accessoriesRef.once("value").then(snapshot => {
+      const data = snapshot.val() || [];
+      const item = data.find(item => item.id === Number(id));
+      this.setState({ item });
+    })
 
-        this.setState({ item });
-      });
+    accessoriesRef.on("value", snapshot => {
+      const data = snapshot.val() || [];
+      const item = data.find(item => item.id === Number(id));
+      this.setState({ item });
+    })
   }
 
   increaseAmount = () => {
