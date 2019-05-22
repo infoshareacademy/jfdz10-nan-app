@@ -10,12 +10,16 @@ class CartStatus extends Component {
     this.props.fetchCartItems();
   }
 
+  cartStatusColorHandler() {
+    return this.props.products.length > 0 ? "green" : ""
+  }
+
   render() {
     return (
       <Link to={"/logged/cart"}>
-        <Label>
+        <Label color={this.cartStatusColorHandler()}  size="large">
           <Icon name="cart" />
-          <Label.Detail>Twój koszyk:{this.props.products.length}</Label.Detail>
+          <Label.Detail>Twój koszyk: {this.props.products.length}</Label.Detail>
         </Label>
       </Link>
     );
