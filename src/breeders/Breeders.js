@@ -106,13 +106,13 @@ class Breeders extends Component {
                   </Link>
                   <Card.Content>
                     <Card.Header>
-                      <Link style={{color: 'black'}} to={`breeders/${el.id}`}>
+                      <Link style={{color: 'black'}} to={`/logged/breeders/${el.id}`}>
                       {el.name}
                       </Link>
                     </Card.Header>
                     <Card.Description>
                       {el.description}
-                      <Link style={{fontWeight: 'bold'}}to={`breeders/${el.id}`}>
+                      <Link style={{fontWeight: 'bold'}}to={`/logged/breeders/${el.id}`}>
                         Więcej...
                       </Link>
                     </Card.Description>

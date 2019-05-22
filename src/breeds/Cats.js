@@ -148,11 +148,11 @@ class Cats extends Component {
               {filteredCats.map((el,i) => {
                 return (
                   <Card centered className="cat_card" key={el.id}>
-                    <Link to={`cats/${el.id}`}>
+                    <Link to={`/logged/cats/${el.id}`}>
                       <StyledCardImage style={{backgroundImage: `url(${el.image})`, height: "250px"}}/>
                     </Link> 
                     <Card.Content className="cat_content">        
-                      <Link className="cat_name" to={`cats/${el.id}`}>{el.name}</Link>
+                      <Link className="cat_name" to={`/logged/cats/${el.id}`}>{el.name}</Link>
                     </Card.Content>
                     <Button
                       className="cat_button"
