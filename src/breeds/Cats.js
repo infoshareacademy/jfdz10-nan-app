@@ -57,11 +57,17 @@ class Cats extends Component {
     .then(() =>
             firebase
             .database()
-            .ref('breeds/' + index + 'favUsers')
-            .push(firebase.auth().currentUser.uid)
-
-            // .child(firebase.auth().currentUser.uid)
-            // .set({ id: firebase.auth().currentUser.uid })
+            .ref('breeds/' + index + '/favUsers')
+            .update(
+              {id: firebase.auth().currentUser.uid}
+              )
+    )
+    .then(() =>
+            firebase
+            .database()
+            .ref('users/')         
+            .child(firebase.auth().currentUser.uid)
+            .update({favCatsId: breed.id})
         )
         
   }
