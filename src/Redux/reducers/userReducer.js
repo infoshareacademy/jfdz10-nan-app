@@ -4,7 +4,15 @@ import {
 } from "../actions/userActions";
 
 const initialState = {
-  currentUser: {},
+  currentUser: {
+    login: "",
+    email: "",
+    password: "",
+    img: "",
+    favoriteCats: [],
+    favoriteBreeders: [],
+    favoriteAccessories: []
+  },
   login: "",
   email: "",
   password: ""
@@ -19,7 +27,12 @@ export default function userReducer(state = initialState, action) {
     case FETCH_USER: {
       return {
         ...state,
-        currentUser: action.user
+        currentUser: {
+          login: action.login,
+          email: action.email,
+          password: action.password,
+          img: action.img,
+        }
       };
     }
     case CHANGE_DATA: {

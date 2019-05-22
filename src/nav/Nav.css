@@ -23,10 +23,7 @@ a.active .navigation.button{
 }
 
 .navigation-user-image {
-  background-color: gray !important;
   width: 150px !important;
-  height: 150px !important;
-  align-self: center !important;
 }
 
 .blue-background {
