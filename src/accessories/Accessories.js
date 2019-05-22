@@ -151,7 +151,7 @@ class Accessories extends Component {
                   </Card.Content>
 
                   <Card.Content extra>
-                    <Link to={`/food-and-accessories/${el.id}`}>
+                    <Link to={`/logged/food-and-accessories/${el.id}`}>
                       <Button
                         size="small"
                         className="blue-button"

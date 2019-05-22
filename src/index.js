@@ -8,9 +8,17 @@ import {BrowserRouter as Router} from 'react-router-dom'
 import {Provider as ReduxProvider} from 'react-redux'
 import configureStore from './store.js'
 
-ReactDOM.render(<Router>
-    <ReduxProvider store={configureStore()}>
-    <App /></ReduxProvider></Router>, document.getElementById('root'));
+const AppWithRouterAndRedux = () => {
+  return (
+    <Router>
+      <ReduxProvider store={configureStore()}>
+        <App />
+      </ReduxProvider>
+    </Router>
+  )
+}
+
+ReactDOM.render(<AppWithRouterAndRedux />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
