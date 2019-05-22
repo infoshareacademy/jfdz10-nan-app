@@ -4,7 +4,7 @@ import { Segment, Button, Table } from "semantic-ui-react";
 import StyledContent from "../sharedcomponents/StyledContent";
 import { StyledHeader } from "../sharedcomponents/StyledHeader";
 
-import { fetchCartItems, deleteFromCart } from "./reducers/cartReducer";
+import { fetchCartItems, deleteFromCart } from "../Redux/reducers/cartReducer";
 
 class AccessoriesCart extends Component {
   componentDidMount() {

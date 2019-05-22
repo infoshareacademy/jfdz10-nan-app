@@ -14,7 +14,7 @@ import { connect } from "react-redux";
 import "./Accessories.css";
 import StyledContent from "../sharedcomponents/StyledContent";
 import { StyledHeader } from "../sharedcomponents/StyledHeader";
-import { addToCart } from "./reducers/cartReducer";
+import { addToCart } from "../Redux/reducers/cartReducer";
 import CartStatus from "./CartStatus";
 
 class SingleAccessory extends Component {

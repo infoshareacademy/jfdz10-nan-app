@@ -1,10 +1,6 @@
 import {createStore, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
-<<<<<<< HEAD
-import rootReducer from './rootReducer'
-=======
 import rootReducer from './Redux/reducers/rootReducer'
->>>>>>> develop
 import {composeWithDevTools} from 'redux-devtools-extension'
 
 

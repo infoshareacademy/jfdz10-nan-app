@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Label, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
-import { fetchCartItems } from "./reducers/cartReducer";
+import { fetchCartItems } from "../Redux/reducers/cartReducer";
 
 class CartStatus extends Component {
   componentDidMount() {
@@ -12,7 +12,7 @@ class CartStatus extends Component {
 
   render() {
     return (
-      <Link to={"/cart"}>
+      <Link to={"/logged/cart"}>
         <Label>
           <Icon name="cart" />
           <Label.Detail>Twój koszyk:{this.props.products.length}</Label.Detail>
