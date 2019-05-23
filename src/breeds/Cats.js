@@ -36,6 +36,7 @@ class Cats extends Component {
 
   componentDidMount() {
     this.getCats()
+
     // firebase.auth().onAuthStateChanged(user => {
     //     this.setState({
     //         user
@@ -48,31 +49,36 @@ class Cats extends Component {
       likeCount: breed.likeCount + 1
     }
 
+    // breed.favUsers.map(id => id.favCatsId.includes(firebase.auth().currentUser.uid)
+    // ? null
+    // : 
     firebase.database().ref('breeds/' + index).update(data)
     .then(() => this.setState({
               icon: null
        }))
     .then(() => this.getCats())
-
+    
     .then(() =>
-            firebase
+    firebase
             .database()
             .ref('breeds/' + index + '/favUsers')
             .update(
-              {id: firebase.auth().currentUser.uid}
+              {[breed.favUsers === 0 ? 0 : breed.favUsers.length]: firebase.auth().currentUser.uid}
               )
+		        )
+            // .ref('breeds/' + index + '/favUsers')
+            // .push(firebase.auth().currentUser.uid)
 
-            // .ref('breeds/' + index + '/favUsers'+ '/' + (breed.favUsers.length + 1))
+            // .ref('breeds/' + index + '/favUsers' + '/' + breed.favUsers.length + 1)
             // .update(firebase.auth().currentUser.uid)
-    )
+
     .then(() =>
             firebase
             .database()
-            .ref('users/')         
-            .child(firebase.auth().currentUser.uid)
-            .update({favCatsId: breed.id})
-        )
-        
+            .ref('users/') 
+            .child(firebase.auth().currentUser.uid)        
+            .update({favCats: breed.id})
+        ) 
   }
 
   sortCats = (items, unsortedItems, dir) => {
