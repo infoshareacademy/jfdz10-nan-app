@@ -4,15 +4,15 @@ import { Label, Icon } from "semantic-ui-react";
 const Favorites = props => {
   return (
     <div>
-      {props.userFavIds
-        ? props.userFavIds.map(id => (
-            <Label key={id}>
-              {props.elementsArray
-                .filter(element => element.id === id)
+      {props.userFavArray
+        ? props.userFavArray.map(userFavId => (
+            <Label key={userFavId}>
+              {props.dataArray
+                .filter(data => data.id === userFavId)
                 .map(element => element.name)}
               <Icon
                 name="delete"
-                onClick={() => props.onDelete(id, Object.keys(props.userFavIds))}
+                onClick={() => props.onDelete(userFavId, props.userFavArrayName)}
               />
             </Label>
           ))

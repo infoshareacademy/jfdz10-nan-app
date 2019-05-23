@@ -1,31 +1,49 @@
 import React, { Component, Fragment } from "react";
-import { Label, Icon } from "semantic-ui-react";
-import firebase from 'firebase'
-import FavoritesComponent from "./FavoritesComponent"
+import firebase from "firebase";
+import FavoritesComponent from "./FavoritesComponent";
 
 import userActions from "../Redux/actions/userActions";
-import getNameById from "../Redux/reducers/dataReducer";
 import { connect } from "react-redux";
 
 class Favorites extends Component {
-
-  handleDelete = (userFavIdKey, userFavArray) => {
-    console.log(userFavIdKey)
- }
+  handleDelete = (userFavId, userFavArrayName) => {
+    const newFavArray = this.props.users[userFavArrayName].filter(
+      favId => favId !== userFavId
+    );
+    firebase
+      .database()
+      .ref(`users/${this.props.userId}/${userFavArrayName}`)
+      .set(newFavArray);
+    this.props.fetchData("users", `users/${this.props.userId}`);
+  };
 
   render() {
     const { breeds, breeders, accessories, users } = this.props;
     return (
       <Fragment>
-        
-      <h3 style={{ marginTop: "20px" }}>Koty</h3>
-        <FavoritesComponent favId="users.favCatsId" userFavIds={users.favCatsId} elementsArray={breeds} onDelete={this.handleDelete}/>
-        
-      <h3 style={{ marginTop: "20px" }}>Hodowle</h3>
-            <FavoritesComponent favId="users.favBreedersId" userFavIds={users.favBreedersId} elementsArray={breeders} onDelete={this.handleDelete}/>
-            
-      <h3 style={{ marginTop: "20px" }}>Akcesoria</h3>
-            <FavoritesComponent favId="users.favAccessoriesId" userFavIds={users.favAccessoriesId} elementsArray={accessories} onDelete={this.handleDelete}/>
+        <h3 style={{ marginTop: "20px" }}>Koty</h3>
+        <FavoritesComponent
+          userFavArrayName="favCatsId"
+          userFavArray={users.favCatsId}
+          dataArray={breeds}
+          onDelete={this.handleDelete}
+        />
+
+        <h3 style={{ marginTop: "20px" }}>Hodowle</h3>
+        <FavoritesComponent
+          userFavArrayName="favBreedersId"
+          userFavArray={users.favBreedersId}
+          dataArray={breeders}
+          onDelete={this.handleDelete}
+        />
+
+        <h3 style={{ marginTop: "20px" }}>Akcesoria</h3>
+        <FavoritesComponent
+          userFavArrayName="favAccessoriesId"
+          userFavArray={users.favAccessoriesId}
+          dataArray={accessories}
+          onDelete={this.handleDelete}
+        />
       </Fragment>
     );
   }

@@ -34,11 +34,6 @@ class Profile extends Component {
   componentDidMount() {
   }
 
-  
-  handleDelete = (elementId, keyFav) => {
-    this.setState({user: {...this.state.user, [keyFav]: this.state.user[keyFav].filter( id => id !== elementId)}})
- }
-
   render() {
     const currentUser = this.props.currentUser
     const userImage = {
@@ -86,7 +81,9 @@ class Profile extends Component {
 
 
 const mapStateToProps = state => ({
-  currentUser: state.users.currentUser
+  currentUser: state.users.currentUser,
+  login: state.users.login,
+  password: state.users.password
 });
 
 const mapDispatchToProps = userActions;
