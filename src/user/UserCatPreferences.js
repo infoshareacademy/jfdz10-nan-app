@@ -36,10 +36,18 @@ class UserCatPreferences extends Component {
     });
   }
 
-  handleChange = (e, { value }) => this.setState({ value })
+  handleCharacterChange = (e, { value }) => this.setState({ userPreferences: Object.assign({}, this.state.userPreferences, { character: value } ) })
+  handleAcceptationChange = (e, { value }) => this.setState({ userPreferences: Object.assign({}, this.state.userPreferences, { animalsAcceptation: value } ) })
+  handleHairLostChange = (e, { value }) => this.setState({ userPreferences: Object.assign({}, this.state.userPreferences, { hairLost: value } ) })
+  handleKidsFriendlinessChange = (e, { value }) => this.setState({ userPreferences: Object.assign({}, this.state.userPreferences, { kidsFriendieness: value } ) })
+  handleLifeExpectancyChange = (e, { value }) => this.setState({ userPreferences: Object.assign({}, this.state.userPreferences, { lifeExpectancy: value } ) })
+  handleLoudlinessChange = (e, { value }) => this.setState({ userPreferences: Object.assign({}, this.state.userPreferences, { loudliness: value } ) })
+  handleNeedOfAttentionChange = (e, { value }) => this.setState({ userPreferences: Object.assign({}, this.state.userPreferences, { needOfAttentionChange: value } ) })
+  handleSizeChange = (e, { value }) => this.setState({ userPreferences: Object.assign({}, this.state.userPreferences, { size: value } ) })
+
 
   render() {
-    const {value} = this.state
+    const { value} = this.state
     console.log(this.state)
     return (
       <Fragment>
@@ -53,15 +61,15 @@ class UserCatPreferences extends Component {
               label="Aktywne"
               value="active"
               name="character"
-              checked={value === "active"}
-              onChange={this.handleChange}
+              checked={value}
+              onChange={this.handleCharacterChange}
             />
             <Form.Radio
               label="Spokojne"
               name="character"
               value="calm"
-              checked={value === "calm"}
-              onChange={this.handleChange}
+              checked={value}
+              onChange={this.handleCharacterChange}
             />
           </Form.Group>
         </Form>
@@ -72,16 +80,16 @@ class UserCatPreferences extends Component {
           <Form.Group inline>
             <Form.Radio
               label="Tak"
-              value="true"
-              name="animals-acceptation"
-              checked={value === "true"}
-              onChange={this.handleChange}
+              value={true}
+              name="animalsAcceptation"
+              checked={value}
+              onChange={this.handleAcceptationChange}
             />
             <Form.Radio
               label="Nie"
-              value="false"
-              checked={value === "false"}
-              onChange={this.handleChange}
+              value={false}
+              checked={value}
+              onChange={this.handleAcceptationChange}
             />
           </Form.Group>
         </Form>
@@ -92,15 +100,15 @@ class UserCatPreferences extends Component {
           <Form.Group inline>
             <Form.Radio
               label="Tak"
-              value="true"
-              checked={value === "true"}
-              onChange={this.handleChange}
+              value={true}
+              checked={value}
+              onChange={this.handleHairLostChange}
             />
             <Form.Radio
               label="Nie"
-              value="false"
-              checked={value === "false"}
-              onChange={this.handleChange}
+              value={false}
+              checked={value}
+              onChange={this.handleHairLostChange}
             />
           </Form.Group>
         </Form>
@@ -111,15 +119,15 @@ class UserCatPreferences extends Component {
           <Form.Group inline>
             <Form.Radio
               label="Tak"
-              value="true"
-              checked={value === "true"}
-              onChange={this.handleChange}
+              value={true}
+              checked={value}
+              onChange={this.handleKidsFriendlinessChange}
             />
             <Form.Radio
               label="Nie"
-              value="false"
-              checked={value === "false"}
-              onChange={this.handleChange}
+              value={false}
+              checked={value}
+              onChange={this.handleKidsFriendlinessChange}
             />
           </Form.Group>
         </Form>
@@ -131,20 +139,20 @@ class UserCatPreferences extends Component {
             <Form.Radio
               label="Do 10 lat"
               value="short"
-              checked={value === "short"}
-              onChange={this.handleChange}
+              checked={value}
+              onChange={this.handleLifeExpectancyChange}
             />
             <Form.Radio
               label="Od 10 do 15 lat"
               value="middle"
-              checked={value === "middle"}
-              onChange={this.handleChange}
+              checked={value}
+              onChange={this.handleLifeExpectancyChange}
             />
             <Form.Radio
               label="Powyżej 15 lat"
               value="long"
-              checked={value === "long"}
-              onChange={this.handleChange}
+              checked={value}
+              onChange={this.handleLifeExpectancyChange}
             />
           </Form.Group>
         </Form>
@@ -155,15 +163,15 @@ class UserCatPreferences extends Component {
           <Form.Group inline>
             <Form.Radio
               label="Raczej głośne"
-              value="true"
-              checked={value === "true"}
-              onChange={this.handleChange}
+              value={true}
+              checked={value}
+              onChange={this.handleLoudlinessChange}
             />
             <Form.Radio
               label="Stosunkowo ciche"
-              value="false"
-              checked={value === "false"}
-              onChange={this.handleChange}
+              value={false}
+              checked={value}
+              onChange={this.handleLoudlinessChange}
             />
           </Form.Group>
         </Form>
@@ -174,15 +182,15 @@ class UserCatPreferences extends Component {
           <Form.Group inline>
             <Form.Radio
               label="Stosunkowo mało - do dwóch godzin dziennie."
-              value="true"
-              checked={value === "true"}
-              onChange={this.handleChange}
+              value={true}
+              checked={value}
+              onChange={this.handleNeedOfAttentionChange}
             />
             <Form.Radio
               label="Relatywnie dużo. Kilka godzin dziennie."
-              value="false"
-              checked={value === "false"}
-              onChange={this.handleChange}
+              value={false}
+              checked={value}
+              onChange={this.handleNeedOfAttentionChange}
             />
           </Form.Group>
         </Form>
@@ -194,20 +202,20 @@ class UserCatPreferences extends Component {
             <Form.Radio
               label="Raczej małego."
               value="small"
-              checked={value === "small"}
-              onChange={this.handleChange}
+              checked={value}
+              onChange={this.handleSizeChange}
             />
             <Form.Radio
               label="Średniej wielkości."
               value="middle"
-              checked={value === "middle"}
-              onChange={this.handleChange}
+              checked={value}
+              onChange={this.handleSizeChange}
             />
             <Form.Radio
               label="Marzę o dużym kocie."
               value="big"
-              checked={value === "big"}
-              onChange={this.handleChange}
+              checked={value}
+              onChange={this.handleSizeChange}
             />
           </Form.Group>
           
