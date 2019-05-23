@@ -34,6 +34,23 @@
   align-items: flex-end;
 }
 
+.breeders-form__main__btn--upload--wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.breeders-form__main__btn--upload--wrapper input[type=file] {
+  font-size: 1em !important;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  padding: 10 0 !important;
+  border: solid black 1px;
+  cursor: pointer;
+}
+
 .breeders-form__main__btn--upload {
   background: #1bd3e8 !important;
   color: #fff !important;

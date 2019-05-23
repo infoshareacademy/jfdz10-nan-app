@@ -6,13 +6,68 @@ import {
   Form,
   Segment,
   Dropdown,
-  Placeholder
+  Placeholder,
+  Input
 } from "semantic-ui-react";
 import "./Breeders.css";
+import firebase from "firebase";
+
+var firebaseConfig = {
+  apiKey: "AIzaSyCv_ja9EAiV4rI2O8E1v4-XREFMrCPqN2I",
+  authDomain: "test-8413e.firebaseapp.com",
+  databaseURL: "https://test-8413e.firebaseio.com",
+  projectId: "test-8413e",
+  storageBucket: "test-8413e.appspot.com",
+  messagingSenderId: "1097546633851",
+  appId: "1:1097546633851:web:5eac033873399f84"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 class BreaderAdd extends Component {
   state = {
-    breeders: []
+    breeds: [],
+    name: "",
+    description: "",
+    contactInfo: {
+      city: "",
+      email: "",
+      phoneNo: "",
+      postalCode: "",
+      street: "",
+      website: ""
+    }
+  };
+
+  handleSubmit = () => {
+    firebase.database().ref('breeders/').push(this.state)
+    // console.log(this.state)
+    alert('dodano hodowce')
+    this.setState({
+      breeds: [],
+      name: "",
+      description: "",
+      contactInfo: {
+        city: "",
+        email: "",
+        phoneNo: "",
+        postalCode: "",
+        street: "",
+        website: ""
+      }
+    })
+  };
+
+  handleChangeNested = (obj) => e => {
+    let x = this.state[obj];
+    x[e.target.name] = e.target.value;
+    this.setState({ [obj]: x });
+  };
+
+  handleChangeBasicData = e => {
+    this.setState({
+      [e.currentTarget.name]: e.target.value
+    });
   };
 
   render() {
@@ -23,9 +78,20 @@ class BreaderAdd extends Component {
             <h1>Formularz dodania hodowcy</h1>
           </StyledSingleTitle>
           <Segment>
-            <Form size="large" className="breeders-form">
+            <Form
+              size="large"
+              className="breeders-form"
+              onSubmit={this.handleSubmit}
+            >
               <Form.Group className="breeders-form__top--fields">
-                <Form.Field label="Nazwa hodowcy:" control="input" width={6} />
+                <Form.Field
+                  label="Nazwa hodowcy:"
+                  control="input"
+                  width={6}
+                  name="name"
+                  value={this.state.name}
+                  onChange={this.handleChangeBasicData}
+                />
                 <Form.Field width={7}>
                   <label>Rasy kotów w ofercie:</label>
                   <Dropdown
@@ -47,12 +113,12 @@ class BreaderAdd extends Component {
                       <Placeholder.Image />
                     </Placeholder>
                   </Form.Field>
-                  <Button
-                    type="submit"
-                    className="breeders-form__main__btn--upload"
-                  >
-                    Przeglądaj
-                  </Button>
+                  <div className="breeders-form__main__btn--upload--wrapper">
+                    <Button className="breeders-form__main__btn--upload">
+                      Przeglądaj
+                    </Button>
+                    <Input type="file" name="picture" />
+                  </div>
                 </div>
                 <div>
                   <Form.Group
@@ -60,29 +126,59 @@ class BreaderAdd extends Component {
                     className="breeders-form__main--adress-details"
                   >
                     <label>Adres hodowcy:</label>
-                    <Form.Field label="Ulica:" control="input" type="input" />
+                    <Form.Field
+                      label="Ulica:"
+                      control="input"
+                      type="input"
+                      name="street"
+                      value={this.state.contactInfo.street}
+                      onChange={this.handleChangeNested('contactInfo')}
+                    />
                     <Form.Field
                       label="Kod pocztowy:"
                       control="input"
                       type="input"
+                      name="postalCode"
+                      value={this.state.contactInfo.postalCode}
+                      onChange={this.handleChangeNested('contactInfo')}
                     />
-                    <Form.Field label="Miasto:" control="input" type="input" />
+                    <Form.Field
+                      label="Miasto:"
+                      control="input"
+                      type="input"
+                      name="city"
+                      value={this.state.contactInfo.city}
+                      onChange={this.handleChangeNested('contactInfo')}
+                    />
                   </Form.Group>
                   <Form.Group
                     grouped
                     className="breeders-form__main--contact-details"
                   >
                     <label>Dane kontaktowe:</label>
-                    <Form.Field label="Email:" control="input" type="input" />
+                    <Form.Field
+                      label="Email:"
+                      control="input"
+                      type="input"
+                      name="email"
+                      value={this.state.contactInfo.email}
+                      onChange={this.handleChangeNested('contactInfo')}
+                    />
                     <Form.Field
                       label="Nr telefonu:"
                       control="input"
                       type="input"
+                      name="phoneNo"
+                      value={this.state.contactInfo.phoneNo}
+                      onChange={this.handleChangeNested('contactInfo')}
                     />
                     <Form.Field
                       label="Strona www:"
                       control="input"
                       type="input"
+                      name="website"
+                      value={this.state.contactInfo.website}
+                      onChange={this.handleChangeNested('contactInfo')}
                     />
                   </Form.Group>
                 </div>
@@ -93,6 +189,9 @@ class BreaderAdd extends Component {
                   placeholder="Wpisz tutaj krotki opis hodowcy"
                   rows={9}
                   width={9}
+                  name="description"
+                  value={this.state.description}
+                  onChange={this.handleChangeBasicData}
                 />
                 <div className="breeders-form__bot__img" />
               </div>
