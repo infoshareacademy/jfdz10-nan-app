@@ -17,3 +17,7 @@
     color: #fff !important;
     box-shadow: 0 0 0 0px #1BD3E8 !important;
   }
+
+.blue-button:hover {
+    background: rgb(0, 187, 207) !important;
+  }

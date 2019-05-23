@@ -10,6 +10,7 @@ import Profile from '../user/Profile'
 import SingleCat from '../breeds/SingleCat'
 import AccessoriesCart from '../accessories/AccessoriesCart'
 import SingleBreeder from '../breeders/SingleBreeder'
+import UserCatPreferences from '../user/UserCatPreferences'
 
 class Content extends Component {
   render() {
@@ -25,6 +26,7 @@ class Content extends Component {
         <Route path={"/logged/breeders/:id"} component={SingleBreeder} />
         <Route path={"/logged/food-and-accessories/:id"} component={SingleAccessory} />
         <Route path={"/logged/cart"} component={AccessoriesCart} />
+        <Route path={"/logged/cat-preferences"} component={UserCatPreferences} />
         </div>
     );
   }

@@ -11,7 +11,7 @@ class CartStatus extends Component {
   }
 
   cartStatusColorHandler() {
-    return this.props.products.length > 0 ? "green" : ""
+    return this.props.products.length > 0 ? "teal" : ""
   }
 
   render() {
