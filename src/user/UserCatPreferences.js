@@ -1,20 +1,48 @@
 import React, { Component, Fragment } from "react";
 import { Form, Segment, Button } from "semantic-ui-react";
+import firebase from 'firebase'
 
 import StyledContent from "../sharedcomponents/StyledContent";
 
 class UserCatPreferences extends Component {
   state = {
-      
+    userPreferences: {},
+    characteristics: []
   };
+
+  componentDidMount() {
+    const accessoriesRef = firebase.database().ref("breeds");
+
+    accessoriesRef.once("value").then(snapshot => {
+      const data = snapshot.val() || [];
+      const characteristics = data.map(breed => {
+        return {...breed.characteristics, id: breed.id};
+      });
+      this.setState({
+        breeds: data,
+        characteristics: characteristics
+      });
+    });
+
+    accessoriesRef.on("value", snapshot => {
+      const data = snapshot.val() || [];
+      const characteristics = data.map(breed => {
+        return {...breed.characteristics, id: breed.id};
+      });
+      this.setState({
+        breeds: data,
+        characteristics: characteristics
+      });
+    });
+  }
 
   handleChange = (e, { value }) => this.setState({ value })
 
   render() {
     const {value} = this.state
+    console.log(this.state)
     return (
       <Fragment>
-        
         <StyledContent>
         <h1>Preferencje użytkownika</h1>
       <Segment color='teal'>
@@ -24,11 +52,13 @@ class UserCatPreferences extends Component {
             <Form.Radio
               label="Aktywne"
               value="active"
+              name="character"
               checked={value === "active"}
               onChange={this.handleChange}
             />
             <Form.Radio
               label="Spokojne"
+              name="character"
               value="calm"
               checked={value === "calm"}
               onChange={this.handleChange}
@@ -43,6 +73,7 @@ class UserCatPreferences extends Component {
             <Form.Radio
               label="Tak"
               value="true"
+              name="animals-acceptation"
               checked={value === "true"}
               onChange={this.handleChange}
             />
