@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
 
-import SignOutButton from '../auth/SignOut.js'
+import SignOutButton from "../auth/SignOut.js";
 
 import "semantic-ui-css/semantic.min.css";
 import { Header, Image } from "semantic-ui-react";
@@ -10,9 +10,7 @@ import { Button } from "semantic-ui-react";
 import userActions from "../Redux/actions/userActions";
 import { connect } from "react-redux";
 
-
 class NavUserData extends Component {
-
   render() {
     return (
       <Header
@@ -23,26 +21,25 @@ class NavUserData extends Component {
         style={{ height: "25%" }}
       >
         <Image
-          src={this.props.currentUser.img}
+          src={this.props.currentUser.photoURL}
           size="small"
           circular
           className="navigation-user-image"
           centered
         />
-        <Header.Content className="white-text">{this.props.currentUser.login}</Header.Content>
+        <Header.Content className="white-text">
+          {this.props.currentUser.displayName}
+        </Header.Content>
         <div>
-        <NavLink to='/logged/profile'>
-                <Button>
-                  PROFIL
-                </Button>
-              </NavLink>
-              <SignOutButton />
+          <NavLink to="/logged/profile">
+            <Button>PROFIL</Button>
+          </NavLink>
+          <SignOutButton />
         </div>
       </Header>
     );
   }
 }
-
 
 const mapStateToProps = state => ({
   currentUser: state.users.currentUser
@@ -54,8 +51,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(NavUserData);
-
-
-
-
-

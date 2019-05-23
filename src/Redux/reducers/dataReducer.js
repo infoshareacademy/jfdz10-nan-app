@@ -1,21 +1,20 @@
-import {
-  FETCH_DATA
-} from "../actions/dataActions";
+import { FETCH_DATA } from "../actions/userActions";
 
 const initialState = {
   routes: [],
   breeds: [],
   breeders: [],
   accessories: [],
-  user: []
+  users: {
+  }
 };
 
-export default function userReducer(state = initialState, action) {
+export default function dataReducer(state = initialState, action) {
   switch (action.type) {
     case FETCH_DATA: {
       return {
         ...state,
-        [action.name]: action.snapshot
+        [action.name]: action.snapshot || []
       };
     }
     default: {
@@ -23,3 +22,8 @@ export default function userReducer(state = initialState, action) {
     }
   }
 }
+
+export const getNameById = (data, favId) => {
+  data.filter(data => data.id === favId)
+  .map(element => element.name)
+};

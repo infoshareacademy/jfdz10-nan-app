@@ -1,37 +1,42 @@
-import firebase from "firebase"
+import firebase from "firebase";
 
 export const FETCH_USER = "FETCH_USER";
+export const FETCH_DATA = "FETCH_DATA";
 export const CHANGE_DATA = "CHANGE_DATA";
 
 const fetchUser = () => dispatch => {
-  firebase.auth().onAuthStateChanged(user =>
-    {
-      const id = user.uid
-      const login = user.displayName
-      const email = user.email
-      const password = user.password
-      const img = user.photoURL
+  firebase.auth().onAuthStateChanged(user => {
     dispatch({
       type: FETCH_USER,
-      user,
-      id,
-      login,
-      email,
-      password,
-      img
-    })
-    })
+      user
+    });
+  });
 };
 
-const changeData = (name,input) => {
+const changeData = (name, input) => {
   return {
     type: CHANGE_DATA,
     name,
     input
-  }
-}
+  };
+};
+
+const fetchData = (name, dataRef) => dispatch => {
+  firebase
+    .database()
+    .ref(dataRef)
+    .once("value")
+    .then(snapshot =>
+      dispatch({
+        type: FETCH_DATA,
+        name,
+        snapshot: snapshot.val()
+      })
+    );
+};
 
 export default {
   fetchUser,
+  fetchData,
   changeData
 };

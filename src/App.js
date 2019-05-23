@@ -29,7 +29,6 @@ class App extends Component {
     this.props.fetchUser()
   }
   componentWillUnmount() {
-    this.state.authRef && this.state.authRef();
   }
 
   render() {

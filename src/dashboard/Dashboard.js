@@ -5,13 +5,13 @@ import { Link } from "react-router-dom";
 import GraphOne from "../graph/GraphOne";
 import GraphTwo from "../graph/GraphTwo";
 
-import dataActions from "../Redux/actions/dataActions";
+import userActions from "../Redux/actions/userActions";
 import { connect } from "react-redux";
 
 class Dashboard extends Component {
 
   componentDidMount() {
-    this.props.fetchData("routes", "routes")
+    
   }
 
   render() {
@@ -58,7 +58,7 @@ const mapStateToProps = state => ({
   routes: state.data.routes
 });
 
-const mapDispatchToProps = dataActions;
+const mapDispatchToProps = userActions;
 
 export default connect(
   mapStateToProps,

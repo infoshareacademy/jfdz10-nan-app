@@ -11,6 +11,9 @@ import "./Profile.css";
 import StyledContent from "../sharedcomponents/StyledContent";
 import {StyledSingleTitle} from "../sharedcomponents/StyledHeader"
 
+import userActions from "../Redux/actions/userActions";
+import { connect } from "react-redux";
+
 class Profile extends Component {
   state = {
     user: {
@@ -29,23 +32,15 @@ class Profile extends Component {
   };
 
   componentDidMount() {
-    fetch('/breeds.json')
-      .then(r => r.json())
-      .then(data => this.setState({cats: data}))
-    fetch('/breeders.json')
-      .then(r => r.json())
-      .then(data => this.setState({breeders: data}))
-    fetch('/feed-and-accessories.json')
-      .then(r => r.json())
-      .then(data => this.setState({accessories: data}))
   }
 
+  
   handleDelete = (elementId, keyFav) => {
     this.setState({user: {...this.state.user, [keyFav]: this.state.user[keyFav].filter( id => id !== elementId)}})
  }
 
   render() {
-    const { user } = this.state;
+    const currentUser = this.props.currentUser
     const userImage = {
       maxHeight: "320px"
     };
@@ -54,24 +49,24 @@ class Profile extends Component {
       <Fragment>
         <StyledContent>
         <StyledSingleTitle>
-          <h1>Witaj, {user.login}!</h1>
+          <h1>Witaj, {currentUser.displayName}!</h1>
         </StyledSingleTitle>
           <Segment>
             <div className="user__characteristic">
               <Image
                 style={userImage}
-                src={user.img}
+                src={currentUser.photoURL}
               />
               <div>
                 <Table definition>
                   <Table.Body>
                     <Table.Row>
                       <Table.Cell>Login</Table.Cell>
-                      <Table.Cell>{user.login}</Table.Cell>
+                      <Table.Cell>{currentUser.displayName}</Table.Cell>
                     </Table.Row>
                     <Table.Row>
                       <Table.Cell>E-mail</Table.Cell>
-                      <Table.Cell>{user.email}</Table.Cell>
+                      <Table.Cell>{currentUser.email}</Table.Cell>
                     </Table.Row>
                   </Table.Body>
                 </Table>
@@ -81,9 +76,7 @@ class Profile extends Component {
             <Divider horizontal>
               <Header as="h2">Ulubione</Header>
             </Divider>
-            <Favorites name="Koty" favKey="favoriteCats" parameter={user.favoriteCats} labels={this.state.cats} onDelete={this.handleDelete}/>
-            <Favorites name="Hodowle" favKey="favoriteBreeders" parameter={user.favoriteBreeders} labels={this.state.breeders} onDelete={this.handleDelete}/>
-            <Favorites name="Akcesoria" favKey="favoriteAccessories" parameter={user.favoriteAccessories} labels={this.state.accessories} onDelete={this.handleDelete}/>
+            <Favorites />
           </Segment>
         </StyledContent>
       </Fragment>
@@ -91,4 +84,14 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+
+const mapStateToProps = state => ({
+  currentUser: state.users.currentUser
+});
+
+const mapDispatchToProps = userActions;
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Profile);
