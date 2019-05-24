@@ -63,12 +63,12 @@ class Cats extends Component {
         this.getCats();
     }
 
-    addLike = (breed,index) => {
+    addLike = (breed) => {
         const data = {
             likeCount: breed.likeCount + 1
         }
 
-        firebase.database().ref('breeds/' + index).update(data)
+        firebase.database().ref('breeds/' + breed.id).update(data)
             .then(() => {
                 this.getCats()
             })
@@ -76,7 +76,7 @@ class Cats extends Component {
             (!breed.favUsers || (breed.favUsers && breed.favUsers.length > 0 && !breed.favUsers.includes(firebase.auth().currentUser.uid)) || breed.favUsers === 0)
                ? firebase
                     .database()
-                    .ref('breeds/' + index + '/favUsers')
+                    .ref('breeds/' + breed.id + '/favUsers')
                     .update(
                         {[breed.favUsers ? breed.favUsers.length : 0]: firebase.auth().currentUser.uid}
                         )
@@ -196,7 +196,7 @@ class Cats extends Component {
                                                 pointing: "left",
                                                 content: el.likeCount ? el.likeCount : 0
                                             }}
-                                            onClick={() => this.addLike(el,i)}
+                                            onClick={() => this.addLike(el)}
                                         />
                                     </Card>
                                 );
