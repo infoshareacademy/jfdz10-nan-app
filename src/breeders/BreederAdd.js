@@ -24,6 +24,20 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+const formValid = ({ contactInfo, ...rest }) => {
+  let valid = true;
+
+  Object.values(contactInfo).forEach(val => {
+    val === "" && (valid = false);
+  });
+
+  Object.values(rest).forEach(val => {
+    val === "" && (valid = false);
+  });
+
+  return valid;
+};
+
 class BreaderAdd extends Component {
   state = {
     breeds: [],
@@ -39,26 +53,34 @@ class BreaderAdd extends Component {
     }
   };
 
-  handleSubmit = () => {
-    firebase.database().ref('breeders/').push(this.state)
-    // console.log(this.state)
-    alert('dodano hodowce')
-    this.setState({
-      breeds: [],
-      name: "",
-      description: "",
-      contactInfo: {
-        city: "",
-        email: "",
-        phoneNo: "",
-        postalCode: "",
-        street: "",
-        website: ""
-      }
-    })
+  handleSubmit = e => {
+    e.preventDefault();
+
+    if (formValid(this.state)) {
+      firebase
+        .database()
+        .ref("breeders/")
+        .push(this.state);
+      alert("dodano hodowce");
+      this.setState({
+        breeds: [],
+        name: "",
+        description: "",
+        contactInfo: {
+          city: "",
+          email: "",
+          phoneNo: "",
+          postalCode: "",
+          street: "",
+          website: ""
+        }
+      });
+    } else {
+      alert("wypelnij wszystkie pola");
+    }
   };
 
-  handleChangeNested = (obj) => e => {
+  handleChangeNested = obj => e => {
     let x = this.state[obj];
     x[e.target.name] = e.target.value;
     this.setState({ [obj]: x });
@@ -108,7 +130,7 @@ class BreaderAdd extends Component {
               <div className="breeders-form__main">
                 <div className="breeders-form__main__image">
                   <Form.Field>
-                    <label>Zdjęcie:</label>
+                    <label>Zdjęcie(opcjonalnie):</label>
                     <Placeholder style={{ height: 250, width: 250 }}>
                       <Placeholder.Image />
                     </Placeholder>
@@ -132,7 +154,7 @@ class BreaderAdd extends Component {
                       type="input"
                       name="street"
                       value={this.state.contactInfo.street}
-                      onChange={this.handleChangeNested('contactInfo')}
+                      onChange={this.handleChangeNested("contactInfo")}
                     />
                     <Form.Field
                       label="Kod pocztowy:"
@@ -140,7 +162,7 @@ class BreaderAdd extends Component {
                       type="input"
                       name="postalCode"
                       value={this.state.contactInfo.postalCode}
-                      onChange={this.handleChangeNested('contactInfo')}
+                      onChange={this.handleChangeNested("contactInfo")}
                     />
                     <Form.Field
                       label="Miasto:"
@@ -148,7 +170,7 @@ class BreaderAdd extends Component {
                       type="input"
                       name="city"
                       value={this.state.contactInfo.city}
-                      onChange={this.handleChangeNested('contactInfo')}
+                      onChange={this.handleChangeNested("contactInfo")}
                     />
                   </Form.Group>
                   <Form.Group
@@ -159,10 +181,11 @@ class BreaderAdd extends Component {
                     <Form.Field
                       label="Email:"
                       control="input"
-                      type="input"
+                      type="email"
                       name="email"
                       value={this.state.contactInfo.email}
-                      onChange={this.handleChangeNested('contactInfo')}
+                      onChange={this.handleChangeNested("contactInfo")}
+                      style={{padding: 0, borderRadius: 0}}
                     />
                     <Form.Field
                       label="Nr telefonu:"
@@ -170,7 +193,7 @@ class BreaderAdd extends Component {
                       type="input"
                       name="phoneNo"
                       value={this.state.contactInfo.phoneNo}
-                      onChange={this.handleChangeNested('contactInfo')}
+                      onChange={this.handleChangeNested("contactInfo")}
                     />
                     <Form.Field
                       label="Strona www:"
@@ -178,7 +201,7 @@ class BreaderAdd extends Component {
                       type="input"
                       name="website"
                       value={this.state.contactInfo.website}
-                      onChange={this.handleChangeNested('contactInfo')}
+                      onChange={this.handleChangeNested("contactInfo")}
                     />
                   </Form.Group>
                 </div>
