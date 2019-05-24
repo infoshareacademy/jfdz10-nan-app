@@ -3,17 +3,14 @@ import { connect } from "react-redux";
 import { Progress } from "semantic-ui-react";
 import firebase from "firebase";
 
-
 import StyledContent from "../sharedcomponents/StyledContent";
 
 class UserCatMatch extends Component {
+  state = {
+    characteristics: []
+  };
 
-  state ={
-    characteristis: [],
-    
-  }
-
-  componentDidMount() {
+  getData = () => {
     const accessoriesRef = firebase.database().ref("breeds");
 
     accessoriesRef.once("value").then(snapshot => {
@@ -37,39 +34,66 @@ class UserCatMatch extends Component {
         characteristics: characteristics
       });
     });
-
-
-  }
-
-  
-
-  getItemsByUserPreferences = (products, userPreferences) => {
-    this.setState({
-      userRating: products.map(product => {
-        const rating = Object.keys(product).reduce((acc, productKey) => {
-          return product[productKey] === userPreferences[productKey]
-            ? acc + 1
-            : acc;
-        }, 0);
-        const id = product.id;
-        return { id, rating };
-      })
-    });
-    console.log(this.state.userRating)
-
   };
 
-  saveUserPreferences = () => { 
-    this.getItemsByUserPreferences(this.state.characteristics, this.state.userPreferences);
-    console.log(this.state.userRating)
-    // this.state.userRating.map(item => {
-    //   firebase.database().ref('users/'+ this.props.uid + '/userRating').set({id: item.id, rating: item.rating})
-    // })
-    
+  // getItemsByUserPreferences = (products, userPreferences) => {
+  //   this.setState({
+  //     userRating: products.map(product => {
+  //       const rating = Object.keys(product).reduce((acc, productKey) => {
+  //         return product[productKey] === userPreferences[productKey]
+  //           ? acc + 1
+  //           : acc;
+  //       }, 0);
+  //       const id = product.id;
+  //       return { id, rating };
+  //     })
+  //   });
+  //   console.log(this.state.userRating);
+  // };
+
+  componentDidMount() {
+    this.getData();
+    // this.getItemsByUserPreferences(
+    //   this.state.characteristics,
+    //   this.props.userPreferences
+    // );
+    // console.log(
+    //   this.state,
+    //   this.state.userRating,
+    //   this.state.characteristics,
+    //   this.props.userPreferences
+    // );
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.characteristics !== this.state.characteristics) {
+      const products = this.state.characteristics;
+      const userPreferences = this.props.userPreferences
+      this.setState({
+        userRating: products.map(product => {
+          const rating = Object.keys(product).reduce((acc, productKey) => {
+            return product[productKey] === userPreferences[productKey]
+              ? acc + 1
+              : acc;
+          }, 0);
+          const id = product.id;
+          return { id, rating };
+        })
+      });
+      console.log(this.state.userRating);
+    };
+    }
+  
+
+  compareNumbers = (a, b) => {
+    const ratingA = a.rating;
+    const ratingB = b.rating;
+    return ratingA - ratingB;
+  };
+
   render() {
-      console.log(this.props.userPreferences)
+    console.log(this.state);
+    // const sortedUserRating = this.state.userRating.sort(() => this.compareNumbers())
     return (
       <Fragment>
         <StyledContent>
@@ -86,4 +110,8 @@ class UserCatMatch extends Component {
   }
 }
 
-export default UserCatMatch;
+const mapStateToProps = state => ({
+  userPreferences: state.userPreferences.userPreferences
+});
+
+export default connect(mapStateToProps)(UserCatMatch);
