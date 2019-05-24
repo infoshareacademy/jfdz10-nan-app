@@ -45,7 +45,7 @@ class Dashboard extends Component {
             <Segment textAlign='center'size="large">
               <h2>Szukasz dla siebie wymarzonego kota, ale wciąż nie wiesz jaką rasę wybrać?</h2>
               <p>Odpowiedz nam na kilka pytań, a my dobierzemy najwłaściwszą dla Ciebie rasę.</p>
-              <Link to="/logged/cat-preferences"><Button className="blue-button">Dobierz kota</Button></Link>
+              <Link to="/logged/profile/cat-preferences"><Button className="blue-button">Dobierz kota</Button></Link>
             </Segment >
             <div className="graph">
               <Item.Header className="dashboard-graph-header">

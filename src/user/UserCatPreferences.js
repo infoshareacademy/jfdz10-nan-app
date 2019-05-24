@@ -1,40 +1,16 @@
 import React, { Component, Fragment } from "react";
-import { Form, Segment, Button } from "semantic-ui-react";
-import firebase from "firebase";
-
+import { Form, Segment, Button, Radio } from "semantic-ui-react";
+import { Link } from 'react-router-dom'
 import StyledContent from "../sharedcomponents/StyledContent";
+import { connect } from "react-redux";
+import { setUserPreferences } from '../Redux/reducers/userPreferencesReducer'
+
+import "../accessories/Accessories.css";
 
 class UserCatPreferences extends Component {
   state = {
     userPreferences: {},
-    characteristics: []
   };
-
-  componentDidMount() {
-    const accessoriesRef = firebase.database().ref("breeds");
-
-    accessoriesRef.once("value").then(snapshot => {
-      const data = snapshot.val() || [];
-      const characteristics = data.map(breed => {
-        return { ...breed.characteristics, id: breed.id };
-      });
-      this.setState({
-        breeds: data,
-        characteristics: characteristics
-      });
-    });
-
-    accessoriesRef.on("value", snapshot => {
-      const data = snapshot.val() || [];
-      const characteristics = data.map(breed => {
-        return { ...breed.characteristics, id: breed.id };
-      });
-      this.setState({
-        breeds: data,
-        characteristics: characteristics
-      });
-    });
-  }
 
   handleCharacterChange = (e, { value }) =>
     this.setState({
@@ -81,7 +57,7 @@ class UserCatPreferences extends Component {
   handleNeedOfAttentionChange = (e, { value }) =>
     this.setState({
       userPreferences: Object.assign({}, this.state.userPreferences, {
-        needOfAttentionChange: value
+        needOfAttention: value
       })
     });
 
@@ -91,28 +67,12 @@ class UserCatPreferences extends Component {
         size: value
       })
     });
-  
-  getItemsByUserPreferences = (products, userPreferences) => {
-    this.setState({
-      characteristics: products.map(product => {
-        const rating = Object.keys(product).reduce((acc, productKey) => {
-          return product[productKey] === userPreferences[productKey]
-            ? acc + 1
-            : acc
-        }, 0);
-        return {...product, rating}      
-      })
-    })  
-    
-      
-    }
-  
+
+
 
   render() {
-    const { value } = this.state;
-    const products = this.state.characteristics;
-    const userPreferences = this.state.userPreferences
-
+    const userPreferences = this.state.userPreferences;
+  
     console.log(this.state);
     return (
       <Fragment>
@@ -123,17 +83,17 @@ class UserCatPreferences extends Component {
               <p>Wolisz zwierzęta aktywne, czy spokojne?</p>
               <Form.Group inline>
                 <Form.Radio
+                  control={Radio}
                   label="Aktywne"
-                  value="active"
-                  name="character"
-                  checked={value}
+                  value={"active"}
+                  checked={userPreferences.character === "active"}
                   onChange={this.handleCharacterChange}
                 />
                 <Form.Radio
+                  control={Radio}
                   label="Spokojne"
-                  name="character"
-                  value="calm"
-                  checked={value}
+                  value={"calm"}
+                  checked={userPreferences.character === "calm"}
                   onChange={this.handleCharacterChange}
                 />
               </Form.Group>
@@ -144,16 +104,17 @@ class UserCatPreferences extends Component {
               <p>Czy w Twoim domu mieszkają także inne zwierzęta np. pies?</p>
               <Form.Group inline>
                 <Form.Radio
+                  control={Radio}
                   label="Tak"
                   value={true}
-                  name="animalsAcceptation"
-                  checked={value}
+                  checked={userPreferences.animalsAcceptation === true}
                   onChange={this.handleAcceptationChange}
                 />
                 <Form.Radio
+                  control={Radio}
                   label="Nie"
                   value={false}
-                  checked={value}
+                  checked={userPreferences.animalsAcceptation === false}
                   onChange={this.handleAcceptationChange}
                 />
               </Form.Group>
@@ -164,15 +125,17 @@ class UserCatPreferences extends Component {
               <p>Czy przeszkadza Ci jeśli zwierzę będzie zostawiało sierść?</p>
               <Form.Group inline>
                 <Form.Radio
+                  control={Radio}
                   label="Tak"
                   value={true}
-                  checked={value}
+                  checked={userPreferences.hairLost === true}
                   onChange={this.handleHairLostChange}
                 />
                 <Form.Radio
+                  control={Radio}
                   label="Nie"
                   value={false}
-                  checked={value}
+                  checked={userPreferences.hairLost === false}
                   onChange={this.handleHairLostChange}
                 />
               </Form.Group>
@@ -183,15 +146,17 @@ class UserCatPreferences extends Component {
               <p>Czy kot będzie miał częsty kontakt z dziećmi?</p>
               <Form.Group inline>
                 <Form.Radio
+                  control={Radio}
                   label="Tak"
                   value={true}
-                  checked={value}
+                  checked={userPreferences.kidsFriendieness === true}
                   onChange={this.handleKidsFriendlinessChange}
                 />
                 <Form.Radio
+                  control={Radio}
                   label="Nie"
                   value={false}
-                  checked={value}
+                  checked={userPreferences.kidsFriendieness === false}
                   onChange={this.handleKidsFriendlinessChange}
                 />
               </Form.Group>
@@ -205,21 +170,24 @@ class UserCatPreferences extends Component {
               </p>
               <Form.Group inline>
                 <Form.Radio
+                  control={Radio}
                   label="Do 10 lat"
-                  value="short"
-                  checked={value}
+                  value={"short"}
+                  checked={userPreferences.lifeExpectancy === "short"}
                   onChange={this.handleLifeExpectancyChange}
                 />
                 <Form.Radio
+                  control={Radio}
                   label="Od 10 do 15 lat"
-                  value="middle"
-                  checked={value}
+                  value={"middle"}
+                  checked={userPreferences.lifeExpectancy === "middle"}
                   onChange={this.handleLifeExpectancyChange}
                 />
                 <Form.Radio
+                  control={Radio}
                   label="Powyżej 15 lat"
-                  value="long"
-                  checked={value}
+                  value={"long"}
+                  checked={userPreferences.lifeExpectancy === "long"}
                   onChange={this.handleLifeExpectancyChange}
                 />
               </Form.Group>
@@ -230,15 +198,17 @@ class UserCatPreferences extends Component {
               <p>Jakiego typu zwierzęta lubisz?</p>
               <Form.Group inline>
                 <Form.Radio
+                  control={Radio}
                   label="Raczej głośne"
                   value={true}
-                  checked={value}
+                  checked={userPreferences.loudliness === true}
                   onChange={this.handleLoudlinessChange}
                 />
                 <Form.Radio
+                  control={Radio}
                   label="Stosunkowo ciche"
                   value={false}
-                  checked={value}
+                  checked={userPreferences.loudliness === false}
                   onChange={this.handleLoudlinessChange}
                 />
               </Form.Group>
@@ -249,15 +219,17 @@ class UserCatPreferences extends Component {
               <p>Jak wiele czasu jesteś w stanie poświęcić swojemu kotu?</p>
               <Form.Group inline>
                 <Form.Radio
+                  control={Radio}
                   label="Stosunkowo mało - do dwóch godzin dziennie."
                   value={true}
-                  checked={value}
+                  checked={userPreferences.needOfAttention === true}
                   onChange={this.handleNeedOfAttentionChange}
                 />
                 <Form.Radio
+                  control={Radio}
                   label="Relatywnie dużo. Kilka godzin dziennie."
                   value={false}
-                  checked={value}
+                  checked={userPreferences.needOfAttention === false}
                   onChange={this.handleNeedOfAttentionChange}
                 />
               </Form.Group>
@@ -268,31 +240,49 @@ class UserCatPreferences extends Component {
               <p>Koty różnią się wielkością. Jak dużego kota chciałbyś mieć?</p>
               <Form.Group inline>
                 <Form.Radio
+                  control={Radio}
                   label="Raczej małego."
-                  value="small"
-                  checked={value}
+                  value={"small"}
+                  checked={userPreferences.size === "small"}
                   onChange={this.handleSizeChange}
                 />
                 <Form.Radio
+                  control={Radio}
                   label="Średniej wielkości."
-                  value="middle"
-                  checked={value}
+                  value={"middle"}
+                  checked={userPreferences.size === "middle"}
                   onChange={this.handleSizeChange}
                 />
                 <Form.Radio
+                  control={Radio}
                   label="Marzę o dużym kocie."
-                  value="big"
-                  checked={value}
+                  value={"big"}
+                  checked={userPreferences.size === "big"}
                   onChange={this.handleSizeChange}
                 />
               </Form.Group>
             </Form>
           </Segment>
-          <Button onClick={() => this.getItemsByUserPreferences(products, userPreferences)}>Poznaj wynik</Button>
+          <Link to={"/logged/profile/cat-match"}>
+          <Button className="blue__button"
+            
+            onClick={() => this.props.setUserPreferences(userPreferences)}
+          >
+            Poznaj wynik
+          </Button>
+          </Link>
         </StyledContent>
       </Fragment>
     );
   }
 }
 
-export default UserCatPreferences;
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = {
+  setUserPreferences
+};
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserCatPreferences);
