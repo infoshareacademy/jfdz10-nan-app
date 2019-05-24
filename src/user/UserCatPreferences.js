@@ -93,20 +93,26 @@ class UserCatPreferences extends Component {
     });
   
   getItemsByUserPreferences = (products, userPreferences) => {
-      return products.map(product => {
+    this.setState({
+      characteristics: products.map(product => {
         const rating = Object.keys(product).reduce((acc, productKey) => {
           return product[productKey] === userPreferences[productKey]
             ? acc + 1
             : acc
-        }, 0)
-    
-        return console.log({...product, rating})
+        }, 0);
+        return {...product, rating}      
       })
+    })  
+    
+      
     }
   
 
   render() {
     const { value } = this.state;
+    const products = this.state.characteristics;
+    const userPreferences = this.state.userPreferences
+
     console.log(this.state);
     return (
       <Fragment>
@@ -282,7 +288,7 @@ class UserCatPreferences extends Component {
               </Form.Group>
             </Form>
           </Segment>
-          <Button onClick={() => this.getItemsByUserPreferences(this.state.characteristics, this.state.userPreferences)}>Poznaj wynik</Button>
+          <Button onClick={() => this.getItemsByUserPreferences(products, userPreferences)}>Poznaj wynik</Button>
         </StyledContent>
       </Fragment>
     );
