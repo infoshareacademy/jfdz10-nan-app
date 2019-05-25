@@ -7,7 +7,6 @@ import {
   Segment,
   Dropdown,
   Placeholder,
-  Input
 } from "semantic-ui-react";
 import "./Breeders.css";
 import firebase from "firebase";
@@ -55,13 +54,14 @@ class BreaderAdd extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    const ref = firebase.database().ref("breeders")
 
     if (formValid(this.state)) {
-      firebase
-        .database()
-        .ref("breeders/")
-        .push(this.state);
-        console.log(this.state)
+      const newBreederId = ref.push().key;
+            ref.child(newBreederId).set({
+				id: newBreederId,
+				...this.state
+            })
       alert("dodano hodowce");
       this.setState({
         breeds: [],
