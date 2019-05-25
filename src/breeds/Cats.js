@@ -143,7 +143,6 @@ class Cats extends Component {
     };
 
     getIcon = (breed) => {
-        console.log(this.state.userData)
         if (this.state.userData && this.state.userData.favCats && this.state.userData.favCats.length >= 0) {
             return this.state.userData.favCats.includes(breed.id) ? null : 'heart'
         } else {
