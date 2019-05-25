@@ -86,7 +86,15 @@ class Avatar extends Component {
     <div>
       <h3 style={{ marginTop: "20px" }}>{this.props.name}</h3>
         <label htmlFor="raised-button-file">
-            <Fab  style={{marginRight: '20px'}} size="small" color="default" component="span" onChange={this.handleOnInputFileChange}>
+            <input
+                    accept="image/*"
+                    style={{ display: 'none' }}
+                    id="raised-button-file"
+                    multiple
+                    type="file"
+                    onChange={this.handleOnInputFileChange}
+                />
+            <Fab  style={{marginRight: '20px'}} size="small" color="default" component="span">
                 <ImageIcon />
             </Fab>
         </label>
