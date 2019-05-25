@@ -1,9 +1,11 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Progress } from "semantic-ui-react";
+import { Progress, Image, Segment } from "semantic-ui-react";
 import firebase from "firebase";
+import { Link } from "react-router-dom";
 
 import StyledContent from "../sharedcomponents/StyledContent";
+import { StyledHeader } from "../sharedcomponents/StyledHeader";
 
 class UserCatMatch extends Component {
   state = {
@@ -36,39 +38,25 @@ class UserCatMatch extends Component {
     });
   };
 
-  // getItemsByUserPreferences = (products, userPreferences) => {
-  //   this.setState({
-  //     userRating: products.map(product => {
-  //       const rating = Object.keys(product).reduce((acc, productKey) => {
-  //         return product[productKey] === userPreferences[productKey]
-  //           ? acc + 1
-  //           : acc;
-  //       }, 0);
-  //       const id = product.id;
-  //       return { id, rating };
-  //     })
-  //   });
-  //   console.log(this.state.userRating);
-  // };
-
   componentDidMount() {
     this.getData();
-    // this.getItemsByUserPreferences(
-    //   this.state.characteristics,
-    //   this.props.userPreferences
-    // );
-    // console.log(
-    //   this.state,
-    //   this.state.userRating,
-    //   this.state.characteristics,
-    //   this.props.userPreferences
-    // );
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if(prevState.characteristics !== this.state.characteristics) {
+    if (prevState.userRating !== this.state.userRating) {
+      const breeds = this.state.breeds;
+      const rating = this.state.userRating;
+      this.setState({
+        breedsWithRating: breeds.map(breed => ({
+          ...rating.find(rate => rate.id === breed.id && rate),
+          ...breed
+        }))
+      });
+    }
+
+    if (prevState.characteristics !== this.state.characteristics) {
       const products = this.state.characteristics;
-      const userPreferences = this.props.userPreferences
+      const userPreferences = this.props.userPreferences;
       this.setState({
         userRating: products.map(product => {
           const rating = Object.keys(product).reduce((acc, productKey) => {
@@ -81,9 +69,8 @@ class UserCatMatch extends Component {
         })
       });
       console.log(this.state.userRating);
-    };
     }
-  
+  }
 
   compareNumbers = (a, b) => {
     const ratingA = a.rating;
@@ -93,17 +80,36 @@ class UserCatMatch extends Component {
 
   render() {
     console.log(this.state);
+
     // const sortedUserRating = this.state.userRating.sort(() => this.compareNumbers())
     return (
       <Fragment>
         <StyledContent>
-          <Progress
-            value=""
-            total="9"
-            progress="ratio"
-            label="cat name"
-            color="teal"
-          />
+          <StyledHeader>
+            <h1 style={{ paddingTop: "16px" }}>
+              Koty najlepiej pasujące do ciebie
+            </h1>
+          </StyledHeader>
+          {this.state.breedsWithRating &&
+            this.state.breedsWithRating.map(breed => (
+              <Link to={`/logged/cats/${breed.id}`}>
+                <Segment style={{ margin: "10px" }}>
+                  <Image
+                    style={{ margin: "10px" }}
+                    src={breed.image}
+                    size="small"
+                    verticalAlign="middle"
+                  />
+                  <span style={{ fontSize: "1.5rem" }}>{breed.name}</span>
+                  <Progress
+                    value={breed.rating}
+                    total="9"
+                    progress="ratio"
+                    color="teal"
+                  />
+                </Segment>
+              </Link>
+            ))}
         </StyledContent>
       </Fragment>
     );
