@@ -10,7 +10,6 @@ import CatSorter from "./CatSorter";
 import firebase from 'firebase'
 
 import StyledCardImage from '../sharedcomponents/StyledCardImage'
-import { FETCH_USER } from "../Redux/actions/userActions";
 
 class Cats extends Component {
     state = {
@@ -25,7 +24,7 @@ class Cats extends Component {
         icon: "heart"
     };
 
-    getCats = () => {
+  getCats = () => {
         firebase.database().ref('breeds')
             .once("value")
             .then(cats => {
@@ -67,30 +66,35 @@ class Cats extends Component {
         const data = {
             likeCount: breed.likeCount + 1
         }
-
-        firebase.database().ref('breeds/' + breed.id).update(data)
+        
+       firebase.database().ref('breeds/' + breed.id).update(data)
             .then(() => {
                 this.getCats()
             })
             .then(() =>
             (!breed.favUsers || (breed.favUsers && breed.favUsers.length > 0 && !breed.favUsers.includes(firebase.auth().currentUser.uid)) || breed.favUsers === 0)
-               ? firebase
+            
+                    ? firebase
                     .database()
                     .ref('breeds/' + breed.id + '/favUsers')
                     .update(
                         {[breed.favUsers ? breed.favUsers.length : 0]: firebase.auth().currentUser.uid}
                         )
-                : null)
+                : null)       
                     
             .then(() =>
-                firebase
+            (!this.state.userData.favCats || (this.state.userData.favCats && this.state.userData.favCats.length > 0 && !this.state.userData.favCats.includes(breed.id)))
+                ? firebase
                     .database()
                     .ref('users/')
                     .child(firebase.auth().currentUser.uid)
                     .child('favCats')
                     .update({[(this.state.userData.favCats && this.state.userData.favCats.length > 0) ? this.state.userData.favCats.length : 0]: breed.id})
-            )
+            
+            : null)
             .then(() => this.getUserData())
+            
+        
     }
 
     sortCats = (items, unsortedItems, dir) => {
@@ -175,7 +179,7 @@ class Cats extends Component {
 
                         <Divider/>
                         <Card.Group className="cat_card_group" itemsPerRow={2}>
-                            {filteredCats.map((el, i) => {
+                            {filteredCats.map((el) => {
                                 return (
                                     <Card centered className="cat_card" key={el.id}>
                                         <Link to={`/logged/cats/${el.id}`}>

@@ -30,7 +30,7 @@ class Sign extends Component {
             .database()
             .ref("users")
             .child(firebase.auth().currentUser.uid)
-            .set({ id: firebase.auth().currentUser.uid })
+            .set({ id: firebase.auth().currentUser.uid})
         )
         .then(() => (window.location.href = "/logged"))
 
