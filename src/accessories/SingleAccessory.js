@@ -28,18 +28,11 @@ class SingleAccessory extends Component {
     const id = this.props.match.params.id;
     const accessoriesRef = firebase.database().ref("feed-and-accessories")
 
-<<<<<<< HEAD
-    fetch("https://jfdz10nan-app.firebaseio.com/feed-and-accessories.json")
-      .then(response => response.json())
-      .then(accessories => {
-        const item = accessories.find(item => item.id === Number(id));
-=======
     accessoriesRef.once("value").then(snapshot => {
       const data = snapshot.val() || [];
       const item = data.find(item => item.id === Number(id));
       this.setState({ item });
     })
->>>>>>> develop
 
     accessoriesRef.on("value", snapshot => {
       const data = snapshot.val() || [];

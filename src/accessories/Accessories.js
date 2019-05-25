@@ -23,20 +23,6 @@ class Accessories extends Component {
   };
 
   componentDidMount() {
-<<<<<<< HEAD
-    fetch("https://jfdz10nan-app.firebaseio.com/feed-and-accessories.json")
-      .then(response => response.json())
-      .then(data => {
-        const categories = data.map(accessory => {
-          return accessory.category;
-        });
-
-        this.setState({
-          accessories: data,
-          unsortedAccessories: data,
-          categories: [...new Set(categories)]
-        });
-=======
     const accessoriesRef = firebase.database().ref("feed-and-accessories");
 
     accessoriesRef.once("value").then(snapshot => {
@@ -55,7 +41,6 @@ class Accessories extends Component {
       const data = snapshot.val() || [];
       const categories = data.map(accessory => {
         return accessory.category;
->>>>>>> develop
       });
       this.setState({
         accessories: data,
