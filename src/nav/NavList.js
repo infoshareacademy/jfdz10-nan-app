@@ -29,13 +29,13 @@ class Nav extends Component {
         <Divider inverted />
         <Container style={{ height: "45%" }}>
           <Button.Group vertical className="flex-center button-box padding-fifteen">
-              <NavLink exact to="/">
+              <NavLink exact to="/logged">
                 <Button className="navigation">
                   STRONA GŁÓWNA
                 </Button>
               </NavLink>
             {this.state.elements.map(link => (
-              <NavLink to={`/${link.id}`} key={`/${link.id}`}>
+              <NavLink to={`/logged/${link.id}`} key={`/${link.id}`}>
                 <Button className="navigation">
                   {link.label.toUpperCase()}
                 </Button>

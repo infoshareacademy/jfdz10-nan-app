@@ -7,32 +7,32 @@ import {
   Header
 } from "semantic-ui-react";
 
-import "./Cats.css";
+import "../breeders/Breeders.css";
 import StyledContent from "../sharedcomponents/StyledContent";
 import {StyledSingleTitle} from "../sharedcomponents/StyledHeader"
 
-class SingleCat extends Component {
+class SingleBreeder extends Component {
   state = {
-    cat: {
-      metrics: {}
+    breeder: {
+      contactInfo: {}
     },
   };
 
   componentDidMount() {
     const id = this.props.match.params.id;
 
-    fetch(`/breeds.json`)
+    fetch(`/breeders.json`)
     .then(response => response.json())
-    .then(breeds => {
-      const cat = breeds.find(cat => cat.id === Number(id));
+    .then(breeders => {
+      const breeder = breeders.find(breeder => breeder.id === Number(id));
 
-      this.setState({ cat });
+      this.setState({ breeder });
       
   });
 }
 
 render() {
-  const { cat } = this.state;
+  const { breeder } = this.state;
   
   const productImage = {
     maxHeight: "320px",
@@ -43,34 +43,34 @@ render() {
     <Fragment>
       <StyledContent>
         <StyledSingleTitle>
-          <h1>Rasy kotów</h1>
+          <h1>Hodowcy</h1>
         </StyledSingleTitle>
 
         <Segment >
-          <div className="cat__characteristic">
+          <div className="breeder__characteristic">
             <Image
               style={productImage}
-              src={cat.image}
+              src={breeder.img}
             />
             <div>
-              <h1> {cat.name} </h1>
+              <h1> {breeder.name} </h1>
               <Table definition>
                 <Table.Body>
                   <Table.Row>
-                    <Table.Cell width={2}>Wzrost</Table.Cell>
-                    <Table.Cell>{cat.metrics.heigh}</Table.Cell>
+                    <Table.Cell width={5}>Adres</Table.Cell>
+                    <Table.Cell>{`ul.${breeder.contactInfo.street}, ${breeder.contactInfo.postalCode} ${breeder.contactInfo.city}`}</Table.Cell>
                   </Table.Row>
                   <Table.Row>
-                    <Table.Cell>Waga</Table.Cell>
-                    <Table.Cell>{cat.metrics.weight}</Table.Cell>
+                    <Table.Cell>Email</Table.Cell>
+                    <Table.Cell>{breeder.contactInfo.email}</Table.Cell>
                   </Table.Row>
                   <Table.Row>
-                    <Table.Cell>Kolor</Table.Cell>
-                    <Table.Cell>{cat.metrics.color}</Table.Cell>
+                    <Table.Cell>Nr telefonu</Table.Cell>
+                    <Table.Cell>{breeder.contactInfo.phoneNo}</Table.Cell>
                   </Table.Row>
                   <Table.Row>
-                    <Table.Cell>Długość życia</Table.Cell>
-                    <Table.Cell>{cat.metrics.lifeExpectancy}</Table.Cell>
+                    <Table.Cell>Strona www</Table.Cell>
+                    <Table.Cell>{breeder.contactInfo.website}</Table.Cell>
                   </Table.Row>
                 </Table.Body>
               </Table>
@@ -80,7 +80,7 @@ render() {
           <Divider horizontal>
             <Header as="h2">Opis</Header>
           </Divider>
-          <div className="cat__description">{cat.description}</div>
+          <div className="breeder__description">{breeder.description}</div>
         </Segment>
       </StyledContent>
     </Fragment>
@@ -88,5 +88,4 @@ render() {
 }
 }
 
-
-export default SingleCat
+export default SingleBreeder

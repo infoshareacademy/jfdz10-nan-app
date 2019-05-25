@@ -8,6 +8,10 @@
     align-items: center;
 }
 
+.sort__trigger {
+    margin-left: 2rem;
+}
+
 .blue-button {
     background: #1BD3E8 !important;
     color: #fff !important;

@@ -3,17 +3,6 @@
   text-align: center;
 }
 
-.cat_input {
-  margin: 10px 0;
-  width: 400px
-}
-
-.cat_input .ui.button {
-  background: #1BD3E8 !important;
-  color: #fff !important;
-  box-shadow: 0 0 0 0px #1BD3E8 !important;
-}
-
 .cat_card_group {
   margin: 0 2rem !important;
   justify-content: space-around !important;

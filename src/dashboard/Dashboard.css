@@ -3,6 +3,7 @@
   justify-content: space-around;
   height: 100vh;
   background: url(./cat-grey.png);
+  margin: 0 -2rem;
 }
 
 .dashboard-card-box {
