@@ -7,27 +7,93 @@ import {Link } from "react-router-dom";
 import "../breeders/Breeders.css";
 import BreederSearch from "./BreederSearch";
 import BreederFilters from "./BreederFilters";
+import firebase from 'firebase'
 
 class Breeders extends Component {
   state = {
     breeders: [],
+    userData: null,
+    userId: null,
     unsortedBreeders: [],
     filter: {
       text: ""
     },
-    dir: null
+    dir: null,
+    icon: "heart"
+  };
+
+  getBreeders = () => {
+    firebase.database().ref('breeders')
+        .once("value")
+        .then(data => {
+            this.setState({
+                breeders: data.val(),
+                unsortedBreeders: data.val(),
+            })
+        })
+};
+
+  getUserData = () => {
+    if (this.state.userData.id) {
+        firebase.database().ref('users/' + this.state.userData.id)
+            .once("value")
+            .then(userData => {
+                this.setState({
+                    userData: userData.val(),
+                })
+            })
+    }
+
   };
 
   componentDidMount() {
-    fetch("https://jfdz10nan-app.firebaseio.com/breeders.json")
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          breeders: data,
-          unsortedBreeders: data
-        });
-      });
+    firebase.auth().onAuthStateChanged(user =>
+        firebase.database().ref('users/' + user.uid)
+            .once("value")
+            .then(userData => {
+                this.setState({
+                    userData: userData.val(),
+                })
+            })
+    )
+
+    this.getBreeders();
   }
+
+  addLike = (breeder) => {
+    const data = {
+        likeCount: breeder.likeCount + 1
+    }
+    return (
+    (!breeder.favUsers || (breeder.favUsers && breeder.favUsers.length > 0 && !breeder.favUsers.includes(firebase.auth().currentUser.uid)) || breeder.favUsers === 0) 
+      ? firebase.database().ref('breeders/' + breeder.id).update(data)
+            .then(() => {
+                this.getBreeders()
+            })
+            .then(() =>
+            firebase
+                .database()
+                .ref('breeders/' + breeder.id + '/favUsers')
+                .update(
+                    {[breeder.favUsers ? breeder.favUsers.length : 0]: firebase.auth().currentUser.uid}
+                    )
+            )       
+                
+            .then(() =>
+            (!this.state.userData.favBreeders || (this.state.userData.favBreeders && this.state.userData.favBreeders.length > 0 && !this.state.userData.favBreeders.includes(breeder.id)))
+                ? firebase
+                    .database()
+                    .ref('users/')
+                    .child(firebase.auth().currentUser.uid)
+                    .child('favBreeders')
+                    .update({[(this.state.userData.favBreeders && this.state.userData.favBreeders.length > 0) ? this.state.userData.favBreeders.length : 0]: breeder.id})
+            
+            : null)
+            .then(() => this.getUserData())
+
+      : this.getBreeders()
+)
+}
 
   sortBreeders = (items, unsortedItems, dir) => {
     if (!dir) {
@@ -71,6 +137,14 @@ class Breeders extends Component {
       dir
     });
   };
+
+  getIcon = (breeder) => {
+    if (this.state.userData && this.state.userData.favBreeders && this.state.userData.favBreeders.length >= 0) {
+        return this.state.userData.favBreeders.includes(breeder.id) ? null : 'heart'
+    } else {
+        return 'heart'
+    }
+  }
 
   render() {
     const sortedBreeders = this.sortBreeders(
@@ -122,13 +196,14 @@ class Breeders extends Component {
                       className="breeder__button"
                       color="brown"
                       content="Like"
-                      icon="heart"
+                      icon={this.getIcon(el)}
                       label={{
                         basic: true,
                         color: "brown",
                         pointing: "left",
-                        content: "2,048"
+                        content: el.likeCount ? el.likeCount : 0
                       }}
+                      onClick={() => this.addLike(el)}
                     />
                   </Card.Content>
                 </Card>
