@@ -61,6 +61,7 @@ class BreaderAdd extends Component {
         .database()
         .ref("breeders/")
         .push(this.state);
+        console.log(this.state)
       alert("dodano hodowce");
       this.setState({
         breeds: [],
@@ -91,6 +92,16 @@ class BreaderAdd extends Component {
       [e.currentTarget.name]: e.target.value
     });
   };
+
+  handleFileUpload = e => {
+    const file = e.target.files[0]
+    console.log(file)
+    var storageRef = firebase.storage().ref();
+    var mountainImagesRef = storageRef.child('mountains.jpg');
+    mountainImagesRef.put(file).then(function(snapshot) {
+      console.log('Uploaded a blob or file!');
+    });
+  }
 
   render() {
     return (
@@ -139,7 +150,7 @@ class BreaderAdd extends Component {
                     <Button className="breeders-form__main__btn--upload">
                       Przeglądaj
                     </Button>
-                    <Input type="file" name="picture" />
+                    <input type="file" name="picture" onChange={this.handleFileUpload}/>
                   </div>
                 </div>
                 <div>
