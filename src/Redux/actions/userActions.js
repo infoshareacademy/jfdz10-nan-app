@@ -3,6 +3,7 @@ import firebase from "firebase";
 export const FETCH_USER = "FETCH_USER";
 export const FETCH_DATA = "FETCH_DATA";
 export const CHANGE_DATA = "CHANGE_DATA";
+export const HANDLE_EDIT = "HANDLE_EDIT";
 
 const fetchUser = () => dispatch => {
   firebase.auth().onAuthStateChanged(user => {
@@ -10,7 +11,7 @@ const fetchUser = () => dispatch => {
       type: FETCH_USER,
       user
     });
-  });
+  }); 
 };
 
 const changeData = (name, input) => {
@@ -19,6 +20,19 @@ const changeData = (name, input) => {
     name,
     input
   };
+};
+
+const handleEdit = (name) => {
+  return {
+    type: HANDLE_EDIT,
+    editId: name
+  };
+};
+
+const handleSave = (name, input) => dispatch => {
+  firebase.auth().currentUser.updateProfile({
+    [name]: input
+  });
 };
 
 const fetchData = (name, dataRef) => dispatch => {
@@ -37,6 +51,8 @@ const fetchData = (name, dataRef) => dispatch => {
 
 export default {
   fetchUser,
-  fetchData,
-  changeData
+  changeData,
+  handleEdit,
+  handleSave,
+  fetchData
 };

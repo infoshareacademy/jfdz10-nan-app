@@ -29,6 +29,7 @@ class App extends Component {
     this.props.fetchUser()
   }
   componentWillUnmount() {
+    this.props.fetchUser()
   }
 
   render() {

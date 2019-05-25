@@ -1,13 +1,15 @@
 import {
   FETCH_USER,
-  CHANGE_DATA
+  CHANGE_DATA,
+  HANDLE_EDIT
 } from "../actions/userActions";
 
 const initialState = {
   currentUser: {},
-  login: "",
+  displayName: "",
   email: "",
-  password: ""
+  password: "",
+  editId: null
 };
 
 export default function userReducer(state = initialState, action) {
@@ -23,6 +25,12 @@ export default function userReducer(state = initialState, action) {
       return {
         ...state,
         [action.name]: action.input
+      };
+    }
+    case HANDLE_EDIT: {
+      return {
+        ...state,
+        editId: action.editId
       };
     }
     default: {

@@ -20,7 +20,7 @@ class Sign extends Component {
           firebase
             .auth()
             .currentUser.updateProfile({
-              displayName: this.props.login,
+              displayName: this.props.displayName,
               photoURL:
                 "https://react.semantic-ui.com/images/wireframe/square-image.png"
             })
@@ -58,11 +58,11 @@ class Sign extends Component {
           {this.props.isSignUp ? (
             <Fragment>
               <Input
-                id="login"
-                name="login"
-                type="login"
+                id="displayName"
+                name="displayName"
+                type="text"
                 placeholder="Login"
-                value={this.props.login}
+                value={this.props.displayName}
                 onChange={input =>
                   this.props.changeData(
                     input.currentTarget.name,
@@ -128,7 +128,7 @@ class Sign extends Component {
 
 const mapStateToProps = state => ({
   currentUser: state.users.currentUser,
-  login: state.users.login,
+  displayName: state.users.displayName,
   email: state.users.email,
   password: state.users.password
 });
