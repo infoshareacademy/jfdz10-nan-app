@@ -8,6 +8,7 @@ import Breeders from '../breeders/Breeders'
 import Dashboard from '../dashboard/Dashboard'
 import Profile from '../user/Profile'
 import SingleCat from '../breeds/SingleCat'
+import AccessoriesCart from '../accessories/AccessoriesCart'
 import SingleBreeder from '../breeders/SingleBreeder'
 
 import userActions from "../Redux/actions/userActions";
@@ -34,8 +35,8 @@ class Content extends Component {
         <Route path={"/logged/cats/:id"} component={SingleCat} />
         <Route path={"/logged/breeders/:id"} component={SingleBreeder} />
         <Route path={"/logged/food-and-accessories/:id"} component={SingleAccessory} />
+        <Route path={"/logged/cart"} component={AccessoriesCart} />
         </div>
-
     );
   }
 }

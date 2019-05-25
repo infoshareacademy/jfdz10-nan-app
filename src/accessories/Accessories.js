@@ -5,6 +5,8 @@ import { StyledHeader } from "../sharedcomponents/StyledHeader";
 import StyledContent from "../sharedcomponents/StyledContent";
 import AccessorySearch from "./AccessorySearch";
 import AccessoriesFilters from "./AccessoriesFilters";
+import CartStatus from "./CartStatus";
+import firebase from "firebase";
 
 import "./Accessories.css";
 
@@ -21,20 +23,34 @@ class Accessories extends Component {
   };
 
   componentDidMount() {
-    fetch("/feed-and-accessories.json")
-      .then(response => response.json())
-      .then(data => {
-        const categories = data.map(accessory => {
-          return accessory.category;
-        });
+    const accessoriesRef = firebase.database().ref("feed-and-accessories");
 
-        this.setState({
-          accessories: data,
-          unsortedAccessories: data,
-          categories: [...new Set(categories)]
-        });
+    accessoriesRef.once("value").then(snapshot => {
+      const data = snapshot.val() || [];
+      const categories = data.map(accessory => {
+        return accessory.category;
       });
+      this.setState({
+        accessories: data,
+        unsortedAccessories: data,
+        categories: [...new Set(categories)]
+      });
+    });
+
+    accessoriesRef.on("value", snapshot => {
+      const data = snapshot.val() || [];
+      const categories = data.map(accessory => {
+        return accessory.category;
+      });
+      this.setState({
+        accessories: data,
+        unsortedAccessories: data,
+        categories: [...new Set(categories)]
+      });
+    });
   }
+
+
   sortAccessories = (items, unsortedItems, dir) => {
     if (!dir) {
       return unsortedItems;
@@ -106,6 +122,7 @@ class Accessories extends Component {
         <StyledContent>
           <StyledHeader>
             <h1 style={{ paddingTop: "16px" }}>Karmy i akcesoria</h1>
+            <CartStatus />
           </StyledHeader>
           <Segment>
             <AccessoriesFilters
