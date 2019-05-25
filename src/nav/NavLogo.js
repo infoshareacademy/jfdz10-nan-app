@@ -11,7 +11,6 @@ class NavLogo extends Component {
             alt="logo"
             src={require("./cat4you-logo-white.png")}
             style={{ width: "100%" }}
-            alt="cat4you-logo"
           />
         </div>
     );
