@@ -66,21 +66,20 @@ class Cats extends Component {
         const data = {
             likeCount: breed.likeCount + 1
         }
-        
-       firebase.database().ref('breeds/' + breed.id).update(data)
+    return (
+    (!breed.favUsers || (breed.favUsers && breed.favUsers.length > 0 && !breed.favUsers.includes(firebase.auth().currentUser.uid)) || breed.favUsers === 0) 
+      ? firebase.database().ref('breeds/' + breed.id).update(data)
             .then(() => {
                 this.getCats()
             })
             .then(() =>
-            (!breed.favUsers || (breed.favUsers && breed.favUsers.length > 0 && !breed.favUsers.includes(firebase.auth().currentUser.uid)) || breed.favUsers === 0)
-            
-                    ? firebase
+            firebase
                     .database()
                     .ref('breeds/' + breed.id + '/favUsers')
                     .update(
                         {[breed.favUsers ? breed.favUsers.length : 0]: firebase.auth().currentUser.uid}
                         )
-                : null)       
+                )       
                     
             .then(() =>
             (!this.state.userData.favCats || (this.state.userData.favCats && this.state.userData.favCats.length > 0 && !this.state.userData.favCats.includes(breed.id)))
@@ -93,8 +92,9 @@ class Cats extends Component {
             
             : null)
             .then(() => this.getUserData())
-            
-        
+
+        : this.getCats()
+    )
     }
 
     sortCats = (items, unsortedItems, dir) => {
