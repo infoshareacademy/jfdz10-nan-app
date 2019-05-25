@@ -10,6 +10,7 @@ import Favorites from './Favorites.js'
 import "./Profile.css";
 import StyledContent from "../sharedcomponents/StyledContent";
 import {StyledSingleTitle} from "../sharedcomponents/StyledHeader"
+import Avatar from './Avatar.js'
 
 class Profile extends Component {
   state = {
@@ -83,7 +84,10 @@ class Profile extends Component {
             </Divider>
             <Favorites name="Koty" favKey="favoriteCats" parameter={user.favoriteCats} labels={this.state.cats} onDelete={this.handleDelete}/>
             <Favorites name="Hodowle" favKey="favoriteBreeders" parameter={user.favoriteBreeders} labels={this.state.breeders} onDelete={this.handleDelete}/>
-            <Favorites name="Akcesoria" favKey="favoriteAccessories" parameter={user.favoriteAccessories} labels={this.state.accessories} onDelete={this.handleDelete}/>
+            <Divider horizontal>
+              <Header as="h2">Edycja danych</Header>
+            </Divider>
+            <Avatar name="Zmiana zdjęcia profilowego"/>
           </Segment>
         </StyledContent>
       </Fragment>
