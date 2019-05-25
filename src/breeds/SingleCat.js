@@ -81,6 +81,9 @@ render() {
             <Header as="h2">Opis</Header>
           </Divider>
           <div className="cat__description">{cat.description}</div>
+          <Divider horizontal>
+            <Header as="h2">Moja galeria</Header>
+          </Divider>
         </Segment>
       </StyledContent>
     </Fragment>
