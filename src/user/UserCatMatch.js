@@ -71,11 +71,11 @@ class UserCatMatch extends Component {
     }
   }
 
-  // handleAddRating = () => {
-  //   if (this.props.userId) {
-  //   firebase.database.ref("users/"+ this.props.userId).set({userRating: Object.assign({}, this.state.userRating)})
-  //   }
-  // }
+  handleAddRating = () => {
+    if (this.props.userId) {
+    firebase.database().ref("users/"+ this.props.userId).set({userRating: Object.assign({}, this.state.userRating)})
+    }
+  }
 
   render() {
     console.log(this.props.userId)
@@ -116,7 +116,7 @@ class UserCatMatch extends Component {
               <Icon name="left arrow" />
             </Button>
             <Button.Or />
-            <Button positive>
+            <Button positive onClick={() => this.handleAddRating()}>
               Zapisz
             </Button>
           </Button.Group>
