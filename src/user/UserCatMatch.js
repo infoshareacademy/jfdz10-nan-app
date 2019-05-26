@@ -16,7 +16,7 @@ class UserCatMatch extends Component {
     const accessoriesRef = firebase.database().ref("breeds");
 
     accessoriesRef.once("value").then(snapshot => {
-      const data = snapshot.val() || [];
+      const data = Object.values(snapshot.val()) || [];
       const characteristics = data.map(breed => {
         return { ...breed.characteristics, id: breed.id };
       });
