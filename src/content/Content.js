@@ -8,9 +8,10 @@ import Breeders from '../breeders/Breeders'
 import Dashboard from '../dashboard/Dashboard'
 import Profile from '../user/Profile'
 import SingleCat from '../breeds/SingleCat'
-import BreedersAdd from '../breeders/BreederAdd'
+import BreederAdd from '../breeders/BreederAdd'
 import AccessoriesCart from '../accessories/AccessoriesCart'
 import SingleBreeder from '../breeders/SingleBreeder'
+import CatAdd from '../breeds/CatAdd'
 
 class Content extends Component {
   render() {
@@ -21,7 +22,8 @@ class Content extends Component {
         <Route exact path="/logged/breeders" component={Breeders} />
         <Route exact path={"/logged"} component={Dashboard} />
         <Route exact path={"/logged/profile"} component={Profile} />
-        <Route path={"/logged/breeders-add"} component={BreedersAdd} />
+        <Route exact path={"/logged/cat-add"} component={CatAdd} />
+        <Route exact path={"/logged/breeder-add"} component={BreederAdd} />
         <Route path={"/logged/cats/:id"} component={SingleCat} />
         <Route path={"/logged/breeders/:id"} component={SingleBreeder} />
         <Route path={"/logged/food-and-accessories/:id"} component={SingleAccessory} />

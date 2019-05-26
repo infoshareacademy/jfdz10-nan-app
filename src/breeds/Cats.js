@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from "react";
-import { Card, Button, Segment, Divider } from "semantic-ui-react";
+import { Card, Button, Segment, Divider, Icon } from "semantic-ui-react";
 import "./Cats.css";
-import {Link } from "react-router-dom";
-import {StyledHeader} from '../sharedcomponents/StyledHeader'
+import { Link } from "react-router-dom";
+import { StyledHeader } from "../sharedcomponents/StyledHeader";
 import StyledContent from "../sharedcomponents/StyledContent";
 import CatSearch from "./CatSearch";
 import CatSorter from "./CatSorter";
 
-import StyledCardImage from '../sharedcomponents/StyledCardImage'
+import StyledCardImage from "../sharedcomponents/StyledCardImage";
 
 class Cats extends Component {
   state = {
@@ -25,7 +25,7 @@ class Cats extends Component {
       .then(data => {
         this.setState({
           breeds: data,
-          unsortedCats: data,
+          unsortedCats: data
         });
       });
   }
@@ -54,9 +54,7 @@ class Cats extends Component {
       const CatNameLowerCased = el.name.toLowerCase();
       const textFilterLowerCased = this.state.filter.text.toLowerCase();
 
-      return (
-        CatNameLowerCased.includes(textFilterLowerCased)
-      );
+      return CatNameLowerCased.includes(textFilterLowerCased);
     });
   }
 
@@ -64,7 +62,7 @@ class Cats extends Component {
     this.setState({
       ...this.state,
       filter: {
-        text: filter,
+        text: filter
       }
     });
   }
@@ -86,31 +84,47 @@ class Cats extends Component {
       <Fragment>
         <StyledContent>
           <StyledHeader>
-            <h1 style={{paddingTop: '16px'}}>Rasy kotów</h1>
-            
+            <h1 style={{ paddingTop: "16px" }}>Rasy kotów</h1>
           </StyledHeader>
-          <Segment >
-          <CatSorter
+          <Segment>
+            <CatSorter
               value={this.state.filter.text}
               onSortDirection={this.onDirChange}
               dir={this.state.dir}
             />
-            <CatSearch 
+            <CatSearch
               className="search__bar"
               onInputChange={filter => this.filterCatsInInput(filter)}
               value={this.state.filter.text}
             />
-
+            <Link to="cat-add">
+              <Button
+                className="breeders__btn--add-breeder"
+                icon
+                labelPosition="right"
+                style={{ marginLeft: "2rem" }}
+              >
+                Dodaj kota
+                <Icon name="plus" />
+              </Button>
+            </Link>
             <Divider />
             <Card.Group className="cat_card_group" itemsPerRow={2}>
               {filteredCats.map(el => {
                 return (
                   <Card centered className="cat_card" key={el.id}>
                     <Link to={`/logged/cats/${el.id}`}>
-                      <StyledCardImage style={{backgroundImage: `url(${el.image})`, height: "250px"}}/>
-                    </Link> 
-                    <Card.Content className="cat_content">        
-                      <Link className="cat_name" to={`/logged/cats/${el.id}`}>{el.name}</Link>
+                      <StyledCardImage
+                        style={{
+                          backgroundImage: `url(${el.image})`,
+                          height: "250px"
+                        }}
+                      />
+                    </Link>
+                    <Card.Content className="cat_content">
+                      <Link className="cat_name" to={`/logged/cats/${el.id}`}>
+                        {el.name}
+                      </Link>
                     </Card.Content>
                     <Button
                       className="cat_button"

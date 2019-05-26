@@ -85,7 +85,6 @@ class Breeders extends Component {
           <h1 style={{ paddingTop: "16px" }}>Lista Hodowców</h1>
         </StyledHeader>
         <Segment>
-          <div className="breeders__header">
           <BreederFilters
             value={this.state.filter.text}
             onSortDirection={this.onDirChange}
@@ -96,7 +95,7 @@ class Breeders extends Component {
             onInputChange={filter => this.filterBreedersInInput(filter)}
             value={this.state.filter.text}
           />
-          <Link to="breeders-add">
+          <Link to="breeder-add">
             <Button
               className="breeders__btn--add-breeder"
               icon
@@ -107,7 +106,6 @@ class Breeders extends Component {
               <Icon name="plus" />
             </Button>
           </Link>
-          </div>
           <Divider />
           <Card.Group itemsPerRow={4}>
             {filteredBreeders.map(el => {
