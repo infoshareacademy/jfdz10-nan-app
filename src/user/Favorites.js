@@ -36,14 +36,6 @@ class Favorites extends Component {
           dataArray={breeders}
           onDelete={this.handleDelete}
         />
-
-        <h3 style={{ marginTop: "20px" }}>Akcesoria</h3>
-        <FavoritesComponent
-          userFavArrayName="favAccessories"
-          userFavArray={users.favAccessories}
-          dataArray={accessories}
-          onDelete={this.handleDelete}
-        />
       </Fragment>
     );
   }
@@ -52,7 +44,6 @@ class Favorites extends Component {
 const mapStateToProps = state => ({
   breeds: state.data.breeds,
   breeders: state.data.breeders,
-  accessories: state.data.accessories,
   users: state.data.users,
   userId: state.users.currentUser.uid
 });

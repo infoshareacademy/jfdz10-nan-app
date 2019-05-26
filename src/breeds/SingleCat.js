@@ -15,10 +15,10 @@ class SingleCat extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
 
-    fetch(`/breeds.json`)
-      .then(response => response.json())
-      .then(breeds => {
-        const cat = breeds.find(cat => cat.id === Number(id));
+    fetch("https://jfdz10nan-app.firebaseio.com/breeds.json")
+    .then(response => response.json())
+    .then(breeds => {
+      const cat = breeds.find(cat => cat.id === Number(id));
 
         this.setState({ cat });
       });
