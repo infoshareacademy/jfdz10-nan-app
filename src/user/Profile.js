@@ -17,7 +17,7 @@ import { StyledSingleTitle } from "../sharedcomponents/StyledHeader";
 
 import userActions from "../Redux/actions/userActions";
 import { connect } from "react-redux";
-import Avatar from "./Avatar"
+
 
 class Profile extends Component {
   componentDidMount() {
@@ -178,10 +178,8 @@ class Profile extends Component {
               <Header as="h2">Ulubione</Header>
             </Divider>
             <Favorites />
-            <Divider horizontal>
-              <Header as="h2">Edycja danych</Header>
-            </Divider>
-            <Avatar name="Zmiana zdjęcia profilowego"/>
+        
+      
           </Segment>
         </StyledContent>
       </Fragment>
