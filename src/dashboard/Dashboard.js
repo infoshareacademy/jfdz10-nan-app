@@ -1,9 +1,10 @@
 import React, { Component, Fragment } from "react";
-import { Card, Image, Item } from "semantic-ui-react";
+import { Card, Image, Item, Segment, Button } from "semantic-ui-react";
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
 import GraphOne from "../graph/GraphOne";
 import GraphTwo from "../graph/GraphTwo";
+import "../accessories/Accessories.css"
 
 class Dashboard extends Component {
   state = {
@@ -41,6 +42,11 @@ class Dashboard extends Component {
                 </Card>
               </Link>
             ))}
+            <Segment textAlign='center'size="large">
+              <h2>Szukasz dla siebie wymarzonego kota, ale wciąż nie wiesz jaką rasę wybrać?</h2>
+              <p>Odpowiedz nam na kilka pytań, a my dobierzemy najwłaściwszą dla Ciebie rasę.</p>
+              <Link to="/logged/profile/cat-preferences"><Button className="blue-button">Dobierz kota</Button></Link>
+            </Segment >
             <div className="graph">
               <Item.Header className="dashboard-graph-header">
                 Popularność Ras
