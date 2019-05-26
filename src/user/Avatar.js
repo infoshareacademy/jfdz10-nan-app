@@ -99,10 +99,10 @@ class Avatar extends Component {
             </Fab>
         </label>
         {this.state.file && `${this.state.file.name}`}
-            <Fab style={{marginRight: '20px'}} size="small" color="primary" component="span" onClick={this.handleAdd}>
+            <Fab style={{marginRight: '20px'}} size="small" color="grey" component="span" onClick={this.handleAdd}>
                 <AddIcon />
             </Fab>
-            <Fab style={{marginRight: '20px'}} size="small" color="secondary" component="span" onClick={this.handleRemove}>
+            <Fab style={{marginRight: '20px'}} size="small" color="grey" component="span" onClick={this.handleRemove}>
                 <RemoveIcon />
             </Fab>
     </div>
