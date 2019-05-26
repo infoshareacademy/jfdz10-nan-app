@@ -11,18 +11,6 @@ import {
 import "./Breeders.css";
 import firebase from "firebase";
 
-var firebaseConfig = {
-  apiKey: "AIzaSyCv_ja9EAiV4rI2O8E1v4-XREFMrCPqN2I",
-  authDomain: "test-8413e.firebaseapp.com",
-  databaseURL: "https://test-8413e.firebaseio.com",
-  projectId: "test-8413e",
-  storageBucket: "test-8413e.appspot.com",
-  messagingSenderId: "1097546633851",
-  appId: "1:1097546633851:web:5eac033873399f84"
-};
-
-firebase.initializeApp(firebaseConfig);
-
 const formValid = ({ contactInfo, ...rest }) => {
   let valid = true;
 
@@ -36,6 +24,7 @@ const formValid = ({ contactInfo, ...rest }) => {
 
   return valid;
 };
+
 
 class BreaderAdd extends Component {
   state = {
@@ -51,6 +40,23 @@ class BreaderAdd extends Component {
       website: ""
     }
   };
+
+  componentDidMount() {
+    this.getBreeds()
+  }
+  
+  getBreeds = () => {
+    const breedsRef = firebase.database().ref("breeds");
+
+    breedsRef.once("value").then(snapshot => {
+      const data = snapshot.val() || [];
+      const breeds = data.map(breed => {
+        return { name: breed.name, id: breed.id };
+      });
+      this.setState({breeds})
+      console.log(this.state)
+    });
+  }
 
   handleSubmit = e => {
     e.preventDefault();
@@ -97,13 +103,17 @@ class BreaderAdd extends Component {
     const file = e.target.files[0]
     console.log(file)
     var storageRef = firebase.storage().ref();
-    var mountainImagesRef = storageRef.child('mountains.jpg');
-    mountainImagesRef.put(file).then(function(snapshot) {
+    var breedersImagesRef = storageRef.child(`breeders/${this.state.name}.jpeg`);
+    breedersImagesRef.put(file).then(function(snapshot) {
       console.log('Uploaded a blob or file!');
     });
   }
-
+ 
   render() {
+
+    const { breeds } = this.state
+    const options = [{key: breeds.id, text: breeds.name, value: breeds.id}]
+   
     return (
       <>
         <StyledContent>
@@ -129,11 +139,10 @@ class BreaderAdd extends Component {
                   <label>Rasy kotów w ofercie:</label>
                   <Dropdown
                     labeled
-                    placeholder="State"
+                    placeholder="Rasy kotow w ofercie"
                     multiple
-                    search
                     selection
-                    // options={stateOptions}
+                    options={options}
                   />
                 </Form.Field>
               </Form.Group>

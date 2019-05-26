@@ -85,6 +85,7 @@ class Breeders extends Component {
           <h1 style={{ paddingTop: "16px" }}>Lista Hodowców</h1>
         </StyledHeader>
         <Segment>
+          <div className="breeders__header">
           <BreederFilters
             value={this.state.filter.text}
             onSortDirection={this.onDirChange}
@@ -100,11 +101,13 @@ class Breeders extends Component {
               className="breeders__btn--add-breeder"
               icon
               labelPosition="right"
+              style={{marginLeft: "2rem" }}
             >
               Dodaj hodowcę
               <Icon name="plus" />
             </Button>
           </Link>
+          </div>
           <Divider />
           <Card.Group itemsPerRow={4}>
             {filteredBreeders.map(el => {

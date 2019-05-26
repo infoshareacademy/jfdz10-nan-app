@@ -21,7 +21,7 @@ class Content extends Component {
         <Route exact path="/logged/breeders" component={Breeders} />
         <Route exact path={"/logged"} component={Dashboard} />
         <Route exact path={"/logged/profile"} component={Profile} />
-        <Route exact path="/breeders-add" component={BreedersAdd} />
+        <Route path={"/logged/breeders-add"} component={BreedersAdd} />
         <Route path={"/logged/cats/:id"} component={SingleCat} />
         <Route path={"/logged/breeders/:id"} component={SingleBreeder} />
         <Route path={"/logged/food-and-accessories/:id"} component={SingleAccessory} />

@@ -4,6 +4,12 @@
   box-shadow: 0 0 0 0px #1bd3e8 !important;
 }
 
+/* .breeders__header {
+  display: flex;
+  flex-direction: row;
+  justify-items: space-around;
+} */
+
 .breeders-form {
   display: flex !important;
   flex-direction: column;
