@@ -11,7 +11,7 @@ import "./Profile.css";
 import StyledContent from "../sharedcomponents/StyledContent";
 import {StyledSingleTitle} from "../sharedcomponents/StyledHeader"
 import Avatar from './Avatar.js'
-import firebase from 'firebase'
+
 
 class Profile extends Component {
   state = {
