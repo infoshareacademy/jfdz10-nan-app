@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Segment, Button, Table } from "semantic-ui-react";
 import StyledContent from "../sharedcomponents/StyledContent";
 import { StyledHeader } from "../sharedcomponents/StyledHeader";
+import firebase from 'firebase'
 
 import { fetchCartItems, deleteFromCart } from "../Redux/reducers/cartReducer";
 
@@ -64,6 +65,11 @@ class AccessoriesCart extends Component {
                 </Table.Row>
               </Table.Body>
             </Table>
+          </Segment>
+          <Segment>
+            <Button>
+              Zapisz zamówienie
+            </Button>
           </Segment>
         </StyledContent>
       </Fragment>
