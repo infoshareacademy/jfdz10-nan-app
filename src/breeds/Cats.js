@@ -32,8 +32,8 @@ class Cats extends Component {
             .once("value")
             .then(cats => {
                 this.setState({
-                    breeds: cats.val(),
-                    unsortedCats: cats.val(),
+                    breeds: Object.values(cats.val() || {}),
+                    unsortedCats: Object.values(cats.val() || {}),
                 })
             })
     };
@@ -44,7 +44,7 @@ class Cats extends Component {
                 .once("value")
                 .then(userData => {
                     this.setState({
-                        userData: userData.val(),
+                        userData: Object.values(userData.val() || {}),
                     })
                 })
         }
@@ -57,7 +57,7 @@ class Cats extends Component {
                 .once("value")
                 .then(userData => {
                     this.setState({
-                        userData: userData.val(),
+                        userData: Object.values(userData.val() || {}),
                     })
                 })
         )

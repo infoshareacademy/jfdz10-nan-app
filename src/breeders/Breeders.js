@@ -29,8 +29,8 @@ class Breeders extends Component {
         .once("value")
         .then(data => {
             this.setState({
-                breeders: data.val(),
-                unsortedBreeders: data.val(),
+                breeders: Object.values(data.val() || {}),
+                unsortedBreeders: Object.values(data.val() || {}),
             })
         })
 };
@@ -41,7 +41,7 @@ class Breeders extends Component {
             .once("value")
             .then(userData => {
                 this.setState({
-                    userData: userData.val(),
+                    userData: Object.values(userData.val() || {}),
                 })
             })
     }
@@ -54,7 +54,7 @@ class Breeders extends Component {
             .once("value")
             .then(userData => {
                 this.setState({
-                    userData: userData.val(),
+                    userData: Object.values(userData.val() || {})
                 })
             })
     )
@@ -179,7 +179,7 @@ class Breeders extends Component {
             {filteredBreeders.map(el => {
               return (
                 <Card centered key={el.id}>
-                  <Link to={`breeders/${el.id}`}>
+                  <Link to={`/logged/breeders/${el.id}`}>
                     <StyledCardImage style={{backgroundImage: `url(${el.img})`, height: "20vh"}}/>
                   </Link>
                   <Card.Content>

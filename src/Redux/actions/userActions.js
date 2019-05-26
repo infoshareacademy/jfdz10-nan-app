@@ -44,7 +44,7 @@ const fetchData = (name, dataRef) => dispatch => {
       dispatch({
         type: FETCH_DATA,
         name,
-        snapshot: snapshot.val()
+        snapshot: Object.values(snapshot.val() || {})
       })
     );
 };

@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.0.0",
+    "@material-ui/icons": "^4.0.0",
     "firebase": "^6.0.2",
     "from": "^0.1.7",
     "localforage": "^1.7.3",
@@ -16,6 +18,7 @@
     "redux": "^4.0.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+    "semantic-ui": "^2.4.2",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.85.0",
     "styled-components": "^4.1.3"

@@ -18,7 +18,7 @@ class SingleCat extends Component {
     fetch("https://jfdz10nan-app.firebaseio.com/breeds.json")
     .then(response => response.json())
     .then(breeds => {
-      const cat = breeds.find(cat => cat.id === Number(id));
+      const cat = Object.values(breeds || {}).find(cat => cat.id === Number(id));
 
         this.setState({ cat });
       });
