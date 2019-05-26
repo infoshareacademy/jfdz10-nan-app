@@ -50,7 +50,7 @@ class CatGalery extends Component {
     getCatsUrl = () => {
       if (this.state.user) {
           const uid = this.state.user.uid;
-          firebase.storage().ref('/avatars/' + uid).getDownloadURL()
+          firebase.storage().ref('/cats/' + uid).getDownloadURL()
               .then(url => {
                   this.setState({
                       catUrl: url,
