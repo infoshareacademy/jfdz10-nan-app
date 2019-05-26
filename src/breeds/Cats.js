@@ -82,7 +82,7 @@ class Cats extends Component {
                     .database()
                     .ref('breeds/' + breed.id + '/favUsers')
                     .update(
-                        {[breed.favUsers ? breed.favUsers.length : 0]: firebase.auth().currentUser.uid}
+                        {[firebase.auth().currentUser.uid]: firebase.auth().currentUser.uid}
                         )
                 )       
                     
@@ -93,7 +93,7 @@ class Cats extends Component {
                     .ref('users/')
                     .child(firebase.auth().currentUser.uid)
                     .child('favCats')
-                    .update({[(this.state.userData.favCats && this.state.userData.favCats.length > 0) ? this.state.userData.favCats.length : 0]: breed.id})
+                    .update({[breed.id]: breed.id})
             
             : null)
             .then(() => this.getUserData())
@@ -107,7 +107,7 @@ class Cats extends Component {
                     .database()
                     .ref('breeds/')
                     .child(breed.id)
-                    .child('favUsers')
+                   .child('favUsers')
                     .child(firebase.auth().currentUser.uid)
                     .remove()
                 )
