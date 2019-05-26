@@ -10,6 +10,7 @@ import {
 import "./Cats.css";
 import StyledContent from "../sharedcomponents/StyledContent";
 import {StyledSingleTitle} from "../sharedcomponents/StyledHeader"
+import CatGalery from './CatGalery'
 
 class SingleCat extends Component {
   state = {
@@ -84,6 +85,7 @@ render() {
           <Divider horizontal>
             <Header as="h2">Moja galeria</Header>
           </Divider>
+          <CatGalery />
         </Segment>
       </StyledContent>
     </Fragment>
@@ -93,3 +95,4 @@ render() {
 
 
 export default SingleCat
+
