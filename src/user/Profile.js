@@ -1,91 +1,183 @@
 import React, { Fragment, Component } from "react";
+import firebase from "firebase";
 import {
   Segment,
   Divider,
-  Table,
   Image,
-  Header
+  Header,
+  Table,
+  Input,
+  Button
 } from "semantic-ui-react";
-import Favorites from './Favorites.js'
+import { Link } from "react-router-dom";
+import Favorites from "./Favorites";
 import "./Profile.css";
 import StyledContent from "../sharedcomponents/StyledContent";
-import {StyledSingleTitle} from "../sharedcomponents/StyledHeader"
-import Avatar from './Avatar.js'
+import { StyledSingleTitle } from "../sharedcomponents/StyledHeader";
 
+import userActions from "../Redux/actions/userActions";
+import { connect } from "react-redux";
+import Avatar from "./Avatar"
 
 class Profile extends Component {
-  state = {
-    user: {
-      id: 1,
-      login: "johndoe",
-      password: "IloveCats",
-      email: "johndoe@hotmail.com",
-      img: "http://www.nan.jfdz10.is-academy.pl/icons/volunteer.svg",
-      favoriteCats: [2, 5, 6],
-      favoriteBreeders: [1, 3],
-      favoriteAccessories: [1, 2]
-    },
-    cats: [],
-    breeders: [],
-    accessories: [],
-    userData: null
-  };
-
   componentDidMount() {
-    fetch("https://jfdz10nan-app.firebaseio.com/breeds.json")
-      .then(r => r.json())
-      .then(data => this.setState({cats: data}))
-    fetch("https://jfdz10nan-app.firebaseio.com/breeders.json")
-      .then(r => r.json())
-      .then(data => this.setState({breeders: data}))
-    fetch("https://jfdz10nan-app.firebaseio.com/feed-and-accessories.json")
-      .then(r => r.json())
-      .then(data => this.setState({accessories: data}))
+    this.props.fetchUser();
+  }
+  componentWillUnmount() {
+    this.props.fetchUser();
   }
 
-  handleDelete = (elementId, keyFav) => {
-    this.setState({user: {...this.state.user, [keyFav]: this.state.user[keyFav].filter( id => id !== elementId)}})
- }
+  handleSaveLogin = () => {
+    const { handleEdit, fetchUser, displayName } = this.props;
+    const user = firebase.auth().currentUser;
+    user.updateProfile({ displayName }).then(() => {
+      handleEdit(null);
+      fetchUser();
+    });
+  };
 
   render() {
-    const { user } = this.state;
-    const userImage = {
+    const {
+      currentUser,
+      changeData,
+      password,
+      displayName,
+      handleEdit,
+      editId,
+      joinDate,
+      fetchUser
+    } = this.props;
+    const userDataSegment = {
       maxHeight: "320px"
     };
-
+    console.error(currentUser.displayName);
     return (
       <Fragment>
         <StyledContent>
-        <StyledSingleTitle>
-          <h1>Witaj, {user.login}!</h1>
-        </StyledSingleTitle>
+          <StyledSingleTitle>
+            <h1>Witaj, {currentUser.displayName}!</h1>
+          </StyledSingleTitle>
           <Segment>
-            <div className="user__characteristic">
-              <Image
-                style={userImage}
-                src={user.img}
-              />
-              <div>
+            <div className={`${userDataSegment} display-flex space-evenly`}>
+              <Image style={userDataSegment} src={currentUser.photoURL} />
+              <div
+                className={`${userDataSegment} display-flex direction-column space-evenly`}
+              >
                 <Table definition>
                   <Table.Body>
                     <Table.Row>
                       <Table.Cell>Login</Table.Cell>
-                      <Table.Cell>{user.login}</Table.Cell>
+
+                      {editId === "displayName" ? (
+                        <Fragment>
+                          <Table.Cell>
+                            <Input
+                              required
+                              id="displayName"
+                              name="displayName"
+                              type="text"
+                              placeholder={currentUser.displayName}
+                              value={displayName}
+                              onChange={input =>
+                                changeData(
+                                  input.currentTarget.name,
+                                  input.target.value
+                                )
+                              }
+                            />
+                            <Button
+                              basic
+                              icon="save outline"
+                              onClick={this.handleSaveLogin}
+                            />
+                          </Table.Cell>
+                        </Fragment>
+                      ) : (
+                        <Fragment>
+                          <Table.Cell className="display-flex space-evenly">
+                            <div style={{ width: "180px" }}>
+                              {currentUser.displayName}
+                            </div>
+                            <Button
+                              basic
+                              icon="edit"
+                              onClick={() => handleEdit("displayName")}
+                            />
+                          </Table.Cell>
+                        </Fragment>
+                      )}
+                    </Table.Row>
+                    <Table.Row>
+                      <Table.Cell>Hasło</Table.Cell>
+                      {editId === "password" ? (
+                        <Table.Cell>
+                          <Input
+                            className="edit-input"
+                            required
+                            name="password"
+                            type="password"
+                            id="password"
+                            placeholder="Hasło"
+                            value={password}
+                            onChange={input =>
+                              changeData(
+                                input.currentTarget.name,
+                                input.target.value
+                              )
+                            }
+                          />
+                          <Button
+                            basic
+                            icon="save outline"
+                            onClick={() => {
+                              firebase.auth().onAuthStateChanged(user => {
+                                user.updatePassword(password);
+                              });
+                              fetchUser();
+                              handleEdit(null);
+                            }}
+                          />
+                        </Table.Cell>
+                      ) : (
+                        <Fragment>
+                          <Table.Cell className="display-flex space-evenly">
+                            <div style={{ width: "180px" }}>**************</div>
+                            <Button
+                              basic
+                              icon="edit"
+                              onClick={() => handleEdit("password")}
+                            />
+                          </Table.Cell>
+                        </Fragment>
+                      )}
                     </Table.Row>
                     <Table.Row>
                       <Table.Cell>E-mail</Table.Cell>
-                      <Table.Cell>{user.email}</Table.Cell>
+                      <Table.Cell className="display-flex space-evenly">
+                        <div style={{ width: "180px" }}>
+                          {currentUser.email}
+                        </div>
+                        <Button basic disabled icon="edit" />
+                      </Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                      <Table.Cell>Data dołączenia</Table.Cell>
+                      <Table.Cell className="display-flex space-evenly">
+                        <div style={{ width: "180px" }}>
+                          {joinDate}
+                        </div>
+                        <Button basic disabled icon="edit" />
+                      </Table.Cell>
                     </Table.Row>
                   </Table.Body>
                 </Table>
               </div>
+              <Link to="/logged/profile/cat-preferences"><Button className="blue-button">Dobierz kota</Button></Link>
             </div>
-
             <Divider horizontal>
               <Header as="h2">Ulubione</Header>
             </Divider>
-            <Favorites name="Koty" favKey="favoriteCats" parameter={user.favoriteCats} labels={this.state.cats} onDelete={this.handleDelete}/>
-            <Favorites name="Hodowle" favKey="favoriteBreeders" parameter={user.favoriteBreeders} labels={this.state.breeders} onDelete={this.handleDelete}/>
+            <Favorites />
             <Divider horizontal>
               <Header as="h2">Edycja danych</Header>
             </Divider>
@@ -97,4 +189,17 @@ class Profile extends Component {
   }
 }
 
-export default Profile;
+const mapStateToProps = state => ({
+  currentUser: state.users.currentUser,
+  displayName: state.users.displayName,
+  password: state.users.password,
+  editId: state.users.editId,
+  joinDate: state.data.users.joinDate
+});
+
+const mapDispatchToProps = userActions;
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Profile);

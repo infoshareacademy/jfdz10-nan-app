@@ -8,6 +8,8 @@ import "../breeders/Breeders.css";
 import BreederSearch from "./BreederSearch";
 import BreederFilters from "./BreederFilters";
 import firebase from 'firebase'
+import userActions from "../Redux/actions/userActions";
+import { connect } from "react-redux";
 
 class Breeders extends Component {
   state = {
@@ -90,6 +92,8 @@ class Breeders extends Component {
             
             : null)
             .then(() => this.getUserData())
+            
+            .then(() => this.props.fetchData("users", `users/${this.props.userId}`))
 
       : this.getBreeders()
 )
@@ -216,4 +220,13 @@ class Breeders extends Component {
   }
 }
 
-export default Breeders;
+const mapStateToProps = state => ({
+  userId: state.users.currentUser.uid
+});
+
+const mapDispatchToProps = userActions;
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Breeders);

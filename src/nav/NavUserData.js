@@ -1,13 +1,15 @@
 import React, { Component } from "react";
-import { Header, Image } from "semantic-ui-react";
-import "semantic-ui-css/semantic.min.css";
-import SignOutButton from '../auth/SignOut.js'
-import { NavLink } from "react-router-dom";
 
 import { Button } from "semantic-ui-react";
 import firebase from 'firebase';
+import SignOutButton from "../auth/SignOut.js";
 
-class NavUserData extends Component {
+import "semantic-ui-css/semantic.min.css";
+import { Header, Image } from "semantic-ui-react";
+import "./Nav.css"
+
+import userActions from "../Redux/actions/userActions";
+import { connect } from "react-redux";
 
   state = {
     avatarUrl: '',
@@ -52,29 +54,30 @@ getAvatarUrl = () => {
         style={{ height: "25%" }}
       >
         <Image
-          src={this.state.avatarUrl ? this.state.avatarUrl : require("./cat4you-sign-white.png")}
+          src={this.state.avatarUrl ? this.state.avatarUrl : this.props.currentUser.photoURL}
           size="small"
           circular
           className="navigation-user-image"
-          style={{ backgroundColor: "gray", width: "150px", height: "150px" }}
+          centered
         />
-        <Header.Content className="white-text">John Doe</Header.Content>
-        <div>
-        <NavLink to='/logged/profile'>
-                <Button>
-                  PROFIL
-                </Button>
-              </NavLink>
-              <SignOutButton />
+        <Header.Content className="white-text">
+          {this.props.currentUser.displayName}
+        </Header.Content>
+        <div className="padding-fifteen">
+          <SignOutButton />
         </div>
       </Header>
     );
   }
 }
 
-export default NavUserData;
+const mapStateToProps = state => ({
+  currentUser: state.users.currentUser
+});
 
+const mapDispatchToProps = userActions;
 
-
-
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NavUserData);

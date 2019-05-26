@@ -5,13 +5,12 @@ import { connect } from "react-redux";
 import "semantic-ui-css/semantic.min.css";
 import "./App.css";
 import NavList from "./nav/NavList.js";
-import AuthContent from "./auth/AuthContent";
-import Sign from "./auth/Sign";
-import Welcome from "./auth/Welcome";
 import Content from "./content/Content";
+import catBackground from './cat_background2.jpg'
 
 
 import userActions from "./Redux/actions/userActions";
+import WelcomeContent from "./auth/WelcomeContent";
 
 var firebaseConfig = {
   apiKey: "AIzaSyAaYHQD_rpZ6o8hiIEfE1kuDR4VC9E3Ca0",
@@ -30,12 +29,16 @@ class App extends Component {
     this.props.fetchUser()
   }
   componentWillUnmount() {
-    this.state.authRef && this.state.authRef();
+    this.props.fetchUser()
   }
 
   render() {
     return (
-      <div style={{ height: "100vh", display: "flex" }}>
+      <div style={{ height: "100vh", display: "flex",
+        background: {catBackground},
+        margin: "0",
+        padding: "0",
+        width: "100vw" }} className="app-container">
         <Switch>
           <Route
             path="/logged"
@@ -50,10 +53,7 @@ class App extends Component {
               );
             }}
           />
-          <Route exact path="/access-denied" component={AuthContent} />
-          <Route exact path="/" component={Welcome} />
-          <Route exact path="/sign-in" component={Sign} />
-          <Route exact path="/sign-up" component={() => <Sign isSignUp />} />
+          <Route path="/" component={WelcomeContent} />
         </Switch>
       </div>
     );
