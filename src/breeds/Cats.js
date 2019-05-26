@@ -7,6 +7,9 @@ import StyledContent from "../sharedcomponents/StyledContent";
 import CatSearch from "./CatSearch";
 import CatSorter from "./CatSorter";
 
+import userActions from "../Redux/actions/userActions";
+import { connect } from "react-redux";
+
 import firebase from 'firebase'
 
 import StyledCardImage from '../sharedcomponents/StyledCardImage'
@@ -92,6 +95,7 @@ class Cats extends Component {
             
             : null)
             .then(() => this.getUserData())
+            .then(() => this.props.fetchData("users", `users/${this.props.userId}`))
 
         : this.getCats()
     )
@@ -212,4 +216,13 @@ class Cats extends Component {
     }
 }
 
-export default Cats;
+const mapStateToProps = state => ({
+    userId: state.users.currentUser.uid
+  });
+  
+  const mapDispatchToProps = userActions;
+  
+  export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Cats);

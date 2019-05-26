@@ -13,7 +13,18 @@ import SingleBreeder from '../breeders/SingleBreeder'
 import UserCatPreferences from '../user/UserCatPreferences'
 import UserCatMatch from '../user/UserCatMatch'
 
+import userActions from "../Redux/actions/userActions";
+import { connect } from "react-redux";
+
 class Content extends Component {
+
+  componentDidMount() {
+    this.props.fetchData("users", `users/${this.props.currentUser.uid}`)
+    this.props.fetchData("routes", "routes")
+    this.props.fetchData("breeds", "breeds")
+    this.props.fetchData("breeders", "breeders")
+    this.props.fetchData("accessories", "feed-and-accessories")
+  }
   render() {
     return (
 
@@ -34,4 +45,13 @@ class Content extends Component {
     );
   }
 }
-export default Content;
+const mapStateToProps = state => ({
+  currentUser: state.users.currentUser
+});
+
+const mapDispatchToProps = userActions;
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Content);

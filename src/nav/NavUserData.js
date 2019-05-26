@@ -1,14 +1,16 @@
 import React, { Component } from "react";
-import { Header, Image } from "semantic-ui-react";
+
+import SignOutButton from "../auth/SignOut.js";
+
 import "semantic-ui-css/semantic.min.css";
-import SignOutButton from '../auth/SignOut.js'
-import { NavLink } from "react-router-dom";
+import { Header, Image } from "semantic-ui-react";
+import "./Nav.css"
 
-import { Button } from "semantic-ui-react";
-
+import userActions from "../Redux/actions/userActions";
+import { connect } from "react-redux";
 
 class NavUserData extends Component {
-
+  
   render() {
     return (
       <Header
@@ -19,29 +21,30 @@ class NavUserData extends Component {
         style={{ height: "25%" }}
       >
         <Image
-          src={require("./cat4you-sign-white.png")}
+          src={this.props.currentUser.photoURL}
           size="small"
           circular
           className="navigation-user-image"
-          style={{ backgroundColor: "gray", width: "150px", height: "150px" }}
+          centered
         />
-        <Header.Content className="white-text">John Doe</Header.Content>
-        <div>
-        <NavLink to='/logged/profile'>
-                <Button>
-                  PROFIL
-                </Button>
-              </NavLink>
-              <SignOutButton />
+        <Header.Content className="white-text">
+          {this.props.currentUser.displayName}
+        </Header.Content>
+        <div className="padding-fifteen">
+          <SignOutButton />
         </div>
       </Header>
     );
   }
 }
 
-export default NavUserData;
+const mapStateToProps = state => ({
+  currentUser: state.users.currentUser
+});
 
+const mapDispatchToProps = userActions;
 
-
-
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(NavUserData);

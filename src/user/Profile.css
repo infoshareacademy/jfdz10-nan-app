@@ -1,24 +1,31 @@
-.profile__container {
-  margin: 0 2rem;
-}
-
 .profile__categories {
   margin-bottom: 1rem !important;
 }
 
-.profile__bar {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2%;
-}
-
-.user__characteristic {
+.display-flex {
   display: flex;
   align-items: center;
 }
 
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
+.direction-column {
+  flex-direction: column;
+}
+
+.edit-input {
+  border: 0;
+  background-color: #fff !important;
+}
+
 .blue-button {
-  background: #1BD3E8 !important;
+  background: #1bd3e8 !important;
   color: #fff !important;
-  box-shadow: 0 0 0 0px #1BD3E8 !important;
+  box-shadow: 0 0 0 0px #1bd3e8 !important;
 }

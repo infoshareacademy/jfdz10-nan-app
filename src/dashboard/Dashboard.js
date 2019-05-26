@@ -6,19 +6,13 @@ import GraphOne from "../graph/GraphOne";
 import GraphTwo from "../graph/GraphTwo";
 import "../accessories/Accessories.css"
 
+import userActions from "../Redux/actions/userActions";
+import { connect } from "react-redux";
+
 class Dashboard extends Component {
-  state = {
-    links: []
-  };
 
   componentDidMount() {
-    fetch("/routes.json")
-      .then(response => response.json())
-      .then(data => {
-        this.setState({
-          links: data
-        });
-      });
+    
   }
 
   render() {
@@ -26,7 +20,7 @@ class Dashboard extends Component {
       <Fragment>
         <div className="dashboard-container">
           <div className="dashboard-card-box">
-            {this.state.links.map(link => (
+            {this.props.routes.map(link => (
               <Link to={`/logged/${link.id}`} key={`/${link.id}`}>
                 <Card className="dashboard-grid-content">
                   <Image src={link.img} className="image-background" />
@@ -47,13 +41,13 @@ class Dashboard extends Component {
               <p>Odpowiedz nam na kilka pytań, a my dobierzemy najwłaściwszą dla Ciebie rasę.</p>
               <Link to="/logged/profile/cat-preferences"><Button className="blue-button">Dobierz kota</Button></Link>
             </Segment >
-            <div className="graph">
+            <div>
               <Item.Header className="dashboard-graph-header">
-                Popularność Ras
+                Wielkość kategorii
               </Item.Header>
               <GraphOne />
             </div>
-            <div className="graph">
+            <div>
               <Item.Header className="dashboard-graph-header">
                 Popularność Strony
               </Item.Header>
@@ -66,4 +60,13 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+const mapStateToProps = state => ({
+  routes: state.data.routes
+});
+
+const mapDispatchToProps = userActions;
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dashboard);
