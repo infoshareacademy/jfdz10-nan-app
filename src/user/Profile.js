@@ -23,19 +23,61 @@ class Profile extends Component {
       favoriteBreeders: [1, 3],
       favoriteAccessories: [1, 2]
     },
+    // avatarUrl: '',
+    // user: null,
     cats: [],
     breeders: [],
     accessories: []
   };
 
+
+//   handleAdd = () => {
+//     if (this.state.user) {
+//         firebase.storage().ref('/users/' + this.state.user.uid).put(this.state.file)
+//             .then(() => {
+//                 alert('dodano pomyslnie');
+//                 this.getAvatarUrl();
+//                 this.setState({
+//                     file: null
+//                 })
+//             })
+//             .catch(error => console.error(error));
+//     }
+// };
+
+// getUserUrl = () => {
+//     if (this.state.user) {
+//         const uid = this.state.user.uid;
+//         firebase.database().ref('/avatars/' + uid).getDownloadURL()
+//             .then(url => {
+//                 this.setState({
+//                     avatarUrl: url,
+//                 })
+//             })
+//             .catch(error => console.error(error));
+//     }
+// };
+
+// componentDidMount() {
+//     const ref = firebase.auth().onAuthStateChanged(user => {
+//         this.setState({
+//             user: user
+//         }, () => this.getUserUrl())
+//     });
+
+//     this.setState({
+//         ref
+//     })
+// }
+
   componentDidMount() {
-    fetch('/breeds.json')
+    fetch("https://jfdz10nan-app.firebaseio.com/breeds.json")
       .then(r => r.json())
       .then(data => this.setState({cats: data}))
-    fetch('/breeders.json')
+    fetch("https://jfdz10nan-app.firebaseio.com/breeders.json")
       .then(r => r.json())
       .then(data => this.setState({breeders: data}))
-    fetch('/feed-and-accessories.json')
+    fetch("https://jfdz10nan-app.firebaseio.com/feed-and-accessories.json")
       .then(r => r.json())
       .then(data => this.setState({accessories: data}))
   }

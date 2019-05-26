@@ -44,3 +44,8 @@
 .cat__description {
   text-align: justify !important;
 }
+
+
+.icon.heart {
+    content: "\F004";
+}
