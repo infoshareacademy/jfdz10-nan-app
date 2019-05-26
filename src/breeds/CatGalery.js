@@ -80,17 +80,26 @@ render() {
   return (
     <Fragment>
             <label htmlFor="raised-button-file">
+            <input
+                    accept="image/*"
+                    style={{ display: 'none' }}
+                    id="raised-button-file"
+                    multiple
+                    type="file"
+                    onChange={this.handleOnInputFileChange}
+                />
             <Fab  style={{marginRight: '20px'}} size="small" color="default" component="span" onChange={this.handleOnInputFileChange}>
                     <ImageIcon />
             </Fab>
             </label>
+            {this.state.file && `${this.state.file.name}`}
             <Fab style={{marginRight: '20px'}} size="small" color="grey" component="span" onClick={this.handleAdd}>
                 <AddIcon />
             </Fab>      
         <Card.Group style={{marginTop: '20px'}} itemsPerRow={4}> 
 
           <Card>
-              <StyledCardImage style={{height: "200px"}}/>
+              <StyledCardImage style={{height: "200px"}} src={this.state.avatarUrl ? this.state.avatarUrl[0] : null}/>
               <Card.Content className="cat_content">
                 <button class="ui button">
                         Usuń
