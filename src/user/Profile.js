@@ -9,6 +9,7 @@ import {
   Input,
   Button
 } from "semantic-ui-react";
+import { Link } from "react-router-dom";
 import Favorites from "./Favorites";
 import "./Profile.css";
 import StyledContent from "../sharedcomponents/StyledContent";
@@ -29,14 +30,6 @@ class Profile extends Component {
     const { handleEdit, fetchUser, displayName } = this.props;
     const user = firebase.auth().currentUser;
     user.updateProfile({ displayName }).then(() => {
-      handleEdit(null);
-      fetchUser();
-    });
-  };
-  handleSavePassword = () => {
-    const { handleEdit, fetchUser, password } = this.props;
-    const user = firebase.auth().currentUser;
-    user.updatePassword({ password }).then(() => {
       handleEdit(null);
       fetchUser();
     });
@@ -178,7 +171,7 @@ class Profile extends Component {
                   </Table.Body>
                 </Table>
               </div>
-              <div>Favorite parameters go here (?)</div>
+              <Link to="/logged/profile/cat-preferences"><Button className="blue-button">Dobierz kota</Button></Link>
             </div>
             <Divider horizontal>
               <Header as="h2">Ulubione</Header>

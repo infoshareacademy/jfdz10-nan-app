@@ -1,17 +1,16 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
 
 import SignOutButton from "../auth/SignOut.js";
 
 import "semantic-ui-css/semantic.min.css";
 import { Header, Image } from "semantic-ui-react";
-import { Button } from "semantic-ui-react";
 import "./Nav.css"
 
 import userActions from "../Redux/actions/userActions";
 import { connect } from "react-redux";
 
 class NavUserData extends Component {
+  
   render() {
     return (
       <Header
@@ -32,9 +31,6 @@ class NavUserData extends Component {
           {this.props.currentUser.displayName}
         </Header.Content>
         <div className="padding-fifteen">
-          <NavLink to="/logged/profile">
-            <Button className="navigation small-font small-button">PROFIL</Button>
-          </NavLink>
           <SignOutButton />
         </div>
       </Header>

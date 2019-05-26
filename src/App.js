@@ -6,6 +6,7 @@ import "semantic-ui-css/semantic.min.css";
 import "./App.css";
 import NavList from "./nav/NavList.js";
 import Content from "./content/Content";
+import catBackground from './cat_background2.jpg'
 
 
 import userActions from "./Redux/actions/userActions";
@@ -34,10 +35,10 @@ class App extends Component {
   render() {
     return (
       <div style={{ height: "100vh", display: "flex",
-        background: `url(./cat_background2.jpg)`,
+        background: {catBackground},
         margin: "0",
         padding: "0",
-        width: "100vw" }}>
+        width: "100vw" }} className="app-container">
         <Switch>
           <Route
             path="/logged"

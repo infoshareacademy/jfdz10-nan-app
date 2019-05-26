@@ -6,3 +6,7 @@
 .ui.grid{
   margin: 0;
 }
+
+.app-container {
+  background: url(./cat_background2.jpg);
+}
