@@ -31,52 +31,17 @@ class Profile extends Component {
     userData: null
   };
 
-
-  getCats = () => {
-    firebase.database().ref('breeds')
-        .once("value")
-        .then(data => {
-            this.setState({
-                cats: data.val()
-            })
-        })
-    };
-
-    getBreeders = () => {
-      firebase.database().ref('breeders')
-          .once("value")
-          .then(data => {
-              this.setState({
-                  breeders: data.val()
-              })
-          })
-      };
-
-    getAccessories = () => {
-    firebase.database().ref('feed-and-accessories')
-        .once("value")
-        .then(data => {
-            this.setState({
-              accessories: data.val()
-            })
-        })
-    };
-
   componentDidMount() {
-    firebase.auth().onAuthStateChanged(user =>
-        firebase.database().ref('users/' + user.uid)
-            .once("value")
-            .then(userData => {
-                this.setState({
-                    userData: userData.val(),
-                })
-            })
-    )
-
-    this.getCats();
-    this.getBreeders();
-    this.getAccessories();
-}
+    fetch("https://jfdz10nan-app.firebaseio.com/breeds.json")
+      .then(r => r.json())
+      .then(data => this.setState({cats: data}))
+    fetch("https://jfdz10nan-app.firebaseio.com/breeders.json")
+      .then(r => r.json())
+      .then(data => this.setState({breeders: data}))
+    fetch("https://jfdz10nan-app.firebaseio.com/feed-and-accessories.json")
+      .then(r => r.json())
+      .then(data => this.setState({accessories: data}))
+  }
 
   handleDelete = (elementId, keyFav) => {
     this.setState({user: {...this.state.user, [keyFav]: this.state.user[keyFav].filter( id => id !== elementId)}})
