@@ -12,7 +12,7 @@ const SignOutButton = () => {
   };
 
   return (
-    <Button onClick={signOut}>
+    <Button  className="navigation small-font small-button" onClick={signOut}>
       WYLOGUJ
     </Button>
   );

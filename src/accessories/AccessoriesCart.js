@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import { Segment, Button, Table } from "semantic-ui-react";
 import StyledContent from "../sharedcomponents/StyledContent";
 import { StyledHeader } from "../sharedcomponents/StyledHeader";
-import firebase from 'firebase'
+import firebase from 'firebase';
+
 
 import { fetchCartItems, deleteFromCart } from "../Redux/reducers/cartReducer";
 
@@ -67,7 +68,7 @@ class AccessoriesCart extends Component {
             </Table>
           </Segment>
           <Segment>
-            <Button>
+            <Button positive>
               Zapisz zamówienie
             </Button>
           </Segment>
@@ -78,7 +79,8 @@ class AccessoriesCart extends Component {
 }
 
 const mapStateToProps = state => ({
-  products: state.cart.products
+  products: state.cart.products,
+  userId: state.users.currentUser.uid
 });
 
 const mapDispatchToProps = {
