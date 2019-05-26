@@ -178,9 +178,7 @@ class Profile extends Component {
               <Header as="h2">Ulubione</Header>
             </Divider>
             <Favorites />
-            <Divider horizontal>
-              <Header as="h2">Edycja danych</Header>
-            </Divider>
+        
       
           </Segment>
         </StyledContent>
