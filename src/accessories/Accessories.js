@@ -69,6 +69,7 @@ class Accessories extends Component {
       });
     }
   };
+  
   getAccessoriesNames(items) {
     return items.filter(el => {
       const AccessoryNameLowerCased = el.name.toLowerCase();
