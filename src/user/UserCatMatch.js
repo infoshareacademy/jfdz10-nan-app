@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Progress, Image, Segment } from "semantic-ui-react";
+import { Progress, Image, Segment, Button, Icon, ButtonOr } from "semantic-ui-react";
 import firebase from "firebase";
 import { Link } from "react-router-dom";
 
@@ -68,7 +68,6 @@ class UserCatMatch extends Component {
           return { id, rating };
         })
       });
-      console.log(this.state.userRating);
     }
   }
 
@@ -80,7 +79,8 @@ class UserCatMatch extends Component {
 
   render() {
     console.log(this.state);
-
+    console.log(Object.assign({}, this.state.userRating) )
+  
     // const sortedUserRating = this.state.userRating.sort(() => this.compareNumbers())
     return (
       <Fragment>
@@ -110,6 +110,19 @@ class UserCatMatch extends Component {
                 </Segment>
               </Link>
             ))}
+          <Link to={"/logged/profile/cat-preferences"}>
+          <Button.Group>
+          <Button icon labelPosition="left">
+              Wróć do wyboru kryteriów
+              <Icon name="left arrow" />
+            </Button>
+            <Button.Or />
+            <Button positive>
+              Zapisz
+            </Button>
+          </Button.Group>
+            
+          </Link>
         </StyledContent>
       </Fragment>
     );
