@@ -11,15 +11,15 @@ class CartStatus extends Component {
   }
 
   cartStatusColorHandler() {
-    return this.props.products.length > 0 ? "green" : ""
+    return this.props.products.length > 0 ? "teal" : ""
   }
 
   render() {
     return (
       <Link to={"/logged/cart"}>
-        <Label color={this.cartStatusColorHandler()} size="large">
+        <Label color={this.cartStatusColorHandler()}  size="large">
           <Icon name="cart" />
-          <Label.Detail>Twój koszyk:{this.props.products.length}</Label.Detail>
+          <Label.Detail>Twój koszyk: {this.props.products.length}</Label.Detail>
         </Label>
       </Link>
     );
