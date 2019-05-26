@@ -66,6 +66,11 @@ class Cats extends Component {
         const data = {
             likeCount: breed.likeCount + 1
         }
+
+        const datav2 = {
+            likeCount: breed.likeCount > 0 ? breed.likeCount - 1 : 0
+        }
+
     return (
     (!breed.favUsers || (breed.favUsers && breed.favUsers.length > 0 && !breed.favUsers.includes(firebase.auth().currentUser.uid)) || breed.favUsers === 0) 
       ? firebase.database().ref('breeds/' + breed.id).update(data)
@@ -93,7 +98,30 @@ class Cats extends Component {
             : null)
             .then(() => this.getUserData())
 
-        : this.getCats()
+        : firebase
+            .database()
+            .ref('breeds/' + breed.id)
+            .update(datav2)
+            .then(() =>
+                    firebase
+                    .database()
+                    .ref('breeds/')
+                    .child(breed.id)
+                    .child('favUsers')
+                    .child(firebase.auth().currentUser.uid)
+                    .remove()
+                )
+            .then(() =>
+                firebase
+                    .database()
+                    .ref('users/')
+                    .child(firebase.auth().currentUser.uid)
+                    .child('favCats')
+                    .child(breed.id)
+                    .remove()
+            )
+            .then(() => this.getCats())
+            .then(() => this.getUserData())   
     )
     }
 
