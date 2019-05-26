@@ -24,7 +24,7 @@ class SingleBreeder extends Component {
     fetch(`/breeders.json`)
     .then(response => response.json())
     .then(breeders => {
-      const breeder = breeders.find(breeder => breeder.id === Number(id));
+      const breeder = Object.values(breeders || {}).find(breeder => breeder.id === Number(id));
 
       this.setState({ breeder });
       

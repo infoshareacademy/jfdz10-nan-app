@@ -11,6 +11,9 @@ import "./Nav.css"
 import userActions from "../Redux/actions/userActions";
 import { connect } from "react-redux";
 
+
+class NavUserData extends Component {
+
   state = {
     avatarUrl: '',
     user: null
@@ -27,7 +30,7 @@ getAvatarUrl = () => {
           })
           .catch(error => console.error(error));
   }
-};
+}
 
   componentDidMount() {
     const ref = firebase.auth().onAuthStateChanged(user => {
@@ -40,6 +43,7 @@ getAvatarUrl = () => {
         ref
     })
   }
+
   componentWillUnmount() {
     this.state.ref && this.state.ref();
   }
@@ -70,6 +74,7 @@ getAvatarUrl = () => {
     );
   }
 }
+
 
 const mapStateToProps = state => ({
   currentUser: state.users.currentUser
