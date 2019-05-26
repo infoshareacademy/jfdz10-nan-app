@@ -71,17 +71,16 @@ class UserCatMatch extends Component {
     }
   }
 
-  compareNumbers = (a, b) => {
-    const ratingA = a.rating;
-    const ratingB = b.rating;
-    return ratingA - ratingB;
-  };
+  // handleAddRating = () => {
+  //   if (this.props.userId) {
+  //   firebase.database.ref("users/"+ this.props.userId).set({userRating: Object.assign({}, this.state.userRating)})
+  //   }
+  // }
 
   render() {
-    console.log(this.state);
-    console.log(Object.assign({}, this.state.userRating) )
+    console.log(this.props.userId)
   
-    // const sortedUserRating = this.state.userRating.sort(() => this.compareNumbers())
+    
     return (
       <Fragment>
         <StyledContent>
@@ -130,7 +129,8 @@ class UserCatMatch extends Component {
 }
 
 const mapStateToProps = state => ({
-  userPreferences: state.userPreferences.userPreferences
+  userPreferences: state.userPreferences.userPreferences,
+  userId: state.users.currentUser.uid
 });
 
 export default connect(mapStateToProps)(UserCatMatch);
