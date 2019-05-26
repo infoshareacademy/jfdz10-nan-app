@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import "semantic-ui-css/semantic.min.css";
 import Welcome from "./Welcome";
 import Sign from "./Sign";
@@ -9,12 +9,12 @@ class WelcomeContent extends Component {
   render() {
     return (
       <main style={{alignSelf:"center",
-        paddingLeft: "20vw",
         width: "60vw",
-        height: "100vw",
-        paddingTop: "40vh"}}>
+        height: "100%"}}>
         
-        <Image src={require("./cat4you-logo-white.png")} />
+        <Image src={require("./cat4you-logo-white.png")} style={{maxWidth: "450px", margin: "auto", marginTop: "25%"}} />
+        
+        <Route exact path="/access-denied" component={() => <Welcome isAccessDenied />} />
         <Route exact path="/" component={Welcome} />
         <Route exact path="/sign-in" component={Sign} />
         <Route exact path="/sign-up" component={() => <Sign isSignUp />} />

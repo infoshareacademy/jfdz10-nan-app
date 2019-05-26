@@ -23,19 +23,23 @@ body > div > div > div.login-form {
         >
           <Grid.Column style={{ maxWidth: 450 }}>
             <Header as="h2" style={{ color: "#1BD3E8" }} textAlign="center">
-              Witaj!
+              {this.props.isAccessDenied ? "Nie jesteś zalogowany" : "Witaj!"}
             </Header>
             <Form size="large">
               <Segment stacked>
-                  <Link to="/sign-in">
-                    <Button
-                      style={{ backgroundColor: "#1BD3E8", color: "#fff", margin: "0 0 1em" }}
-                      fluid
-                      size="large"
-                    >
-                      Logowanie
-                    </Button>
-                  </Link>
+                <Link to="/sign-in">
+                  <Button
+                    style={{
+                      backgroundColor: "#1BD3E8",
+                      color: "#fff",
+                      margin: "0 0 1em"
+                    }}
+                    fluid
+                    size="large"
+                  >
+                    Logowanie
+                  </Button>
+                </Link>
                 <Link to="/sign-up">
                   <Button
                     style={{ backgroundColor: "#1BD3E8", color: "#fff" }}

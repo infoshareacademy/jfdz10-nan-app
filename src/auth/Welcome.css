@@ -1,9 +1,0 @@
-.welcome-container {
-  display: flex;
-  justify-content: space-around;
-  height: 100vh;
-  background: url(./cat_background2.jpg);
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-}

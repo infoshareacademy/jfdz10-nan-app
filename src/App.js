@@ -5,9 +5,6 @@ import { connect } from "react-redux";
 import "semantic-ui-css/semantic.min.css";
 import "./App.css";
 import NavList from "./nav/NavList.js";
-import AuthContent from "./auth/AuthContent";
-import Sign from "./auth/Sign";
-import Welcome from "./auth/Welcome";
 import Content from "./content/Content";
 
 
@@ -55,7 +52,6 @@ class App extends Component {
               );
             }}
           />
-          <Route exact path="/access-denied" component={AuthContent} />
           <Route path="/" component={WelcomeContent} />
         </Switch>
       </div>
