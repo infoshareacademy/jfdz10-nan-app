@@ -1,34 +1,42 @@
 import React, { Component} from "react";
 import {
-  BarChart,
-  CartesianGrid,
-  XAxis,
-  YAxis,
+  PieChart,
   Tooltip,
-  Bar
+  Pie
 } from "recharts";
 
-class GraphOne extends Component {
+import userActions from "../Redux/actions/userActions";
+import { connect } from "react-redux";
 
-  state = {
-    graphOneData: [
-      { name: "Rosyjski Niebieski", value: 5},
-      { name: "Sfinks", value: 2},
-      { name: "Pixie-Bob", value: 13}
-    ]
-  }
+class GraphOne extends Component {
   
   render() {
+    const breeds = this.props.breeds.length
+    const breeders = this.props.breeders.length
+    const accessories = this.props.accessories.length
+    const graphOneData = [
+      { name: "Rasy kotów", value: breeds},
+      { name: "Hodowcy", value: breeders},
+      { name: "Karmy i Akcesoria", value: accessories}
+    ]
     return (
-      <BarChart width={400} height={250} data={this.state.graphOneData}>
-        <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="name" />
-        <YAxis />
+      <PieChart width={400} height={250}>
         <Tooltip />
-        <Bar dataKey="value" fill="#1BD3E8" />
-      </BarChart>
+        <Pie  data={graphOneData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={100} fill="#1BD3E8" />
+      </PieChart>
     );
   }
 }
 
-export default GraphOne;
+const mapStateToProps = state => ({
+  breeds: state.data.breeds,
+  breeders: state.data.breeders,
+  accessories: state.data.accessories
+});
+
+const mapDispatchToProps = userActions;
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GraphOne);

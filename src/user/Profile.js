@@ -50,6 +50,7 @@ class Profile extends Component {
       displayName,
       handleEdit,
       editId,
+      joinDate,
       fetchUser
     } = this.props;
     const userDataSegment = {
@@ -169,7 +170,7 @@ class Profile extends Component {
                       <Table.Cell>Data dołączenia</Table.Cell>
                       <Table.Cell className="display-flex space-evenly">
                         <div style={{ width: "180px" }}>
-                          {currentUser.createdAt}
+                          {joinDate}
                         </div>
                         <Button basic disabled icon="edit" />
                       </Table.Cell>
@@ -194,7 +195,8 @@ const mapStateToProps = state => ({
   currentUser: state.users.currentUser,
   displayName: state.users.displayName,
   password: state.users.password,
-  editId: state.users.editId
+  editId: state.users.editId,
+  joinDate: state.data.users.joinDate
 });
 
 const mapDispatchToProps = userActions;

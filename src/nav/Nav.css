@@ -9,7 +9,19 @@
   box-shadow: 0 0 0 2px #fff !important;
   color: #fff !important;
   background-color: #B66D49 !important;
+}
+
+.large-font{
   font-size: 18px !important;
+}
+
+.small-font{
+  font-size: 16px !important;
+}
+
+.small-button{
+  width: 40% !important;
+  margin: 0 5% !important;
 }
 
 a.active .navigation.button{
@@ -23,7 +35,9 @@ a.active .navigation.button{
 }
 
 .navigation-user-image {
-  width: 150px !important;
+  width: 120px !important;
+  height: auto;
+  margin-bottom: 5%;
 }
 
 .blue-background {

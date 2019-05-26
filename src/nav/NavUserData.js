@@ -6,6 +6,7 @@ import SignOutButton from "../auth/SignOut.js";
 import "semantic-ui-css/semantic.min.css";
 import { Header, Image } from "semantic-ui-react";
 import { Button } from "semantic-ui-react";
+import "./Nav.css"
 
 import userActions from "../Redux/actions/userActions";
 import { connect } from "react-redux";
@@ -30,9 +31,9 @@ class NavUserData extends Component {
         <Header.Content className="white-text">
           {this.props.currentUser.displayName}
         </Header.Content>
-        <div>
+        <div className="padding-fifteen">
           <NavLink to="/logged/profile">
-            <Button>PROFIL</Button>
+            <Button className="navigation small-font small-button">PROFIL</Button>
           </NavLink>
           <SignOutButton />
         </div>

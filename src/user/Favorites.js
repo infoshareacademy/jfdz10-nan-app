@@ -23,24 +23,24 @@ class Favorites extends Component {
       <Fragment>
         <h3 style={{ marginTop: "20px" }}>Koty</h3>
         <FavoritesComponent
-          userFavArrayName="favCatsId"
-          userFavArray={users.favCatsId}
+          userFavArrayName="favCats"
+          userFavArray={users.favCats}
           dataArray={breeds}
           onDelete={this.handleDelete}
         />
 
         <h3 style={{ marginTop: "20px" }}>Hodowle</h3>
         <FavoritesComponent
-          userFavArrayName="favBreedersId"
-          userFavArray={users.favBreedersId}
+          userFavArrayName="favBreeders"
+          userFavArray={users.favBreeders}
           dataArray={breeders}
           onDelete={this.handleDelete}
         />
 
         <h3 style={{ marginTop: "20px" }}>Akcesoria</h3>
         <FavoritesComponent
-          userFavArrayName="favAccessoriesId"
-          userFavArray={users.favAccessoriesId}
+          userFavArrayName="favAccessories"
+          userFavArray={users.favAccessories}
           dataArray={accessories}
           onDelete={this.handleDelete}
         />

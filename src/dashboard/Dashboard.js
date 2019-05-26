@@ -35,9 +35,9 @@ class Dashboard extends Component {
                 </Card>
               </Link>
             ))}
-            <div className="graph">
+            <div>
               <Item.Header className="dashboard-graph-header">
-                Popularność Ras
+                Wielkość kategorii
               </Item.Header>
               <GraphOne />
             </div>

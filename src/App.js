@@ -12,6 +12,7 @@ import Content from "./content/Content";
 
 
 import userActions from "./Redux/actions/userActions";
+import WelcomeContent from "./auth/WelcomeContent";
 
 var firebaseConfig = {
   apiKey: "AIzaSyAaYHQD_rpZ6o8hiIEfE1kuDR4VC9E3Ca0",
@@ -35,7 +36,11 @@ class App extends Component {
 
   render() {
     return (
-      <div style={{ height: "100vh", display: "flex" }}>
+      <div style={{ height: "100vh", display: "flex",
+        background: `url(./cat_background2.jpg)`,
+        margin: "0",
+        padding: "0",
+        width: "100vw" }}>
         <Switch>
           <Route
             path="/logged"
@@ -51,9 +56,7 @@ class App extends Component {
             }}
           />
           <Route exact path="/access-denied" component={AuthContent} />
-          <Route exact path="/" component={Welcome} />
-          <Route exact path="/sign-in" component={Sign} />
-          <Route exact path="/sign-up" component={() => <Sign isSignUp />} />
+          <Route path="/" component={WelcomeContent} />
         </Switch>
       </div>
     );
